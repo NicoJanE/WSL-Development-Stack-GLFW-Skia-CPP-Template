@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Linux App (WSL)",
+      "type": "shell",
+      "command": "wsl",
+      "args": ["bash", "-c", "./build.sh"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",             // One terminal per task label, reused each time you run that same task
+        "reveal": "always",
+        "focus": false
+      }
+    },
+    {
+      "label": "Build Windows App",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-File", ".\\build.ps1"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",             // One terminal per task label, reused each time you run that same task
+        "echo": true,
+        "reveal": "always",
+        "focus": false
+      }
+    }
+  ]
+}

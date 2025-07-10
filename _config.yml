@@ -1,0 +1,88 @@
+# A change in this file, NEEDS a Jekyll restart!
+#
+
+title: <font size="5">   <span style="color:#FFD700" >W</span> <span style="color:#FFA500" >S</span> <span style="color:#FF7F50" >L</span> Template Stacks </font>
+description: <b><i><font size="3">A WSL C++ Template Project for GLFW-Skia applications </span></font></i></b>
+
+show_downloads: true
+google_analytics:
+theme: jekyll-theme-architect
+
+plugins:
+- jekyll-remote-theme 
+- jekyll-toc # Add this plugin for TOC generation
+
+# Added 26 July 2024
+# This is here to enable the parse_block_html feature for MD parsing in a details tag
+markdown: kramdown
+kramdown:
+  input: GFM
+  parse_block_html: true        # This is required to enable <details>  in combination with markdown syntax in it!
+                                # Because the Details tag is very picky with indention syntax here a working example
+                                # (Remove the first # to use this as example in your MD code)        
+                                
+# Used for discussion link
+repository_owner: NicoJanE      # kind of fixed
+repository_name:                # Update this(repository name) if discussions are enabled in GitHub. When Empty it will state 'no Discussions'
+
+# includes home links for this page, leave blank in case of no Home links. 
+home_site_name: 
+    - DTS
+    - WSL
+home_site_url: 
+    - https://nicojane.github.io/Docker-Template-Stacks-Home
+    - https://nicojane.github.io/WSL-Template-Stacks-Home
+
+# EXAMPLE                                
+#<details>  
+#  <summary>More information about ...
+#  </summary> <!-- On same line is failure -->
+#  
+## Picky Markdown in details
+#Because the Details tag is very picky with indention syntax this is a working example
+#- ss
+#	- ss
+#  
+### A subtitle
+#More usefull information...
+# 
+#  # Indention is parsing failure (space)
+#	# Indention is parsing failure (tab>
+#
+### Her it is okay againThis is okay! 
+#Your **_config requires** <br>
+#```markdown: kramdown``` <br>
+#``kramdown:`` <br>
+#`input: GFM` <br>					<!-- WARNING add one or more space is an error -->
+#``  parse_block_html: true `` <br>	<!-- But not with a double quote! -->
+#
+#
+#_End of **details** section_
+#</details>
+
+
+toc:
+  toc: true
+  toc_label: "Table of Contents"
+  toc_icon: "cog" # corresponding Font Awesome icon name without the fa-prefix
+  toc_levels: "1..3" # which heading levels to include in the TOC
+
+
+# Add this variable to your _config, it indicates the directories where the other Mark 
+# Down(MD) files can be found, so that Links in the left side bar can be created to these 
+# files. The 'index.md' will use this variable to automatic append to the links
+#
+# Note that to make the links in the left content page work you have to define theme 
+# (in order) to the top of the markdown file, like:
+#
+# ---
+# layout: default-c                         # Use this custom template layout!
+# RefPages:                                 # Array definition
+#   - howto_create_A_dev_container     
+#   - howto_create_A_dev_container          #'RefPage' indicates a link page displayed 
+#                                           # in the left content pane.
+# ---
+#
+BaseDir: Howtos
+
+port: 4000

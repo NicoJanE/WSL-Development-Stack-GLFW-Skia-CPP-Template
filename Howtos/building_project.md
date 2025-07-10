@@ -1,0 +1,64 @@
+---
+layout: default_c
+RefPages:
+- building_project
+- setup_linux
+- setup_win
+--- 
+
+<br>
+
+# 1. Building the project
+
+This project uses CMake (the CMakeLists.txt file) to configuring the build process for both Windows and Linux while using the same project source location, the WSL will use the mount to compile and build the Linux version on the Windows disk
+
+## 1.1 Build for Windows
+
+Before building the project with on of the methods described below, **make sure:**
+
+- That the path to `vcvars64.bat` is correctly set in `./cmake/CMakeLists_Init-env.bat`
+
+### 1.1.1 Using Visual Studio 2022 (any edition)
+
+This section describes building with **Visual Studio 2022** (including the Community Edition) It configures the build environment for Microsoft’s own make utility: **NMake** and uses the `CMakePresets.json` to read the configuration.
+
+- Open the root folder of the project.
+- In the root folder execute theses commands once:
+  -  `cmake --preset=windows-nmake-debug`
+  -  `cmake --preset=windows-nmake-release`
+- In the build combo-box you should have the options
+  - "PRJ-build(Debug)
+  - "PRJ-build(Releae)
+- Use the normal Visual Studio method to debug and runn the program
+- The output from Visual Studio can be found in the sub folder: **./build-win-vs**
+
+### 1.1.2 Using Terminal (NMake)
+
+- Open the root folder in a Power-Shell terminal
+- Run the command: `./build.ps1`
+- Note: you can switch the Debug and release build in the `./build.ps1` script at the top
+- The output from Visual Studio can be found in the sub folder: **./build-win**
+
+>**The `build.ps1` script will:**  
+>\- Setup the Visual Studio build environment variables.  
+>\- Run the CMake command to configure the **makefile** for NMake: `sh  cmake .. -G "NMake Makefiles"`  
+>\- Runs the `NMake` command to build the project based on the above generated makefile
+
+### 1.1.3 Visual Studio Code
+
+- Open the root folder of the project  In Visual Studio Code
+- Than use the: Terminal -> Build Windows App.
+This will actuall use the same script as used in 3.1.2 "Using Terminal (NMake)"
+- The output from Visual Studio can be found in the sub folder: **./build-win**
+- You may need to adjust the ./vscode/launch.json file to make sure it points to the correct executable
+
+<br>
+
+## 1.2 Build for Linux
+
+This section describes the building of the program using the GNU Make tool, it assumes that the source on is located under the Windows mount point (usual /mnt/c or something) While this is for Linux complications slower(2 to 5 times) this is fine for small projects. For large projects you may consider to sync the mounted folder to the Linux filesystem first
+
+- From the project folder (`/mnt/d/myproject`) execute:
+  - `./build.sh`
+  
+And Of course you can use the VSC and build it with Visual Studio code as described above in ***section '1.1.3'***

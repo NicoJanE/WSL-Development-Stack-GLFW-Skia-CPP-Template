@@ -1,0 +1,36 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "windows-nmake-debug",
+      "displayName": "Windows - NMake Debug",
+      "generator": "NMake Makefiles",
+      "binaryDir": "${sourceDir}/build-win-vs/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "windows-nmake-release",
+      "displayName": "Windows - NMake Release",
+      "generator": "NMake Makefiles",
+      "binaryDir": "${sourceDir}/build-win-vs/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {      
+      "configuration": "Debug",
+      "configurePreset": "windows-nmake-debug",
+      "name": "PRJ-build(Debug)"
+    },
+    {
+      "name": "PRJJ-build(Release)",
+      "configurePreset": "windows-nmake-release",
+      "configuration": "Release"
+      
+    }
+  ]
+}

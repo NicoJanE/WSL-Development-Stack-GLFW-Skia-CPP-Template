@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Linux App (via WSL)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/home/YOURUSER/project/bin/linux/YourApp", // Or wherever it lands
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "/home/YOURUSER/project", // WSL path!
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "pipeTransport": {
+        "debuggerPath": "/usr/bin/gdb",
+        "pipeProgram": "wsl",
+        "pipeArgs": [],
+        "pipeCwd": ""
+      },
+      "externalConsole": true
+    },
+    {
+      "name": "Debug Windows App",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}\\build-win\\glfw_sample_md_dbg.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "console": "externalTerminal"
+    }
+  ]
+}

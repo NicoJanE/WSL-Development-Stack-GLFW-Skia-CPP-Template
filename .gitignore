@@ -1,0 +1,17 @@
+# Ignore any directory (at any level) starting with an underscore
+**/_*/
+
+# Ignore any file (at any level) starting with an underscore
+**/_*
+
+.njerepo
+.history
+
+# EXCEPTION: allow the root-level folder '_layouts/' and the file: !_config.yml
+!/_layouts/
+!_config.yml
+  
+# EXCEPTION  folders _include 
+#!**/_include/
+#!**/_include/**
+  

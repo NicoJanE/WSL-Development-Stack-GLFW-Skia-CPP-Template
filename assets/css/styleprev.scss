@@ -1,0 +1,363 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+:root{
+	--font-style: normal; 	/* normal, bold*/
+	--line-thickness: 3px;	/* original intent line thickness , that's why 3px is default */
+  --nje-ident: 20px;      /* ident x pixels*/
+  --nje-vmove: -18px;     /* Move vertical pixels, - is up + down*/
+  --nje-number-of-spaces: 20px;
+  --nje-color:black;
+  --nje-size: 12px;
+  --nje-offset: 16px;
+  --nje-vmove2: -20px;
+}
+
+#content-wrapper {
+  display: flex;  
+  justify-content:flex-start;
+  padding: 0px; 
+  overflow: visible; 
+  font-size:14px;
+  padding-left:4px;
+ 
+}
+
+
+
+/* Vertical content on the left (page link items) */
+#sidebarL {  
+  flex: 0 0 120px; /* Initial size, no growing or shrinking */
+  font-size:10px;
+  padding-left: 14px;  
+  padding-right: 5px;  
+  padding-top: 14px;  
+  overflow: visible;
+  
+  background-color: #f5f5f5;    
+  min-height: 100%;  
+  border-radius: 5px; /* Rounded corners */
+}
+
+
+/* Container box for the Home Sites section on the right  */
+.container-hs {
+    position: flex;
+								/*    border: 1px solid #000; */
+    padding-left: 15px;    
+	padding-top:3px;
+	margin-top: 0px; 
+}
+/* In Container box the Home Sites title and line */
+.hs-title {
+	
+    position: relative;
+    width: 72%;    
+    text-align: left;
+    height: 22px;		 
+    margin-bottom: 10px;		 /* Space between title and list items */  
+}
+.hs-sm1 {
+    padding-left: 24px;    		/* Move list items to right */      
+}
+
+
+/* Container box for the Home Sites section on the right  */
+.container-down {
+    position: flex;
+								/*    border: 1px solid #000; */
+    padding-left: 15px;    
+	padding-top:0px;
+	margin-top: 50px; 
+}
+
+
+#main-content {
+  width: 99%; 
+  flex: 1 1 auto; 
+  margin-left: 4px;
+  margin-right: 0px;
+  
+}
+
+/* Vertical content on the right (Download items) */
+#sidebarR {  
+  flex: 0 0 130px;
+  background-color: #f5f5f5;    
+  min-height: 100%;  
+  padding-top: 7px;    
+  border-radius: 5px; /* Rounded corners */
+}
+
+@media only screen and (max-width: 768px) {
+  #content-wrapper {
+    flex-direction: column;
+  }
+
+  #sidebarL,
+  #sidebar,
+  #main-content {
+    width: 100%; /* Full width on smaller screens */
+    float: none; /* Reset float on smaller screens */
+  }
+}
+
+
+/* More compact download buttons */
+a.button2 {
+  width: 99px;
+  height: 13px;
+  margin-top: 4px;
+  margin-left: -6px;
+  display: block;
+  padding: 4px 4px; 
+  background-color: #3077c8;    
+  color: white;   
+  text-decoration: none; 
+  border-radius: 5px;		 /* Rounded corners */
+  line-height: 13px;
+  
+}
+
+
+/* Used for the page link header and items in the left content block */
+ul.sq
+{
+	list-style-type: square;
+	font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial, serif;
+	color: #3077c8; 
+	margin-top: -7px;   			/* Make sure page link items are closer to header(vertical) */
+}
+
+/* Title and line beneath them */
+h3.sq
+{	
+	font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial, serif;
+	font-size: 16px;
+	font-weight: var(--font-style);   /* Usage:  style="--font-style: bold;"*/
+	color: #3077c8;    	
+	position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+	margin-left: -9px;
+	margin-top: -6px;  		
+}
+h3.sq::after 				/* Gradient line below the 'Page links' header */ 
+{
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 140%;
+	height: var(--line-thickness); 
+	background: linear-gradient(to right, #3077c8, #5aa9e6); /* Gradient with base color */
+	
+}
+
+/* Indicates the selected page link in the left panel menu */
+.sel
+{		
+	color:#FF7F50; /*#c86030; c83077     #FF7F50 	*/
+}
+
+.disabled
+{
+	color:gray
+}
+
+/* Font and size of list items in left and right side bar*/
+li.sm1
+{
+	font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial, serif;
+	margin-left: -20px;
+	font-size: 12px;
+}
+small.sm1
+{
+	font-size: 8px;
+	margin-left: 7px;
+}
+small.sm2
+{
+	font-size: 11px;
+	margin-left: 2px;	
+}
+
+a.button small {
+  display: block;
+  font-size: 11px;
+}
+
+
+
+.summary-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent; 
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #8b5e3c; 
+  margin-right: 5px; 
+  vertical-align: middle; 
+}
+
+
+.clickable-summary {
+  cursor: pointer;
+  color: #8b5e3c;	/*  color: #800020; */
+  
+  font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial, serif;
+  font-style: italic; 
+  font-size:15px
+}
+
+
+
+.nje-cmd-one-line {
+	background-color: #2e3440; 
+	color: #FFD700; 
+	padding-bottom: 10px; 
+	padding-top: 12px; 
+	border-radius: 
+	5px; overflow-x: auto; 
+	margin-left:20px;
+	margin-top:-18px;
+	margin-bottom:4px;
+	line-height: 0.3;
+
+	position: relative; 	/* 1) Required for positioning the pseudo-elements (.nje-cmd-one-line button, .nje-cmd-multi-line button)  */
+	display: flex; 			/* Use flexbox layout */
+    align-items: center;
+	justify-content: space-between; /* Space between the code and button */   
+}
+.nje-cmd-one-line-sm-ident {
+  font-size: x-small;
+	background-color: #2e3440; 
+	color: #FFD700; 
+	padding-bottom: 7px; 
+	padding-top: 8px; 
+	border-radius: 5px;
+  overflow-x: auto; 
+	margin-left:var(--nje-ident);   /* Usage:  style="--nje-ident: 40px;"   -> Default 20px; */
+	margin-top: var(--nje-vmove);   /* Usage:  style="--nje-vmove: -28px;"   -> Default -18px; */
+	margin-bottom:4px;
+	line-height: 0.3;
+
+	position: relative; 	/* 1) Required for positioning the pseudo-elements (.nje-cmd-one-line button, .nje-cmd-multi-line button)  */
+	display: flex; 			/* Use flexbox layout */
+  align-items: center;
+	justify-content: space-between; /* Space between the code and button */   
+}
+
+.nje-cmd-multi-line {
+	background-color: #2e3440; 
+	color: #FFD700; 
+	border-radius: 
+	5px; overflow-x: auto; 
+	margin-left:15px;
+	margin-top:-8px;
+	margin-bottom:15px;
+	line-height: 1.4;
+	padding-bottom: 0px;
+	padding-top: 1px; 
+	position: relative; 	/* 1) Required for positioning the pseudo-element */
+	display: flex; 			/* Use flexbox layout */
+    align-items: center;    
+	justify-content: space-between; /* Space between the code and button */    
+}
+
+.nje-cmd-one-line button, .nje-cmd-multi-line button{
+    background-color: #FFD700; 
+    color: #2e3440;
+	font-weight: bold;
+    border: 2px  solid #FFD700;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+    padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 6px;
+	padding-right: 6px;
+    cursor: pointer;
+	
+	position: absolute;		/* 1) Position relative to the parent */
+    top: 0;  				/* 1) Aligns the child to the top edge of the parent */
+    right: 0; 				/* 1) Aligns the child to the far right edge of the parent */
+}
+
+
+/* May be used to create a block of text wit custom style
+
+    <div class="custom-style">
+    ...
+    </div>
+Or
+    <div class="custom-style" style="--nje-color: black; --nje-size: 12px;">
+    ...
+    </div>
+
+
+*/
+.custom-style{
+  color: var(--nje-color);      /* black */
+  font-size: var(--nje-size);   /* 12px; */
+  padding-left: 8px;
+  background-color: var(--nje-bg-color, transparent); /* Default is transparent */
+}
+
+
+
+
+
+/*
+.nje-cmd-one-line button {
+    background-color: #FFD700;; 
+    color: #2e3440;
+	font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+	padding-right: 8px;
+    cursor: pointer;
+	
+}
+
+*/
+
+/* Call: 
+          <span class="nje-ident"></span>Text after 20(default) pixels  ( empty line or this <br> starts at begin, Works for Github not in all previews)
+          OR
+          <span class="nje-ident" style="--nje-number-of-spaces: 80px;"></span>Text after 
+*/
+.nje-ident {
+  display: inline-block;
+  width:  var(--nje-number-of-spaces);  
+
+  
+/* Create a colored block section(text color and background)  that closes after the closing div (/div)
+
+Call 1: <div class="nje-colored-block">
+Call 2: <div class="nje-colored-block" style="--nje-bgcolor:red; --nje-textcolor:black;--nje-offset:55px">
+
+*/
+.nje-colored-block {
+  background-color: var(--nje-bgcolor, lightgray);
+  color: var(--nje-textcolor, #32312c);
+  
+  font-size: 96%;
+  padding-top:1px; 
+  padding-left:10px;
+  padding-right:14px;
+  padding-bottom: 1px;
+  border-radius: 6px;
+  margin: 10px 0;
+  line-height: 1.5;
+  font-family: sans-serif;
+  transform: translateX(var(--nje-offset)) translateY(var(--nje-vmove2));
+}
+
+  
+}
