@@ -13,9 +13,9 @@ This is a template C++ project using the ***GLFW*** library to create a **Graphi
 
 #### Quick links
 
-1. [Environment instructions For Linux](./Howtos/setup_linux)
-1. [Environment instructions For Window](./Howtos/setup_win)
-1. [Build project](./Howtos/building_project)
+1. [Environment instructions For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
+1. [Environment instructions For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
+1. [Build project](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
 
 
@@ -96,11 +96,11 @@ The **Skia** library is used for building core GUI components. Skia requires:
 
 **Build Environment Setup** instructions can be found here:
 
-- [For Linux](./Howtos/setup_linux)
-- [For Window](./Howtos/setup_win)
+- [For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
+- [For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
 
 Note that both use the same project source folder to build (Linx is build from the WSL WWindos mount )
 
-**Project build instruction** instructions for building the app with the  VSC or Visual Studio or via the consol can be found [here](./Howtos/building_project)
+**Project build instruction** instructions for building the app with the  VSC or Visual Studio or via the consol can be found [here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
 <br>
