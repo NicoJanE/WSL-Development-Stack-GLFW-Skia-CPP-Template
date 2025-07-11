@@ -47,8 +47,9 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
 </details>
 
  
-Taking the **setup warning** into account, this document assumes you are using a WSL-2 distribution that supports **WSLg**. I personally recommend using a WSL based on **Debian**, and I prefer to use a **dedicated WSL instance per project**, using  a command like
->`wsl --import NewDist  \WSL-Data\NewDist\ \WSL-Exports\Debian-clean.tar`
+Taking the **setup warning** into account, this document assumes you are using a WSL-2 distribution that supports **WSLg**. I personally recommend using a WSL based on **Debian**, and I prefer to use a **dedicated WSL instance per project**, in my project directory (with the same name as the project) using  a command like:
+>`wsl --import NewDist  .\_wsl_data\NewDist\ \WSL-Exports\Debian-clean.tar`  
+>\# This command creates the directory `NewDist` automatically (**_wsl_data** must exist), run it from the project root.
 
 (Did you know that you can **export and import WSL distributions?** This can be very convenient: you can create a standard base WSL, export it, rename and import it for different projects. This also makes it easy to archive your WSL environment once you're done with a project.)
 
@@ -107,7 +108,7 @@ For instructions on how to **manually install** a WSL distribution, see the **li
 </details>
 
 - So start you WSL, or create on first with a command like:  
-`wsl --import NewDist  D:\WSL\WSL-Data\NewDist\  D:\WSL\WSL-Exports\Debian-clean.tar`  
+`wsl --import NewDist  .\_wsl_data\NewDist\ D:\WSL\WSL-Exports\Debian-clean.tar`
 
 And continue with the subsections below.
 <br>
