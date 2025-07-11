@@ -27,27 +27,24 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
   <span  class="summary-icon"></span> <!-- Square Symbol -->
  Setup Warning‼️
   </summary> <!-- On same line is failure -->
+>
 
-<br>
-
- For your convenience, I provided a Debian-based WSL distribution that includes the **MATE X11 desktop environment**.  This setup requires **XLaunch** (an X11 server) to be installed on the Windows host. Instructions are included in the WSL distribution itself. **To get started with the WSL environment, see** [this repository](https://github.com/NicoJanE/WSL-OS-With-GUI-Desktop).  
-To Start it:
- - <small> Launch the MATE desktop by: `./start-mate.sh` (user's root dir.).  </small>
- - <small> Login credentials: **user** = `nico`, **password** = `nico`  <small>
-
- Please continue reading! 
-
- **The above setup  may not work well enough!**  
- Some X11 servers only support very old versions of OpenGL, often limited to version 1.4. For example, **VcXsrv**, the X11 server used in the above WSL distribution, supports only OpenGL 1.4. **Due to this limitation**, it's recommended to use a default WSL installation with **WSLg**, which supports much more recent **OpenGL versions up to 4.6**.  
- 
-> **Tip: Check OpenGL version**  
-> `glxinfo | grep "OpenGL version"`
-
-**Final Recommendation:**{: style="color: black;font-size:13px; "}  
-For best graphics support and compatibility, use a **default WSL Ubuntu installation with built-in WSLg support**. For Manual WSL installation instructions click link below.
+> For your convenience, I provided a Debian-based WSL distribution that includes the **MATE X11 desktop environment**.  This setup requires **XLaunch** (an X11 server) to be installed on the Windows host. Instructions are included in the WSL distribution itself. **To get started with the WSL environment, see** [this repository](https://github.com/NicoJanE/WSL-OS-With-GUI-Desktop).  
+>To Start it:
+> - <small> Launch the MATE desktop by: `./start-mate.sh` (user's root dir.).  </small>
+> - <small> Login credentials: **user** = `nico`, **password** = `nico`  <small>
+>
+> Please continue reading! 
+>
+> **The above setup  may not work well enough!**  
+> Some X11 servers only support very old versions of OpenGL, often limited to version 1.4. For example, **VcXsrv**, the X11 server used in the above WSL distribution, supports only OpenGL 1.4. **Due to this limitation**, it's recommended to use a default WSL installation with **WSLg**, which supports much more recent **OpenGL versions up to 4.6**.  
+> 
+>> **Tip: Check OpenGL version**  
+>> `glxinfo | grep "OpenGL version"`
+>
+>**Final Recommendation:**{: style="color: black;font-size:13px; "}  
+>For best graphics support and compatibility, use a **default WSL Ubuntu installation with built-in WSLg support**.
 </details>
-
-
 
  
 Taking the **setup warning** into account, this document assumes you are using a WSL-2 distribution that supports **WSLg**. I personally recommend using a WSL based on **Debian**, and I prefer to use a **dedicated WSL instance per project**.  
@@ -59,9 +56,8 @@ For instructions on how to **manually install** a WSL distribution, see the **li
 > Debian-based **Linux distributions** using `apt` include:  
 > &nbsp;&nbsp; *Ubuntu, Linux Mint, Kali Linux, Pop!_OS, Zorin OS, elementary OS, Parrot OS, and others.*
 
-> *Remark:*{: style="color: black;font-size:13px; "} <br>
+> *Remark: file locations*{: style="color: black;font-size:13px; "} <br>
 ><small> The libraries (**depot_tools, GLFW, and Skia**) for Windows are installed inside the project folder: **\dependencies\win**  </small>
->
 > <small>
 > Under Linux, these packages are easier to install system-wide. Therefore, the Linux versions are installed **globally** where possible.
 > For libraries that must be built **manually** (currently only depot_tools), they are installed in the **user's home folder** as part of the Linux development build. </small>
