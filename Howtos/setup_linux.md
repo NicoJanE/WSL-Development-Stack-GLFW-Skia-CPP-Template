@@ -96,9 +96,11 @@ For instructions on how to **manually install** a WSL distribution, see the **li
 >### Some  WSL commands:
 >
 ><pre class="nje-cmd-multi-line">
->wsl -l -v              # List all distributions with status
->wsl [name] -d          # starts it
->wsl --unregister [name]# Remove a distribution
+>wsl -l -v               # List all distributions with status
+>wsl [name] -d           # starts it
+>wsl --unregister [name] # Remove a distribution
+>wsl --export DistributionName BackupFile.tar
+>wsl --import NewDistributionName InstallLocation BackupFile.tar
 ></pre>
 
 </details>
