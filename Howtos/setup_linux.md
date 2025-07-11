@@ -22,29 +22,58 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
 > <small>Note that this Linux setup uses the same project source directory as the Windows setup. This allows you to build the application for both Linux and Windows using a shared codebase, with only minimal setup required for each platform. <br></small>
 
 
+<details>  
+  <summary class="clickable-summary">
+  <span  class="summary-icon"></span> <!-- Square Symbol -->
+ Setup Warning‼️
+  </summary> <!-- On same line is failure -->
 
-> 🛑**Setup Warning**  
-> For convenience, I provide a Debian-based WSL distribution that includes the **MATE X11 desktop environment**.  This setup requires **XLaunch** (an X11 server) to be installed on the Windows host. Instructions are included in the WSL distribution itself. **To get started with the WSL environment, see** [this repository](https://github.com/NicoJanE/WSL-OS-With-GUI-Desktop). Please read future!  
+<br>
+
+ For your convenience, I provided a Debian-based WSL distribution that includes the **MATE X11 desktop environment**.  This setup requires **XLaunch** (an X11 server) to be installed on the Windows host. Instructions are included in the WSL distribution itself. **To get started with the WSL environment, see** [this repository](https://github.com/NicoJanE/WSL-OS-With-GUI-Desktop).  
+To Start it:
+ - <small> Launch the MATE desktop by: `./start-mate.sh` (user's root dir.).  </small>
+ - <small> Login credentials: **user** = `nico`, **password** = `nico`  <small>
+
+ Please continue reading! 
+
+ **The above setup  may not work well enough!**  
+ Some X11 servers only support very old versions of OpenGL, often limited to version 1.4. For example, **VcXsrv**, the X11 server used in the above WSL distribution, supports only OpenGL 1.4. **Due to this limitation**, it's recommended to use a default WSL installation with **WSLg**, which supports much more recent **OpenGL versions up to 4.6**.  
+ 
+> **Tip: Check OpenGL version**  
+> `glxinfo | grep "OpenGL version"`
+
+**Final Recommendation:**{: style="color: black;font-size:13px; "}  
+For best graphics support and compatibility, use a **default WSL Ubuntu installation with built-in WSLg support**. For Manual WSL installation instructions click link below.
+</details>
+
+
+
+ 
+Taking the **setup warning** into account, this document assumes you are using a WSL-2 distribution that supports **WSLg**. I personally recommend using a WSL based on **Debian**, and I prefer to use a **dedicated WSL instance per project**.  
+
+(Did you know that you can **export and import WSL distributions?** This can be very convenient: you can create a standard base WSL, export it, rename and import it for different projects. This also makes it easy to archive your WSL environment once you're done with a project.)
+
+For instructions on how to **manually install** a WSL distribution, see the **link** at the end of this section. Throughout the rest of this document, we will use `apt install` to install the required packages.
+
+> Debian-based **Linux distributions** using `apt` include:  
+> &nbsp;&nbsp; *Ubuntu, Linux Mint, Kali Linux, Pop!_OS, Zorin OS, elementary OS, Parrot OS, and others.*
+
+> *Remark:*{: style="color: black;font-size:13px; "} <br>
+><small> The libraries (**depot_tools, GLFW, and Skia**) for Windows are installed inside the project folder: **\dependencies\win**  </small>
 >
->>  - <small> Launch the MATE desktop by: `./start-mate.sh` (user's root dir.).  </small>
->>  - <small> Login credentials: **user** = `nico`, **password** = `nico`  <small>
->
-> **That may not work well enough!**  
-> Some X11 servers only support very old versions of OpenGL, often limited to version 1.4. For example, **VcXsrv**, the X11 server used in the above WSL distribution, supports only OpenGL 1.4. **Due to this limitation**, it's recommended to use a default WSL installation with **WSLg**, which supports much more recent **OpenGL versions up to 4.6**.  
->
->> **Tip: Check OpenGL version**  
->> `glxinfo | grep "OpenGL version"`
->
->**Final Recommendation:**{: style="color: black;font-size:13px; "}  
-> For best graphics support and compatibility, use a **default WSL Ubuntu installation with built-in WSLg support**. For Manual WSL installation instructions click link below.
->
+> <small>
+> Under Linux, these packages are easier to install system-wide. Therefore, the Linux versions are installed **globally** where possible.
+> For libraries that must be built **manually** (currently only depot_tools), they are installed in the **user's home folder** as part of the Linux development build. </small>
+
 <details closed>  
   <summary class="clickable-summary">
   <span  class="summary-icon"></span> 
-   Manual install WSL
+  Manual install WSL🔧
   </summary> 	<!-- On same line is failure, Don't indent the following Markdown lines!  -->
 
 > 
+
 > ### Manual Create WSL Environment
 >
 >This chapter explains how to set up a WSL backend environment manual by using the ***.Appx*** or ***.>AppxBundle*** packages
@@ -77,26 +106,12 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
 ></pre>
 
 </details>
- 
-
-
-In light of the above we assume that you will use **Debian-based** WSL-2 distribution. You can use `apt install` to install the required packages.
-
-> Debian-based Linux distributions include:  
-> &nbsp;&nbsp; *Ubuntu, Linux Mint, Kali Linux, Pop!_OS, Zorin OS, elementary OS, Parrot OS, and others.*
-
-> *Remark:*{: style="color: black;font-size:13px; "} <br>
-><small> The libraries (**depot_tools, GLFW, and Skia**) for Windows are installed inside the project folder: **\dependencies\win**  </small>
->
-> <small>
-> Under Linux, these packages are easier to install system-wide. Therefore, the Linux versions are installed **globally** where possible.
-> For libraries that must be built **manually** (currently only depot_tools), they are installed in the **user's home folder** as part of the Linux development build. </small>
 
 <br>
 
 ## 1.2. Install GLFW library
 
-- Install the libraries with:
+- Install these libraries with:
   - `sudo apt update`
   - `sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev libx11-dev gdb`
     - How to find the include folder: `dpkg -L libglfw3-dev | grep '\.h$'` 
