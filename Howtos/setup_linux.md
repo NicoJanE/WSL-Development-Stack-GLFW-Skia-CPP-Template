@@ -12,9 +12,9 @@ RefPages:
 
 # 1 Linux Setup Instruction
 
-## 1.2 Requirements
+## 1.1 Requirements
 
-This template is intended for use with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 1**1 host.
+This template is intended for use with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 11** host.
 This section explains how to configure a Linux environment to build your GLFW/Skia project under WSL.
 
 
@@ -80,14 +80,13 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
  
 
 
-In light of the above we assume that you will use **Debian-based** WSL distribution. You can use `apt install` to install the required packages.
+In light of the above we assume that you will use **Debian-based** WSL-2 distribution. You can use `apt install` to install the required packages.
 
 > Debian-based Linux distributions include:  
 > &nbsp;&nbsp; *Ubuntu, Linux Mint, Kali Linux, Pop!_OS, Zorin OS, elementary OS, Parrot OS, and others.*
 
 > *Remark:*{: style="color: black;font-size:13px; "} <br>
-><small> The libraries (**depot_tools, GLFW, and Skia**) for Windows are installed inside the project folder:  
-> **.\dependencies\win**  </small>
+><small> The libraries (**depot_tools, GLFW, and Skia**) for Windows are installed inside the project folder: **\dependencies\win**  </small>
 >
 > <small>
 > Under Linux, these packages are easier to install system-wide. Therefore, the Linux versions are installed **globally** where possible.
@@ -95,7 +94,7 @@ In light of the above we assume that you will use **Debian-based** WSL distribut
 
 <br>
 
-## 1.3. Install GLFW library
+## 1.2. Install GLFW library
 
 - Install the libraries with:
   - `sudo apt update`
@@ -113,13 +112,13 @@ In light of the above we assume that you will use **Debian-based** WSL distribut
 
 <br>
 
-## 1.4 Install Skia library
+## 1.3 Install Skia library
 
 - Install the libraries with:
   - `sudo apt update`
   - `sudo apt install build-essential git python3 pkg-config libglu1-mesa-dev libgl1-mesa-dev ninja-build libfontconfig1-dev libexpat1-dev libfreetype6-dev libpng-dev libjpeg-dev libharfbuzz-dev libwebp-dev`
 
-### 1.4.1- Install the library **depot_tools**:
+### 1.3.1- Install the library **depot_tools**:
 
 - Make a directory in for the user home directory(make sure user owns it) to install **depot_tools** into, for example: `/home/name/tools/libs` and **cd** to it
 - clone: `git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git`
@@ -127,7 +126,7 @@ In light of the above we assume that you will use **Debian-based** WSL distribut
   `echo 'export PATH="$HOME/tools/libs/depot_tools:$PATH"' >> ~/.bashrc`  
   `source ~/.bashrc`
 
-### 1.4.2 Setup amd configure Skia
+### 1.3.2 Setup amd configure Skia
 
 - Use the new created  home directory to install **Skia** into, thus make sure your in: `/home/name/tools/libs/`
 - clone: `git clone https://skia.googlesource.com/skia.git`
@@ -136,7 +135,8 @@ In light of the above we assume that you will use **Debian-based** WSL distribut
   - check with: 
   `which gn      # should display location of gn`
 
-### 1.4.3 Creating build versions
+### 1.3.3 Creating build versions
+
 All combinations can be found here but obvious choice is the **Shared Debug**
 
 - **Generate Static Release** build files with:  
@@ -159,7 +159,7 @@ All combinations can be found here but obvious choice is the **Shared Debug**
   - **Build it** with:  
     `ninja -C out/debug/shared`
 
-### 1.4.4 Check\Update ./cmake/linux.cmake file for Skia
+### 1.3.4 Check\Update ./cmake/linux.cmake file for Skia
 
 For the Skia  include folder an library folder set the variables, see function: SetLinuxDirectories  
 - For example set:  
