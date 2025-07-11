@@ -107,15 +107,13 @@ For instructions on how to **manually install** a WSL distribution, see the **li
 </details>
 
 - So start you WSL, or create on first with a command like:  
-`wsl --import NewDist  D:\WSL\WSL-Data\NewDist\  D:\WSL\WSL-Exports\Debian-clean.tar`
+`wsl --import NewDist  D:\WSL\WSL-Data\NewDist\  D:\WSL\WSL-Exports\Debian-clean.tar`  
+
 And continue with the subsections below.
 <br>
 
 ## 1.2. Install GLFW library
 
-- So start you WSL, or create on first with a command like:  
-`wsl --import NewDist  D:\WSL\WSL-Data\NewDist\  D:\WSL\WSL-Exports\Debian-clean.tar`
-And continue with the subsections below.
 - Install these libraries with:
   - `sudo apt update`
   - `sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev libx11-dev gdb`
