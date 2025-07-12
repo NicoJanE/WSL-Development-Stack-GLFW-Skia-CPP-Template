@@ -7,7 +7,6 @@ RefPages:
 - building_project
 --- 
 
-
 <br>
 
 # 1 Linux Setup Instruction
@@ -15,12 +14,85 @@ RefPages:
 ## 1.1 Requirements
 
 This template is intended for use with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 11** host.
-This section explains how to configure a Linux environment to build your GLFW/Skia project under WSL.
+This section explains how to configure a Linux environment to build your GLFW/Skia project under WSL. **Check** the **three steps** below and use the side notes / instructions when appropriate 
 
 
-> *Note:*{: style="color: black;font-size:13px; "} <br>
+**1. Start** your WSL, or **create** one first with using, for example, the WSL **import** command: (For instructions on how to **manually install** a WSL distribution, see the **link** at the end of this section.)
+
+<pre class="nje-cmd-multi-line">
+<!--	<button title="Select text and use control CTRL-C to copy the command">Copy tip</button>	  -->
+# From project root, import new WSL based on existing exported WSL.
+wsl --import NewDist  .\_wsl_data\NewDist\ D:\WSL\WSL-Exports\Debian-clean.tar
+
+# This command creates the directory `NewDist` automatically
+# Note that **_wsl_data** must exist, 
+
+</pre>
+
+Take the **setup warning** into account(see side link below), this document assumes you are using a WSL-2 distribution that supports **WSLg**. I personally recommend using a WSL based on **Debian**, and I prefer to use a **dedicated WSL instance per project**, in my project directory (with the same name as the project). See side note; ***Debian-based Linux distributions***
+
+Throughout the rest of this document, we will use `apt install` to install the required packages.  
+
+>Did you know 
+> <small>that you can **export and import WSL distributions?** This can be very convenient: you can create >a standard base WSL, export it, rename and import it for different projects. This also makes it easy to archive >your WSL environment once you're done with a project.) </small>
+
+**2.Create** a WSL user, **don't** use root account. See side note; ***Create User / Start WSL*** for instructions when needed
+
+**3. General Notes**
+Below a few general notes and decisions that have been made, also check out the side notes when needed. Than continue with the subsections below.
+
+> *Note: Project locations*{: style="color: black;font-size:13px; "} <br>
 > <small>Note that this Linux setup uses the same project source directory as the Windows setup. This allows you to build the application for both Linux and Windows using a shared codebase, with only minimal setup required for each platform. <br></small>
 
+> *Remark: Library locations*{: style="color: black;font-size:13px; "} <br>
+><small> The libraries (**depot_tools, GLFW, and Skia**) for Windows are installed inside the project folder: **\dependencies\win**  </small>
+> <small>
+> Under Linux, these packages are easier to install system-wide. Therefore, the Linux versions are installed **globally** where possible.
+> For libraries that must be built **manually** (currently only depot_tools), they are installed in the **user's home folder** as part of the Linux development build. </small>
+
+<br>
+
+#### Requirement details & Background
+
+<details>  
+  <summary class="clickable-summary">
+  <span class="summary-icon"></span>
+  Debian-based Linux distributions
+  </summary>
+
+>  
+>### These distributions are based on Debian and use `apt`
+>- Ubuntu, 
+>- Linux Mint, 
+>- Kali Linux, 
+>- Pop!_OS, 
+>- Zorin OS, 
+>- Elementary OS, 
+>- Parrot OS, 
+>-  and others
+</details>
+
+
+<details>  
+  <summary class="clickable-summary">
+  <span class="summary-icon"></span>
+  Create User / Start WSL
+  </summary>
+
+>  
+>### Why not use the root user
+>Avoid running WSL as the `root` user. Instead, create a normal user account—many GUI apps and build tools expect a standard user environment with a home directory, correct permissions, and access to `sudo`. Running as `root` can cause permission issues, misconfigured environments, or unexpected behavior during builds.
+>  
+>#### Create a user    
+>    adduser nico                    # create user with password & home directory
+>    usermod -aG sudo nico           # add to sudo group — allows use of sudo
+>    su - nico	                    # switch to the new user
+>    cut -d: -f1 /etc/passwd         # list all users (optional check)
+>
+>### Start WSL with the new user
+>    wsl -d debian-gui -u nico                         # start WSL as this user
+>    wsl --manage debian-gui --set-default-user nico   # set default user
+</details>
 
 <details>  
   <summary class="clickable-summary">
@@ -46,23 +118,6 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
 >For best graphics support and compatibility, use a **default WSL Ubuntu installation with built-in WSLg support**.
 </details>
 
- 
-Taking the **setup warning** into account, this document assumes you are using a WSL-2 distribution that supports **WSLg**. I personally recommend using a WSL based on **Debian**, and I prefer to use a **dedicated WSL instance per project**, in my project directory (with the same name as the project) using  a command like:
->`wsl --import NewDist  .\_wsl_data\NewDist\ \WSL-Exports\Debian-clean.tar`  
-><small> \# This command creates the directory `NewDist` automatically (**_wsl_data** must exist), run it from the project root.</small>
-
-(Did you know that you can **export and import WSL distributions?** This can be very convenient: you can create a standard base WSL, export it, rename and import it for different projects. This also makes it easy to archive your WSL environment once you're done with a project.)
-
-For instructions on how to **manually install** a WSL distribution, see the **link** at the end of this section. Throughout the rest of this document, we will use `apt install` to install the required packages.
-
-> Debian-based **Linux distributions** using `apt` include:  
-> &nbsp;&nbsp; *Ubuntu, Linux Mint, Kali Linux, Pop!_OS, Zorin OS, elementary OS, Parrot OS, and others.*
-
-> *Remark: file locations*{: style="color: black;font-size:13px; "} <br>
-><small> The libraries (**depot_tools, GLFW, and Skia**) for Windows are installed inside the project folder: **\dependencies\win**  </small>
-> <small>
-> Under Linux, these packages are easier to install system-wide. Therefore, the Linux versions are installed **globally** where possible.
-> For libraries that must be built **manually** (currently only depot_tools), they are installed in the **user's home folder** as part of the Linux development build. </small>
 
 <details closed>  
   <summary class="clickable-summary">
@@ -107,11 +162,7 @@ For instructions on how to **manually install** a WSL distribution, see the **li
 
 </details>
 
-- So start you WSL, or create on first with a command like:  
-`wsl --import NewDist  .\_wsl_data\NewDist\ D:\WSL\WSL-Exports\Debian-clean.tar`  
-<small> \# This command creates the directory `NewDist` automatically (**_wsl_data** must exist), run it from the project root.</small>
 
-And continue with the subsections below.
 <br>
 
 ## 1.2. Install GLFW library
