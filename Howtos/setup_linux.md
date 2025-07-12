@@ -76,7 +76,7 @@ Below a few general notes and decisions that have been made, also check out the 
 <details>  
   <summary class="clickable-summary">
   <span class="summary-icon"></span>
-  Create User / Start WSL
+  Create User / Start WSL🔧
   </summary>
 
 >  
