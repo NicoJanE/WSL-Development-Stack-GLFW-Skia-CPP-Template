@@ -81,13 +81,14 @@ Below a few general notes and decisions that have been made, also check out the 
 
 >  
 >### Why not use the root user
->Avoid running WSL as the `root` user. Instead, create a normal user account—many GUI apps and build tools expect a standard user environment with a home directory, correct permissions, and access to `sudo`. Running as `root` can cause permission issues, misconfigured environments, or unexpected behavior during builds.
+>Avoid running WSL as the `root` user. Instead, create a normal user account, many GUI apps and build tools expect a standard user environment with a home directory, correct permissions, and access to `sudo`. Running as `root` can cause permission issues, misconfigured environments, or unexpected behavior during builds.
 >  
 >#### Create a user    
->    adduser nico                    # create user with password & home directory
->    usermod -aG sudo nico           # add to sudo group — allows use of sudo
->    su - nico	                    # switch to the new user
->    cut -d: -f1 /etc/passwd         # list all users (optional check)
+
+>   - `adduser nico`                    # create user with password & home directory
+>   - `usermod -aG sudo nico`           # add to sudo group — allows use of sudo
+>   - `su - nico`	                      # switch to the new user
+>   - `cut -d: -f1 /etc/passwd`         # list all users (optional check)
 >
 >### Start WSL with the new user
 >    wsl -d debian-gui -u nico                         # start WSL as this user
