@@ -62,11 +62,15 @@ function(display_graphics_info)
                          OUTPUT_VARIABLE vulkan_device OUTPUT_STRIP_TRAILING_WHITESPACE )
         execute_process( COMMAND bash -c "vulkaninfo | grep 'vendorID' | head -n 1 || echo 'vendorID: Not found'"
                          OUTPUT_VARIABLE vulkan_vendor OUTPUT_STRIP_TRAILING_WHITESPACE )
+        execute_process( COMMAND bash -c "glxinfo 2>/dev/null | grep -m1 -Ei 'OpenGL.*version|version.*OpenGL' || echo 'OpenGL version: Not found'"
+                         OUTPUT_VARIABLE opengl_version OUTPUT_STRIP_TRAILING_WHITESPACE )
+
 
         message(STATUS "\tUSING:${session_type} ${session_type_wsl}")
         message(STATUS "\tVulkan API Version: ${vulkan_api}")
         message(STATUS "\tVulkan Device Name: ${vulkan_device}")
         message(STATUS "\tVulkan Vendor ID: ${vulkan_vendor}")
+        message(STATUS "\t${opengl_version}")
 
 
     # We are clueless regarding this sessions 
