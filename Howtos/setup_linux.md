@@ -57,7 +57,7 @@ Below a few general notes and decisions that have been made, also check out the 
 <details>  
   <summary class="clickable-summary">
   <span class="summary-icon"></span>
-  Debian-based Linux distributions
+  Debian-based Linux distributions ℹ️
   </summary>
 
 >  
