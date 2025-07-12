@@ -91,8 +91,8 @@ Below a few general notes and decisions that have been made, also check out the 
 >   - `cut -d: -f1 /etc/passwd`         # list all users (optional check)
 >
 >### Start WSL with the new user
->    wsl -d debian-gui -u nico                         # start WSL as this user
->    wsl --manage debian-gui --set-default-user nico   # set default user
+>  - `wsl -d debian-gui -u nico`                         # start WSL as this user
+>  - `wsl --manage debian-gui --set-default-user nico`   # set default user
 </details>
 
 <details>  
