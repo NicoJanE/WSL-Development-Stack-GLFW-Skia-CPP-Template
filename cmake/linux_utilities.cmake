@@ -11,16 +11,31 @@
 # Gracefully falls back if commands fail.
 
 function(display_graphics_info)
+
+    execute_process(COMMAND bash -c "printenv | sort"
+                OUTPUT_VARIABLE all_env
+                OUTPUT_STRIP_TRAILING_WHITESPACE)
+    file(WRITE "${CMAKE_BINARY_DIR}/env_dump.txt" "${all_env}")
+
+
     # Detect which display server is in use
-    execute_process(    COMMAND bash -c "echo \$XDG_SESSION_TYPE"
+    execute_process(     COMMAND printenv XDG_SESSION_TYPE
                         OUTPUT_VARIABLE session_type
                         OUTPUT_STRIP_TRAILING_WHITESPACE )
+    execute_process(     COMMAND printenv WAYLAND_DISPLAY
+                        OUTPUT_VARIABLE session_type_wsl
+                        OUTPUT_STRIP_TRAILING_WHITESPACE )                    
 
-    # Fallback if detection fails
-    if(NOT DEFINED session_type OR session_type STREQUAL "")
+    # Defensive cleanup
+    string(STRIP "${session_type}" session_type)
+    string(STRIP "${session_type_wsl}" session_type_wsl)
+
+    # Fallback detection logic
+    if("${session_type}" STREQUAL "" AND NOT "${session_type_wsl}" MATCHES  "^wayland")
         message(WARNING "Could not detect session type, assuming X11")
         set(session_type "x11")
     endif()
+
 
     # For X11 session based Linux Systems
     if(session_type STREQUAL "x11")
@@ -38,19 +53,17 @@ function(display_graphics_info)
         message(STATUS "\t${opengl_direct}")
         
 
-    # For Wayland session based Linux Systems (WSLg)
-    elseif(session_type STREQUAL "wayland")
         
+    # For Wayland session based Linux Systems (WSLg)
+    elseif("${session_type}" STREQUAL "wayland" OR "${session_type_wsl}" MATCHES "^wayland")            
         execute_process( COMMAND bash -c "vulkaninfo | grep 'apiVersion' || echo 'apiVersion: Not found'"
                          OUTPUT_VARIABLE vulkan_api OUTPUT_STRIP_TRAILING_WHITESPACE )
-        
         execute_process( COMMAND bash -c "vulkaninfo | grep 'deviceName' | head -n 1 || echo 'deviceName: Not found'"
                          OUTPUT_VARIABLE vulkan_device OUTPUT_STRIP_TRAILING_WHITESPACE )
-
         execute_process( COMMAND bash -c "vulkaninfo | grep 'vendorID' | head -n 1 || echo 'vendorID: Not found'"
                          OUTPUT_VARIABLE vulkan_vendor OUTPUT_STRIP_TRAILING_WHITESPACE )
 
-        message(STATUS "\tUSING:${session_type}")
+        message(STATUS "\tUSING:${session_type} ${session_type_wsl}")
         message(STATUS "\tVulkan API Version: ${vulkan_api}")
         message(STATUS "\tVulkan Device Name: ${vulkan_device}")
         message(STATUS "\tVulkan Vendor ID: ${vulkan_vendor}")

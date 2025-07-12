@@ -42,8 +42,8 @@ function(SetLinuxDirectories)
 
     # SKIA folder locations (include & Library)
     #   - Skia internal uses: include/core/xxx.h so we should not add include to include variable
-    set(SKIA_LINUX_CORE_INCLUDE_DIR "/root/tools/libs/skia" CACHE PATH "SKIA include dir")
-    set(SKIA_LINUX_LIBS_DIR "/root/tools/libs/skia/out/debug/shared" CACHE PATH "SKIA Lib dir")
+    set(SKIA_LINUX_CORE_INCLUDE_DIR "/home/nico/tools/libs/skia" CACHE PATH "SKIA include dir")
+    set(SKIA_LINUX_LIBS_DIR "/home/nico/tools/libs/skia/out/debug/shared" CACHE PATH "SKIA Lib dir")
 
     # Check if the folders exist
     #   - FATAL_ERROR -> stops program, WARNING -> continues

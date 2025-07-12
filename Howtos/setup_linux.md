@@ -25,7 +25,7 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
 wsl --import NewDist  .\_wsl_data\NewDist\ D:\WSL\WSL-Exports\Debian-clean.tar
 
 # This command creates the directory `NewDist` automatically
-# Note that **_wsl_data** must exist, 
+# Note that '_wsl_data' must exist, 
 
 </pre>
 
@@ -89,6 +89,11 @@ Below a few general notes and decisions that have been made, also check out the 
 >   - `usermod -aG sudo nico`           # add to sudo group — allows use of sudo
 >   - `su - nico`	                      # switch to the new user
 >   - `cut -d: -f1 /etc/passwd`         # list all users (optional check)
+>   - `getent group sudo`               # user member of su.
+>   - `groups nico`                     # groups user belongs to
+>   - `id nico`                         # ~same
+
+
 >
 >### Start WSL with the new user
 >  - `wsl -d debian-gui -u nico`                         # start WSL as this user
@@ -235,8 +240,8 @@ All combinations can be found here but obvious choice is the **Shared Debug**
 
 For the Skia  include folder an library folder set the variables, see function: SetLinuxDirectories  
 - For example set:  
-  `set(SKIA_LINUX_CORE_INCLUDE_DIR "/name/tools/skia" CACHE PATH "SKIA include dir")`
-  `set(SKIA_LINUX_LIBS_DIR "/name/tools/skia/out/debug/shared" CACHE PATH "SKIA Lib dir")`
+  `set(SKIA_LINUX_CORE_INCLUDE_DIR "/home/name/tools/skia" CACHE PATH "SKIA include dir")`
+  `set(SKIA_LINUX_LIBS_DIR "/home/name/tools/skia/out/debug/shared" CACHE PATH "SKIA Lib dir")`
 
 - Check also the `SKIA_LIBS_LOCAL` which specifies the use library name(s)
 
