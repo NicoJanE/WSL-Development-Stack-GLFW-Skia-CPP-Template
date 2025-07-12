@@ -14,4 +14,7 @@
 # EXCEPTION  folders _include 
 #!**/_include/
 #!**/_include/**
-  
+
+# Ignore everything under dependencies/win/ except 'placeholder'
+dependencies/win/**
+!dependencies/win/placeholder
