@@ -174,8 +174,9 @@ Below a few general notes and decisions that have been made, also check out the 
 ## 1.2. Install GLFW library
 
 - Install these libraries with:
-  - `sudo apt update`
-  - `sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev libx11-dev gdb libxkbcommon-devs xkbcommon  libxinerama-dev libxcursor-dev libxi-dev`
+  - `sudo apt update`  
+  - `sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev libx11-dev gdb libxkbcommon-dev libxinerama-dev libxcursor-dev libxi-dev`
+
     - How to find the include folder: `dpkg -L libglfw3-dev | grep '\.h$'` 
     - How to find the Lib folder: `dpkg -L libglfw3-dev | grep '\.so'` 
 
@@ -199,8 +200,6 @@ Below a few general notes and decisions that have been made, also check out the 
 
 - Make a directory in for the user home directory(make sure user owns it) to install **depot_tools** into, for example: `/home/name/tools/libs` and **cd** to it
 - clone: `git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git`
-- Change to location skia
-     - `git checkout chrome/m126`  # To checkout a stable build instead a the master(Use Same as on Windows!) 
 - Add the path to begin of the path environment (so it will have priority):  
   `echo 'export PATH="$HOME/tools/libs/depot_tools:$PATH"' >> ~/.bashrc`  
   `source ~/.bashrc`
@@ -210,6 +209,7 @@ Below a few general notes and decisions that have been made, also check out the 
 - Use the new created  home directory to install **Skia** into, thus make sure your in: `/home/name/tools/libs/`
 - clone: `git clone https://skia.googlesource.com/skia.git`
 - Navigate to: `cd skia`  
+  - `git checkout chrome/m126`  # To checkout a stable build instead a the master(Use Same as on Windows!) 
 - Sync dependencies with:  `python3 tools/git-sync-deps` this will install tools like ***gn*** and others
   - check with: 
   `which gn      # should display location of gn`
