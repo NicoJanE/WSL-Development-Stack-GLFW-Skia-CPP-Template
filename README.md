@@ -17,6 +17,7 @@ This is a template C++ project using the ***GLFW*** library to create a **Graphi
 1. [Environment instructions For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
 1. [Build project](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
+<br>
 📧 NicoJanE@ziggo.nl
 
 <br>
