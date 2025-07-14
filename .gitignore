@@ -15,6 +15,10 @@
 #!**/_include/
 #!**/_include/**
 
-# Ignore everything under dependencies/win/ except 'placeholder'
+# Ignore most under dependencies/win/ except 'placeholder'
 dependencies/win/**
+!dependencies/win/CMakeLists.txt
 !dependencies/win/placeholder
+depw/win/**
+!depw/CMakeLists.txt
+!depw/placeholder

@@ -22,14 +22,23 @@ Before building the project with on of the methods described below, **make sure:
 
 This section describes building with **Visual Studio 2022** (including the Community Edition) It configures the build environment for Microsoft’s own make utility: **NMake** and uses the `CMakePresets.json` to read the configuration.
 
-- Open the root folder of the project.
+- in a CLI Open the root folder of the project.
 - In the root folder execute theses commands once:
-  -  `cmake --preset=windows-nmake-debug`
-  -  `cmake --preset=windows-nmake-release`
+  - `cmake --preset=windows-nmake-debug`
+  - `cmake --preset=windows-nmake-release`    
+*Results: This will create the dedicated output folders:*
+     - build-win-vs\debug 
+     - build-win-vs\release
+     - **Make sure** to copy the ***glfw3.dll*** to these folder when not using a static library but a DLL!
+
+
+- Open VS 2022. And use the command  **File ➜ Open ➜ Folder**  option to open the project folder (create a **.vs** folder in the root)
+- At the top of Visual Studio, locate the Startup Item drop-down near the “Start” (▶️) button 
+  - Select **glfw_sample_[].exe** this will set it as startup projects
 - In the build combo-box you should have the options
-  - "PRJ-build(Debug)
-  - "PRJ-build(Releae)
-- Use the normal Visual Studio method to debug and runn the program
+  - PRJ-build(Debug)
+  - PRJ-build(Release)
+- Use the normal Visual Studio method to debug and run the program
 - The output from Visual Studio can be found in the sub folder: **./build-win-vs**
 
 ### 1.1.2 Using Terminal (NMake)

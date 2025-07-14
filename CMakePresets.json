@@ -22,12 +22,12 @@
   ],
   "buildPresets": [
     {      
-      "configuration": "Debug",
+      "configuration": "PRJ-Debug",
       "configurePreset": "windows-nmake-debug",
       "name": "PRJ-build(Debug)"
     },
     {
-      "name": "PRJJ-build(Release)",
+      "name": "PRJ-build(Release)",
       "configurePreset": "windows-nmake-release",
       "configuration": "Release"
       

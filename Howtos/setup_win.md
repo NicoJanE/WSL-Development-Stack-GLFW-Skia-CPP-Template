@@ -112,7 +112,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 - In your project folder navigate to: `.\dependencies\win:`
 - Clone **Skia**:  `git clone  --recursive https://skia.googlesource.com/skia.git`   
      - Change to location skia
-     - `git checkout chrome/m126`  # To checkout a stable build instead a the master branch       
+     - `git checkout chrome/m126`  # To checkout a stable build instead a the master branch (Use same as on Linux!)       
 - The following command will call a the Skia build script which uses depot_tools to **get** the **dependencies**:  `python tools\git-sync-deps` 
   - ***Test***: It should have created tools like `gn` and other dependencies, test type in the CLI:  
    `.\bin\gn --version`

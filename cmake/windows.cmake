@@ -8,6 +8,16 @@
 #
 # =========================================================================================
 
+
+# Prevent Visual Studio 2022 from loading all targets in this subdirectory as startup/debuggable projects.
+# This avoids cluttering the "Startup Item" list in the IDE.
+# Unfortunately, this behavior cannot be controlled via CMakePresets.json — it must be done here in CMakeLists.txt.
+# Update the path 'depw' as needed. and make SURE the exclude folder contains a dummy CMakeList.txt file
+# otherwise the manual build fails (./build.ps1, which is also used by VSC)
+if(WIN32)
+    add_subdirectory(depw EXCLUDE_FROM_ALL)
+endif()
+
 include_guard()
 
 # CONFIGURATION functions
@@ -29,7 +39,7 @@ set(EXPLICITE_NAME true)            # Adds a suffix to binary indicating the deb
 set(LINK_TYPE MDd)       # Debug multi-threaded DLL
 
 # 1.3 Set the Windows Libraries used
-set(GLFW_LIBS_WIN_LOCAL glfw3 opengl32)         # glfw3 -> static   glfw3dll -> Dynamic(importlib)
+set(GLFW_LIBS_WIN_LOCAL glfw3dll opengl32)         # glfw3 -> static   glfw3dll -> Dynamic(importlib)
 set(SKIA_LIBS_WIN_LOCAL skia)
 
 # 1.4 Specific build options for OS/Compiler
@@ -46,16 +56,16 @@ endfunction()
 function(_SetExtraWindowsFolders)    
 
     # GLFW folder locations (include & Library)
-    set(GLFW_WIN_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/glfw/include" CACHE PATH "GLFW include dir")
-    set(GLFW_WIN_LIB_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outstatic/src/debug"  CACHE PATH "GLFW lib dir")  # *** Update when 'LINK_TYPE' changes ***    
-    # set(GLFW_WIN_LIB_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outdll/src/debug"  CACHE PATH "GLFW lib dir")  # *** Update when 'LINK_TYPE' changes ***    
+    set(GLFW_WIN_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/depw/glfw/include" CACHE PATH "GLFW include dir")
+    #set(GLFW_WIN_LIB_DIR "${PROJECT_SOURCE_DIR}/depw/glfw/outstatic/src/debug"  CACHE PATH "GLFW lib dir")  # *** Update when 'LINK_TYPE' changes ***    
+     set(GLFW_WIN_LIB_DIR "${PROJECT_SOURCE_DIR}/depw/glfw/outdll/src/debug"  CACHE PATH "GLFW lib dir")  # *** Update when 'LINK_TYPE' changes ***    
     _CheckFolderExists("${GLFW_WIN_INCLUDE_DIR}" "GLFW include directory")
     _CheckFolderExists("${GLFW_WIN_LIB_DIR}" "GLFW library directory")
 
     # SKIA folder locations (include & Library)
     #   - Skia internal uses: include/core/xxx.h so we should not add include to include variable
-    set(SKIA_WIN_CORE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/skia" CACHE PATH "SKIA include dir")
-    set(SKIA_WIN_LIBS_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/skia/out/Debug" CACHE PATH "SKIA Lib dir")            # *** Update when 'LINK_TYPE' changes ***
+    set(SKIA_WIN_CORE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/depw/skia" CACHE PATH "SKIA include dir")
+    set(SKIA_WIN_LIBS_DIR "${PROJECT_SOURCE_DIR}/depw/skia/out/Debug" CACHE PATH "SKIA Lib dir")            # *** Update when 'LINK_TYPE' changes ***
     _CheckFolderExists("${SKIA_WIN_CORE_INCLUDE_DIR}" "SKIA include directory")
     _CheckFolderExists("${SKIA_WIN_LIBS_DIR}" "SKIA library directory")
     message(STATUS "\n")
