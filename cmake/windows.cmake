@@ -29,7 +29,7 @@ set(EXPLICITE_NAME true)            # Adds a suffix to binary indicating the deb
 set(LINK_TYPE MDd)       # Debug multi-threaded DLL
 
 # 1.3 Set the Windows Libraries used
-set(GLFW_LIBS_WIN_LOCAL glfw3 opengl32)
+set(GLFW_LIBS_WIN_LOCAL glfw3 opengl32)         # glfw3 -> static   glfw3dll -> Dynamic(importlib)
 set(SKIA_LIBS_WIN_LOCAL skia)
 
 # 1.4 Specific build options for OS/Compiler
@@ -48,6 +48,7 @@ function(_SetExtraWindowsFolders)
     # GLFW folder locations (include & Library)
     set(GLFW_WIN_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/glfw/include" CACHE PATH "GLFW include dir")
     set(GLFW_WIN_LIB_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outstatic/src/debug"  CACHE PATH "GLFW lib dir")  # *** Update when 'LINK_TYPE' changes ***    
+    # set(GLFW_WIN_LIB_DIR "${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outdll/src/debug"  CACHE PATH "GLFW lib dir")  # *** Update when 'LINK_TYPE' changes ***    
     _CheckFolderExists("${GLFW_WIN_INCLUDE_DIR}" "GLFW include directory")
     _CheckFolderExists("${GLFW_WIN_LIB_DIR}" "GLFW library directory")
 

@@ -28,6 +28,7 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 
 ### 2.2.1. dynamically(DLL)  multithreaded libraries(release\debug) use:
 
+- Inside `.\dependencies\win\glfw`
 - `mkdir  outdll`
 - From within the above folder configure the VS2022 files:
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON`  
@@ -39,6 +40,7 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 
 ### 2.1.2 statical library use:  
 
+- Inside `.\dependencies\win\glfw`
 - `mkdir  outstatic`
 - From within the above folder configure the VS2022 files:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF`
@@ -50,10 +52,16 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 
 ### 2.1.3 Update CMake files
 
-After creating  DLL or static GLFW library
+After building the GLFW library (as DLL or static) Update the `cmake/windows.cmake`, <small>function: ***n_SetExtraWindowsFolders()***</small>
+- Check/Set the include folder:`${PROJECT_SOURCE_DIR}/dependencies/win/glfw/include` <small>(GLFW_WIN_INCLUDE_DIR)</small>  
 
-- Make sure the path to the **include** folder is added to `cmake/windows.cmake`.
-- Also make sure the path to the **library** folder is added to `cmake/windows.cmake` (for static linking).When using the DLL, make sure the `.dll` file is available in your application’s runtime folder.
+- ***Static linking***
+  - Make sure the path to the **library folder** (file with .lib) is added to: `${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outstatic/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
+  - Make sure the variable **GLFW_LIBS_WIN_LOCAL** contains **glfw3*** the **name of the .lib file** (glfw3.lib) in the library folder
+- ***Dynamic linking***
+  - Make sure the path to the **library folder** (file with .lib) is added to `${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outdll/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
+  - Make sure the variable **GLFW_LIBS_WIN_LOCAL** contains **glfw3dll** the name of the import library file (glfw3dll.lib) in the library folder
+  - Make sure the `.dll` file is available in your application’s runtime folder.
 
 <br>
 
@@ -67,16 +75,17 @@ After creating  DLL or static GLFW library
 
 ### 2.3.1 Built dependency Ninja
 
-- Download it form [here](https://github.com/ninja-build/ninja/releases/latest) 
-- Extract and add the folder with ninja.exe to your system **PATH**
+- **Download** it form [here](https://github.com/ninja-build/ninja/releases/latest) 
+- **Extract** and add the folder with ninja.exe to your system **PATH**
 
 > ⚠️ **Ensure this path is defined before depot_tools in your PATH!  
-> depot_tools includes a `ninja.bat` file that will break builds if used accidentally. <br>**{: style="color: black;font-size:12px; "} 
+> depot_tools includes a `ninja.bat` file that will break builds if used accidentally. <br> This maya also result into vague build issues**{: style="color: black;font-size:12px; "} 
 
 
 - **Test**. Open a **CLI** and type: `ninja --version`
 
-> 🤢**Error?**: `python not found` using: `ninja --version` <br>
+> 🤢**Error?**  
+`python not found` using: `ninja --version` <br>
 Because of course... Windows tries to run a fake python.exe from the Microsoft Store, instead of your real Python install.  
 >
 >> ✅ **Fix**  
@@ -88,19 +97,44 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 
 <br>
 
+
 ### 2.3.2 Build Skia Debug
 
+- When you have build Skia before (especially if done in an , old,project folder: `./dependencies/win`), check and remove the old **System environment variables and paths**, old can impact the a new installation. Remove These:  
+
+  - Environment variable: **EMSDK**
+  - Environment variable: **EMSDK_NODE**
+  - Environment variable: **EMSDK_PYTHON**
+  - Environment variable: **JAVA_HOME** *only when points to a Skai subfolder*
+  - Environment Path: **Remove** the old paths to the Skia subfolders (usual at the top)  
+   <small>📌**Tip** Use the following Powershell command to check the value of the variables:  `Get-ChildItem Env:EMSDK*` </small> 
+   <small>⚠️**warning** failing to do so may lead to nasty Skia build issues </small>
 - In your project folder navigate to: `.\dependencies\win:`
-- Clone **Skia**:  `git clone  --recursive https://skia.googlesource.com/skia.git`          
-- Navigate to sub folder:`cd skia`
+- Clone **Skia**:  `git clone  --recursive https://skia.googlesource.com/skia.git`   
+     - Change to location skia
+     - `git checkout chrome/m126`  # To checkout a stable build instead a the master branch       
 - The following command will call a the Skia build script which uses depot_tools to **get** the **dependencies**:  `python tools\git-sync-deps` 
+  - ***Test***: It should have created tools like `gn` and other dependencies, test type in the CLI:  
+   `.\bin\gn --version`
+  
+>⚠️ **Warning**  
+> Check for errors like:
+> *`file name too long...`*
+>
+>If you see this, your Skia build will fail. This is one of the most common causes (together with 2.3.1) of strange or hard-to-diagnose build errors on Windows, especially with Skia or other large C++ projects.  
+>
+>>✅ **Solution**:  
+>> You must shorten the folder path. Try the following:  
+>>`C:\libs\skia`  
+>
+>📌 <small>Many developers abandon deeply nested folder structures altogether for Skia and similar projects due to this issue.</small>
 
-> **Test**: It should have created tools like `gn` and other dependencies, test type in the CLI: `.\bin\gn --version`
 
-- Generate build files with GN (uses *Ninja*) Execute:  `.\bin\gn args out\Debug`
-- Paste the following into the editor that opens:
+- **Generate build** files with GN (uses *Ninja*) Execute:  `.\bin\gn args out\Debug`
+- Paste the following into the **editor** that opens:
 
-> *Editor opens past in this, and save & close the editor and **`gn`** will **continue** :*
+> *Editor opens past in this, and save & close the editor and **`gn`** will **continue** :*  
+> <small>📌 Tip: use this command to display the valid options: `gn args --list out/Debug` </small>
 >
 
 >``` text
@@ -109,14 +143,19 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 >skia_use_gl = true
 >target_cpu = "x64"    
 >skia_enable_fontmgr_empty = false      # Optional: enable full font manager
->skia_enable_gpu = true                 # Needed for OpenGL
 >skia_use_angle = false                 # Optional: disable ANGLE if using native OpenGL
 >skia_use_icu = true                    # ICU required for Unicode support
->#extra_cflags = [ "/MTd", "/D_ITERATOR_DEBUG_LEVEL=2" ]   # static
->extra_cflags = [ "/MDd", "/D_ITERATOR_DEBUG_LEVEL=2" ]  # Dynamic
->#extra_ldflags = [ "/NODEFAULTLIB:LIBCMT", "/DEFAULTLIB:LIBCMTD" ]
+>
+>extra_cflags = [ "/MDd", "/D_ITERATOR_DEBUG_LEVEL=2", "/GR" ]             # Dynamic
+> #extra_cflags = [ "/MTd", "/D_ITERATOR_DEBUG_LEVEL=2" ]            # Static
+> #extra_ldflags = [ "/NODEFAULTLIB:LIBCMT", "/DEFAULTLIB:LIBCMTD" ] #
+>
+> # DON't add these deprecated\removed options they may cause build errrors
+> # skia_enable_gpu = true               # IS Build ERROR!
 >```
 
+- ~~Activate the MS VC environment, **Check the path** (***command seems not needed?***):~~
+ ~~`& "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat` `~~
 - Build it: `ninja -C out\Debug`
 
 >``` text
@@ -129,11 +168,11 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 - Update the `./cmake/windows.cmake` file, make sure it contains:  
 `set(SKIA_WIN_CORE_INCLUDE "${PROJECT_SOURCE_DIR}/dependencies/win/skia")`
 
-> ⚠️ **<small>Don't add the include folder! `include` The include folder is added in Skia files, in the include directives!</small> <br>**{: style="color: black;font-size:14px; "}  
+> ⚠️ **<small>Don't add the `include` folder! This folder is part of the include directive of the Skia files </small> <br>**{: style="color: black;font-size:14px; "}  
 
 - Update the `./cmake/windows.cmake` file, make sure it contains:  
 `set(SKIA_WIN_LIBS "${PROJECT_SOURCE_DIR}/dependencies/win/skia/out/Debug")`
-- Ensure `skia`is added to the  variable: SKIA_LIBS_LOCAL in `cmake/windows.cmake` (see 1.3)
+- Ensure `skia`is added to the  variable: SKIA_LIBS_LOCAL in `cmake/windows.cmake`
 
 <br>
 
@@ -181,12 +220,15 @@ This will create the Skia release library
 > Result should be the `skia.lib` file among others
 >```
 
-<br>
 
 ### 2.4 ⚠️ Common Pitfalls (Windows)
-
-- ✅ Make sure the official `ninja.exe` is **first in PATH**, not `depot_tools\ninja.bat`.
-- ✅ Use full paths in `gn.exe` 🚫 avoid relative path
-- 🔄 Always **reopen the terminal** after changing the environment
+Setup your build environment in Windows is by definition more error sensitive then setting it up in Linux. Here a a few tips to help you avoid (build) issues:
+- 🚫 Avoid **spaces or special characters** in project paths  
+- 🚫Make sure the official `ninja.exe` is **first in PATH environment variable**, not `depot_tools\ninja.bat`. failing to do so will generate builds errors during build of Skia
+- 🚫Make sure Skia is not to deep nested, to avoid errors related to long path names, building Skia
 - 🚫 Avoid **spaces or special characters** in project paths:  
- `C:\Users\John Doe\skia` → ❌ Bad idea
+- ✅ Use full paths in `gn.exe` **avoid** relative path
+- 🔄 Always **reopen the terminal** after changing the environment
+
+
+**Use the the build documentation to build the [sample project](building_project)**

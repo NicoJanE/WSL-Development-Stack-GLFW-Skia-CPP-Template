@@ -1,14 +1,60 @@
 #include "GLFW/glfw3.h"
 #define SK_GANESH
 #define SK_GL
-//#include "include/gpu/GrBackendSurface.h"
-#include "include/gpu/ganesh/GrBackendSurface.h"
-//#include "include/gpu/GrDirectContext.h"
-#include "include/gpu/ganesh/GrDirectContext.h" //
-//#include "include/gpu/gl/GrGLInterface.h"
-#include "include/gpu/ganesh/gl/GrGLInterface.h"
-//#include "include/gpu/gl/GrGLAssembleInterface.h"
-#include "include/gpu/ganesh/gl/GrGLAssembleInterface.h"
+
+// Includes when Skia is built with `skia_enable_gpu = false`
+// These are from the legacy non-Ganesh GPU headers
+
+#include "include/gpu/GrBackendSurface.h"
+#include "include/gpu/GrDirectContext.h"
+#include "include/gpu/gl/GrGLInterface.h"
+#include "include/gpu/gl/GrGLAssembleInterface.h"
+
+// Use the following headers instead when Skia is built with `skia_enable_gpu = true`
+// Note: As of July 2025 (master branch), enabling `skia_enable_gpu = true` breaks the build.
+// This may be resolved in a future Chromium milestone (possibly M126+)
+
+// #include "include/gpu/ganesh/GrBackendSurface.h"
+// #include "include/gpu/ganesh/GrDirectContext.h"
+// #include "include/gpu/ganesh/gl/GrGLInterface.h"
+// #include "include/gpu/ganesh/gl/GrGLAssembleInterface.h"
+
+// ⚠️ Important:
+// - Skia headers are currently in transition to modular layouts.
+// - `ganesh/` headers are used when Skia is built with GPU support (`skia_enable_gpu = true`).
+// - Without GPU support (`skia_enable_gpu = false`), top-level `gpu/` headers are stubs or no-ops.
+//
+// 💡 Tip:
+// - Check `gn/gn_args.gn` and `BUILD.gn` in Skia for module migration or API changes.
+// - Chromium M126+ may resolve some of the broken GPU builds with Ganesh as of July 2025.
+
+/*
+What is the "Ganesh Train"?
+
+"Ganesh" is the traditional GPU rendering backend in Skia. The Skia team is slowly refactoring it into a more modular, backend-agnostic structure. This means:
+
+    - Ganesh is being moved into its own namespace/directory (src/gpu/ganesh, include/gpu/ganesh)
+    - Code is being gradually decoupled from old include/gpu/ headers
+    - Ultimately, GPU support will require you to use ganesh/ headers and types explicitly
+
+	Why the Refactor?
+
+    Modularity:
+        - Skia now supports multiple rendering backends: Ganesh (OpenGL/DirectX/Vulkan), Dawn (WebGPU), Graphite (next-gen).
+        - By splitting them cleanly (e.g., ganesh/, graphite/), each backend can evolve independently.
+
+    Cleaner Public API:
+        - Old headers like GrDirectContext.h in include/gpu/ will eventually go away.
+        - New paths like include/gpu/ganesh/GrDirectContext.h are more explicit and manageable.
+        - This also enables builds without Ganesh, by cleanly omitting those headers from your build if skia_enable_gpu = false.
+
+    Preparation for Graphite (Skia’s modern rendering architecture):
+        - Graphite is a lower-level, more Vulkan-like backend focused on performance and predictability.
+        - The cleanup of Ganesh makes room for better Graphite support and easier switching for developers.
+*/
+
+
+
 #include "include/gpu/ganesh/SkSurfaceGanesh.h"
 #include "include/gpu/ganesh/gl/GrGLBackendSurface.h"
 #include "include/gpu/ganesh/gl/GrGLDirectContext.h"
