@@ -18,7 +18,7 @@ RefPages:
 &nbsp;&nbsp; 📚  Python 3  
 &nbsp;&nbsp; 📚  PowerShell  
 
-<br>SKIP- Inside `.\dependencies\win\glfw3-4`
+<br>
 
 ## 2.2  Built GLFW library (Windows):
 
@@ -27,7 +27,7 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 - In your project folder create, if needed, a folder `dependencies\win\` and change to this folder. 
 - In that folder, follow this link [from here](https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip) to download GLFW
 - Unzip the glfw-3.4.zip file. Make sure:
-  - Unzip the glfw-3.4.zip file. Make sure all files and folders, including the CMake folder and its contents, are moved directly into `dependencies\win\glfw3-4` (not into a subfolder like `glfw-3.4` or `glfw3-4`)
+  - Unzip the glfw-3.4.zip file. Make sure all files and folders, including the CMake folder and its contents, are moved directly into `dependencies\win\glfw-3.4` (not into a subfolder like `glfw-3.4` or `glfw3-4`)
   - Use a reliable extraction tool that does not skip hidden or system files.
 
 
@@ -35,8 +35,8 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 To Create the DLL **release\debug** use:
 
 
-- `mkdir  'project root\dependencies\win\glfw3-4\outdll` if not yet available:
-- Change directory `'project root\dependencies\win\glfw3-4\outdll`
+- `mkdir  'project root\dependencies\win\glfw-3.4\outdll` if not yet available:
+- Change directory `'project root\dependencies\win\glfw-3.4\outdll`
 - Run:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON`  
 - Than Run:  
@@ -49,8 +49,8 @@ To Create the DLL **release\debug** use:
 
 ### 2.2.2 statical library use:  
 
-- `mkdir  'project root\dependencies\win\glfw3-4\outstatic` if not yet available:
-- Change directory `'project root\dependencies\win\glfw3-4\outstatic`
+- `mkdir  'project root\dependencies\win\glfw-3.4\outstatic` if not yet available:
+- Change directory `'project root\dependencies\win\glfw-3.4\outstatic`
 - Run:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF`
 - Than run:  
@@ -63,13 +63,13 @@ To Create the DLL **release\debug** use:
 ### 2.2.3 Update CMake files
 
 After building the GLFW library (as DLL or static) Update the `cmake/windows.cmake`, <small>function: ***n_SetExtraWindowsFolders()***</small>
-- Check/Set the include folder:`${PROJECT_SOURCE_DIR}/dependencies/win/glfw3-4/include` <small>(GLFW_WIN_INCLUDE_DIR)</small>  
+- Check/Set the include folder:`${PROJECT_SOURCE_DIR}/dependencies/win/glfw-3.4/include` <small>(GLFW_WIN_INCLUDE_DIR)</small>  
 
 - ***Static linking***
-  - Make sure the path to the **library folder** (file with .lib) is added to: `${PROJECT_SOURCE_DIR}/dependencies/win/glfw3-4/outstatic/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
+  - Make sure the path to the **library folder** (file with .lib) is added to: `${PROJECT_SOURCE_DIR}/dependencies/win/glfw-3.4/outstatic/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
   - Make sure the variable **GLFW_LIBS_WIN_LOCAL** contains **glfw3*** the **name of the .lib file** (glfw3.lib) in the library folder
 - ***Dynamic linking***
-  - Make sure the path to the **library folder** (file with .lib) is added to `${PROJECT_SOURCE_DIR}/dependencies/win/glfw3-4/outdll/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
+  - Make sure the path to the **library folder** (file with .lib) is added to `${PROJECT_SOURCE_DIR}/dependencies/win/glfw-3.4/outdll/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
   - Make sure the variable **GLFW_LIBS_WIN_LOCAL** contains **glfw3dll** the name of the import library file (glfw3dll.lib) in the library folder
   - Make sure the `.dll` file is available in your application’s runtime folder.
 
