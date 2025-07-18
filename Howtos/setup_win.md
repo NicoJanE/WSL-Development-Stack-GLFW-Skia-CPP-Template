@@ -18,20 +18,26 @@ RefPages:
 &nbsp;&nbsp; 📚  Python 3  
 &nbsp;&nbsp; 📚  PowerShell  
 
-<br>
+<br>SKIP- Inside `.\dependencies\win\glfw3-4`
 
 ## 2.2  Built GLFW library (Windows):
 
-GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which can be built using **Visual Studio 2022 Community Edition** (VS2022)
+GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which can be built using **Visual Studio 2022 Community Edition** (VS2022) and the msbuild tool.
 
-- In your project folder create a folder `dependencies\win\glfw3-4` and change to this folder. In that folder, download the GLFW Source from [here](https://www.glfw.org/download.html) and build it with **one** of the following methods:
+- In your project folder create, if needed, a folder `dependencies\win\` and change to this folder. 
+- In that folder, download the GLFW Source from [here](https://www.glfw.org/download.html)  
+- Unzip the downloaded folder. If the contents are in a subfolder (e.g., glfw-3.4), move all files and folders from glfw-3.4 into glfw3-4 and remove the now-empty glfw-3.4 folder, during this make sure:
+  - When unzipping, ensure all files and folders, including the CMake folder and its contents, are moved from the extracted subfolder into glfw3-4.
+  - Use a reliable extraction tool that does not skip hidden or system files.
+
 
 ### 2.2.1. dynamically(DLL) multithreaded libraries (preferred)
 To Create the DLL **release\debug** use:
 
-- Inside `.\dependencies\win\glfw3-4`
-- `mkdir  outdll`
-- From within the above folder configure the VS2022 files:  
+
+- `mkdir  'project root\dependencies\win\glfw3-4\outdll` if not yet available:
+- Change directory `'project root\dependencies\win\glfw3-4\outdll`
+- Run:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON`  
 - Than Run:  
 `msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64`
@@ -43,9 +49,9 @@ To Create the DLL **release\debug** use:
 
 ### 2.2.2 statical library use:  
 
-- Inside `.\dependencies\win\glfw3-4`
-- `mkdir  outstatic`
-- From within the above folder configure the VS2022 files:  
+- `mkdir  'project root\dependencies\win\glfw3-4\outstatic` if not yet available:
+- Change directory `'project root\dependencies\win\glfw3-4\outstatic`
+- Run:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF`
 - Than run:  
 `msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64`
