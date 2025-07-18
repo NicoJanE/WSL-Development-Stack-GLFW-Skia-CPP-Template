@@ -39,8 +39,8 @@ To Create the DLL **release\debug** use:
 - Run:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON`  
 - Than:
-- First Use the a PowerShell command to locate the `msbuild.exe` path  
-- Then use the Full Path to `msbuild.exe` in the Next Command to execute it:
+- Before running msbuild, use PowerShell to search for msbuild.exe on the system. Use the full path found in the next command to build the solution
+- Then use the Full `Path to msbuild.exe` in the Next Command to execute it:
 `& msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64`
 - Copy the generated `glfw3.dll` file to the project root
 
