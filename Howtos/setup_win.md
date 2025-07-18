@@ -29,11 +29,12 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 ### 2.2.1. dynamically(DLL) multithreaded libraries (preferred)
 To Create the DLL **release\debug** use:
 
-- Inside `.\dependencies\win\glfw`
+- Inside `.\dependencies\win\glfw3-4`
 - `mkdir  outdll`
-- From within the above folder configure the VS2022 files:
+- From within the above folder configure the VS2022 files:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON`  
-- In VS 20022 open the **GLFW.sln** file and choose:**'Build' -> '0 ALL BUILD'**
+- Than Run:  
+`msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64`
 
 > This ensures **VS2022** builds the **Debug multithreaded DLL** version in the ***./outdll/src/Debug*** folder, 
 > or the **Release multithreaded DLL** version in the ***./outdll/src/Release*** folder, depending on the selected
@@ -41,11 +42,12 @@ To Create the DLL **release\debug** use:
 
 ### 2.2.2 statical library use:  
 
-- Inside `.\dependencies\win\glfw`
+- Inside `.\dependencies\win\glfw3-4`
 - `mkdir  outstatic`
 - From within the above folder configure the VS2022 files:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF`
-- In VS 20022 open the **GLFW.sln** file and choose:**'Build' -> '0 ALL BUILD'**
+- Than run:  
+`msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64`
 
 > This ensures **VS2022** builds the **Debug static multithreaded** version in the ***./outstatic/src/Debug*** folder,
 > or the **Release static multithreaded** version in the ***./outstatic/src/Release*** folder, again depending on the
@@ -54,13 +56,13 @@ To Create the DLL **release\debug** use:
 ### 2.2.3 Update CMake files
 
 After building the GLFW library (as DLL or static) Update the `cmake/windows.cmake`, <small>function: ***n_SetExtraWindowsFolders()***</small>
-- Check/Set the include folder:`${PROJECT_SOURCE_DIR}/dependencies/win/glfw/include` <small>(GLFW_WIN_INCLUDE_DIR)</small>  
+- Check/Set the include folder:`${PROJECT_SOURCE_DIR}/dependencies/win/glfw3-4/include` <small>(GLFW_WIN_INCLUDE_DIR)</small>  
 
 - ***Static linking***
-  - Make sure the path to the **library folder** (file with .lib) is added to: `${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outstatic/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
+  - Make sure the path to the **library folder** (file with .lib) is added to: `${PROJECT_SOURCE_DIR}/dependencies/win/glfw3-4/outstatic/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
   - Make sure the variable **GLFW_LIBS_WIN_LOCAL** contains **glfw3*** the **name of the .lib file** (glfw3.lib) in the library folder
 - ***Dynamic linking***
-  - Make sure the path to the **library folder** (file with .lib) is added to `${PROJECT_SOURCE_DIR}/dependencies/win/glfw/outdll/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
+  - Make sure the path to the **library folder** (file with .lib) is added to `${PROJECT_SOURCE_DIR}/dependencies/win/glfw3-4/outdll/src/debug` <small>(GLFW_WIN_LIB_DIR)</small>
   - Make sure the variable **GLFW_LIBS_WIN_LOCAL** contains **glfw3dll** the name of the import library file (glfw3dll.lib) in the library folder
   - Make sure the `.dll` file is available in your application’s runtime folder.
 
