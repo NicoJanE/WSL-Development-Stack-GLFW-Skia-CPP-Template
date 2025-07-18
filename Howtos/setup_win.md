@@ -143,7 +143,8 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 >📌 <small>Many developers abandon deeply nested folder structures altogether for Skia and similar projects due to this issue.</small>
 
 - Make sure to be in the folder: `project root\dependencies\win\skia`
-- **Generate build** files with GN (uses *Ninja*)  
+- create folder: `mkdir out\Debug`
+- In the next steps  we are going to **Generate build** files with GN (uses *Ninja*)  
   1\. **Automatic generate build files (preferred)**  
     - Execute in powershell: 
     ```
