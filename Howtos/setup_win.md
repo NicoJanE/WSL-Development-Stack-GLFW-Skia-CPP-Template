@@ -55,6 +55,8 @@ To Create the DLL **release\debug** use:
 - Run:  
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF`
 - Than run:  
+- Before running msbuild, use PowerShell to search for msbuild.exe on the system. Use the full path found in the next command to build the solution
+- Then use the Full `Path to msbuild.exe` in the Next Command to execute it:
 `msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64`
 
 > This ensures **VS2022** builds the **Debug static multithreaded** version in the ***./outstatic/src/Debug*** folder,
@@ -120,9 +122,9 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
   - Environment Path: **Remove** the old paths to the Skia subfolders (usual at the top)  
    <small>📌**Tip** Use the following Powershell command to check the value of the variables:  `Get-ChildItem Env:EMSDK*` </small> 
    <small>⚠️**warning** failing to do so may lead to nasty Skia build issues </small>
-- In your project folder navigate to: `.\dependencies\win:`
+- In your project folder navigate to: `.\dependencies\win`
 - Clone **Skia**:  `git clone  --recursive https://skia.googlesource.com/skia.git`   
-     - Change to location skia
+     - Change `cd` to `project root\dependencies\win\skia`
      - `git checkout chrome/m126`  # To checkout a stable build instead a the master branch (Use same as on Linux!)       
 - The following command will call a the Skia build script which uses depot_tools to **get** the **dependencies**:  `python tools\git-sync-deps` 
   - ***Test***: It should have created tools like `gn` and other dependencies, test type in the CLI:  
@@ -140,7 +142,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 >
 >📌 <small>Many developers abandon deeply nested folder structures altogether for Skia and similar projects due to this issue.</small>
 
-
+- Make sure to be in the folder: `project root\dependencies\win\skia`
 - **Generate build** files with GN (uses *Ninja*)  
   1\. **Automatic generate build files (preferred)**  
     - Execute in powershell: 
@@ -158,8 +160,9 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
   ```
 - Than execute in the PowerShell CLI: ``.\bin\gn gen out\Debug``
 
-  2\. **Manual generate build files**  
+  2\. **Manual generate build files**  Alternative skip these.
   This give you the ption to change arguments in a file that will be opened automatically
+  - Make sure to be in the folder: `project root\dependencies\win\skia`
   - Execute:  `.\bin\gn args out\Debug`
   - Paste the following into the **editor** that opens:
 
@@ -189,6 +192,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 
 - ~~Activate the MS VC environment, **Check the path** (***command seems not needed?***):~~
  ~~`& "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat` `~~ DON'T USE vcvars64.bat gn can handled it self!
+- Make sure to be in the folder: `project root\dependencies\win\skia`
 - ***Build** it: `ninja -C out\Debug`
 
 >``` text
