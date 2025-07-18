@@ -26,7 +26,8 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 
 - In your project folder create a folder `dependencies\win\glfw` and change to this folder. In that folder, download the GLFW Source from [here](https://www.glfw.org/download.html) and build it with **one** of the following methods:
 
-### 2.2.1. dynamically(DLL)  multithreaded libraries(release\debug) use:
+### 2.2.1. dynamically(DLL) multithreaded libraries (preferred)
+To Create the DLL **release\debug** use:
 
 - Inside `.\dependencies\win\glfw`
 - `mkdir  outdll`
@@ -38,7 +39,7 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 > or the **Release multithreaded DLL** version in the ***./outdll/src/Release*** folder, depending on the selected
 > **Solution Configuration** in Visual Studio. You can then copy the ***glfw3.dll*** file to your application executable folder to use it.
 
-### 2.1.2 statical library use:  
+### 2.2.2 statical library use:  
 
 - Inside `.\dependencies\win\glfw`
 - `mkdir  outstatic`
@@ -50,7 +51,7 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 > or the **Release static multithreaded** version in the ***./outstatic/src/Release*** folder, again depending on the
 > **Solution Configuration**. The filename is:  ***glfw3.lib*** and will be linked into your application when you link against it
 
-### 2.1.3 Update CMake files
+### 2.2.3 Update CMake files
 
 After building the GLFW library (as DLL or static) Update the `cmake/windows.cmake`, <small>function: ***n_SetExtraWindowsFolders()***</small>
 - Check/Set the include folder:`${PROJECT_SOURCE_DIR}/dependencies/win/glfw/include` <small>(GLFW_WIN_INCLUDE_DIR)</small>  
@@ -130,33 +131,55 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 >📌 <small>Many developers abandon deeply nested folder structures altogether for Skia and similar projects due to this issue.</small>
 
 
-- **Generate build** files with GN (uses *Ninja*) Execute:  `.\bin\gn args out\Debug`
-- Paste the following into the **editor** that opens:
+- **Generate build** files with GN (uses *Ninja*)  
+  1\. **Automatic generate build files (preferred)**  
+    - Execute in powershell: 
+    ```
+    @"
+  is_debug=true
+  is_official_build=false
+  skia_use_gl=true
+  target_cpu="x64"
+  skia_enable_fontmgr_empty=false
+  skia_use_angle=false
+  skia_use_icu=true
+  extra_cflags=["/MDd", "/D_ITERATOR_DEBUG_LEVEL=2", "/GR"]
+  "@ > out\Debug\args.gn 
+  ```
+- Than execute in the PowerShell CLI: ``.\bin\gn gen out\Debug``
 
-> *Editor opens past in this, and save & close the editor and **`gn`** will **continue** :*  
-> <small>📌 Tip: use this command to display the valid options: `gn args --list out/Debug` </small>
->
+  2\. **Manual generate build files**  
+  This give you the ption to change arguments in a file that will be opened automatically
+  - Execute:  `.\bin\gn args out\Debug`
+  - Paste the following into the **editor** that opens:
 
->``` text
->is_debug = true
->is_official_build = false
->skia_use_gl = true
->target_cpu = "x64"    
->skia_enable_fontmgr_empty = false      # Optional: enable full font manager
->skia_use_angle = false                 # Optional: disable ANGLE if using native OpenGL
->skia_use_icu = true                    # ICU required for Unicode support
->
->extra_cflags = [ "/MDd", "/D_ITERATOR_DEBUG_LEVEL=2", "/GR" ]             # Dynamic
-> #extra_cflags = [ "/MTd", "/D_ITERATOR_DEBUG_LEVEL=2" ]            # Static
-> #extra_ldflags = [ "/NODEFAULTLIB:LIBCMT", "/DEFAULTLIB:LIBCMTD" ] #
->
-> # DON't add these deprecated\removed options they may cause build errrors
-> # skia_enable_gpu = true               # IS Build ERROR!
->```
+  > *Editor opens past in this, and save & close the editor and **`gn`** will **continue** :*  
+  > <small>📌 Tip: use this command to display the valid options: `gn args --list out/Debug` </small>
+  >
+
+  >``` text
+  >is_debug = true
+  >is_official_build = false
+  >skia_use_gl = true
+  >target_cpu = "x64"    
+  >skia_enable_fontmgr_empty = false      # Optional: enable full font manager
+  >skia_use_angle = false                 # Optional: disable ANGLE if using native OpenGL
+  >skia_use_icu = true                    # ICU required for Unicode support
+  >
+  >extra_cflags = [ "/MDd", "/D_ITERATOR_DEBUG_LEVEL=2", "/GR" ]             # Dynamic
+  > #extra_cflags = [ "/MTd", "/D_ITERATOR_DEBUG_LEVEL=2" ]            # Static
+  > #extra_ldflags = [ "/NODEFAULTLIB:LIBCMT", "/DEFAULTLIB:LIBCMTD" ] #
+  >
+  > # DON't add these deprecated\removed options they may cause build errrors
+  > # skia_enable_gpu = true               # IS Build ERROR!
+  >```
+
+  
+
 
 - ~~Activate the MS VC environment, **Check the path** (***command seems not needed?***):~~
  ~~`& "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat` `~~
-- Build it: `ninja -C out\Debug`
+- ***Build** it: `ninja -C out\Debug`
 
 >``` text
 >Result should include:
