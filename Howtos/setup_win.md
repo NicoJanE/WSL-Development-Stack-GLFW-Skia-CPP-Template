@@ -24,7 +24,7 @@ RefPages:
 
 GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which can be built using **Visual Studio 2022 Community Edition** (VS2022)
 
-- In your project folder create a folder `dependencies\win\glfw` and change to this folder. In that folder, download the GLFW Source from [here](https://www.glfw.org/download.html) and build it with **one** of the following methods:
+- In your project folder create a folder `dependencies\win\glfw3-4` and change to this folder. In that folder, download the GLFW Source from [here](https://www.glfw.org/download.html) and build it with **one** of the following methods:
 
 ### 2.2.1. dynamically(DLL) multithreaded libraries (preferred)
 To Create the DLL **release\debug** use:
@@ -35,6 +35,7 @@ To Create the DLL **release\debug** use:
 `cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON`  
 - Than Run:  
 `msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64`
+- Copy the generated `glfw3.dll` file to the project root
 
 > This ensures **VS2022** builds the **Debug multithreaded DLL** version in the ***./outdll/src/Debug*** folder, 
 > or the **Release multithreaded DLL** version in the ***./outdll/src/Release*** folder, depending on the selected
