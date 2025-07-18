@@ -25,7 +25,7 @@ RefPages:
 GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which can be built using **Visual Studio 2022 Community Edition** (VS2022) and the msbuild tool.
 
 - In your project folder create, if needed, a folder `dependencies\win\` and change to this folder. 
-- In that folder, download the GLFW Source from [here](https://www.glfw.org/download.html)  
+- In that folder, download the GLFW Source from [here](https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip)  
 - Unzip the downloaded folder. If the contents are in a subfolder (e.g., glfw-3.4), move all files and folders from glfw-3.4 into glfw3-4 and remove the now-empty glfw-3.4 folder, during this make sure:
   - When unzipping, ensure all files and folders, including the CMake folder and its contents, are moved from the extracted subfolder into glfw3-4.
   - Use a reliable extraction tool that does not skip hidden or system files.
