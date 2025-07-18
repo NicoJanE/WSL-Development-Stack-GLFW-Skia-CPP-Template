@@ -188,7 +188,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 
 
 - ~~Activate the MS VC environment, **Check the path** (***command seems not needed?***):~~
- ~~`& "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat` `~~
+ ~~`& "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat` `~~ DON'T USE vcvars64.bat gn can handled it self!
 - ***Build** it: `ninja -C out\Debug`
 
 >``` text
