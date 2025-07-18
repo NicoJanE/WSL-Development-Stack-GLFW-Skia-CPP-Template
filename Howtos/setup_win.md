@@ -135,16 +135,16 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
   1\. **Automatic generate build files (preferred)**  
     - Execute in powershell: 
     ```
-    @"
-  is_debug=true
-  is_official_build=false
-  skia_use_gl=true
-  target_cpu="x64"
-  skia_enable_fontmgr_empty=false
-  skia_use_angle=false
-  skia_use_icu=true
-  extra_cflags=["/MDd", "/D_ITERATOR_DEBUG_LEVEL=2", "/GR"]
-  "@ > out\Debug\args.gn 
+  @"
+  is_debug = true
+  is_official_build = false
+  skia_use_gl = true
+  target_cpu = "x64"
+  skia_enable_fontmgr_empty = false
+  skia_use_angle = false
+  skia_use_icu = true
+  extra_cflags = ["/MDd", "/D_ITERATOR_DEBUG_LEVEL=2", "/GR"]
+  "@ | Out-File out\Debug\args.gn -Encoding ASCII
   ```
 - Than execute in the PowerShell CLI: ``.\bin\gn gen out\Debug``
 
