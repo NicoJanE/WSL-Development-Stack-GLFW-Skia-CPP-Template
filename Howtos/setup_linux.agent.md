@@ -15,7 +15,7 @@
 `sudo apt update`
 1. in the WSL run this command
 `sudo apt upgrade`
-1. in the WSL run this these commands
+1. in the WSL run this these commands  
 `sudo adduser --gecos "" --disabled-password nico`  
 `echo "nico:nico" | sudo chpasswd`  
 `usermod -aG sudo nico`
