@@ -14,8 +14,8 @@
 # Unfortunately, this behavior cannot be controlled via CMakePresets.json — it must be done here in CMakeLists.txt.
 # Update the path 'depw' as needed. and make SURE the exclude folder contains a dummy CMakeList.txt file
 # otherwise the manual build fails (./build.ps1, which is also used by VSC)
-if(WIN32)
-    add_subdirectory(depw EXCLUDE_FROM_ALL)
+if(WIN32)    
+    add_subdirectory(dependencies/win EXCLUDE_FROM_ALL)
 endif()
 
 include_guard()
