@@ -86,10 +86,11 @@ After building the GLFW library (as DLL or static) Update the `cmake/windows.cma
 >\- This creates a folder: **.\dependencies\win\depot_tools** add this to the **system path** and reopen the **CLI**  
 >\- Test. Execute: `gclient help` → should display help information.
 
-### 2.3.1 Built dependency Ninja
-
-- **Download** it form [here](https://github.com/ninja-build/ninja/releases/latest) 
-- **Extract** and add the folder with ninja.exe to your system **PATH**
+### 2.3.1 Built dependency Ninja if needed
+- Execute `ninja --version` When this returns a version Ninja is already build and you skip this and continue with  section 2.3.2 below.
+- If ninja is not installed **Download** it form [here](https://github.com/ninja-build/ninja/releases/latest) 
+- **Extract** it in the project root under the subfolder: `.\dependencies\win`
+- Make sure to add the installed folder with `ninja.exe` to your system **PATH** and that `ninja.exe` is available in your terminal
 
 > ⚠️ **Ensure this path is defined before depot_tools in your PATH!  
 > depot_tools includes a `ninja.bat` file that will break builds if used accidentally. <br> This maya also result into vague build issues**{: style="color: black;font-size:12px; "} 
@@ -113,7 +114,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 
 ### 2.3.2 Build Skia Debug
 
-- When you have build Skia before (especially if done in an , old,project folder: `./dependencies/win`), check and remove the old **System environment variables and paths**, old can impact the a new installation. Remove These:  
+- **Check this**: When you have build Skia before (especially if done in an , old,project folder: `./dependencies/win`), check and remove the old **System environment variables and paths**, old system variables can impact the a new installation, so remove these:  
 
   - Environment variable: **EMSDK**
   - Environment variable: **EMSDK_NODE**
@@ -122,13 +123,15 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
   - Environment Path: **Remove** the old paths to the Skia subfolders (usual at the top)  
    <small>📌**Tip** Use the following Powershell command to check the value of the variables:  `Get-ChildItem Env:EMSDK*` </small> 
    <small>⚠️**warning** failing to do so may lead to nasty Skia build issues </small>
+ 
 - In your project folder navigate to: `.\dependencies\win`
-- Clone **Skia**:  `git clone  --recursive https://skia.googlesource.com/skia.git`   
-     - Change `cd` to `project root\dependencies\win\skia`
-     - `git checkout chrome/m126`  # To checkout a stable build instead a the master branch (Use same as on Linux!)       
-- The following command will call a the Skia build script which uses depot_tools to **get** the **dependencies**:  `python tools\git-sync-deps` 
+- Clone **Skia** Execute command:  `git clone  --recursive https://skia.googlesource.com/skia.git`   
+- Change `cd` to `project root\dependencies\win\skia`
+- Execute command: `git checkout chrome/m126`  # To checkout a stable build instead a the master branch (Use same as on Linux!)       
+- The following command will call a the Skia build script which uses depot_tools to **get** the **dependencies**:  
+- Execute command: `python tools\git-sync-deps` 
   - ***Test***: It should have created tools like `gn` and other dependencies, test type in the CLI:  
-   `.\bin\gn --version`
+  Execute command: `.\bin\gn --version`
   
 >⚠️ **Warning**  
 > Check for errors like:
@@ -145,9 +148,8 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 - Make sure to be in the folder: `project root\dependencies\win\skia`
 - create folder: `mkdir out\Debug`
 - In the next steps  we are going to **Generate build** files with GN (uses *Ninja*)  
-  1\. **Automatic generate build files (preferred)**  
-    - Execute in powershell: 
-    ```
+- Execute this command in powershell CLI: 
+  ```
   @"
   is_debug = true
   is_official_build = false
@@ -159,10 +161,17 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
   extra_cflags = ["/MDd", "/D_ITERATOR_DEBUG_LEVEL=2", "/GR"]
   "@ | Out-File out\Debug\args.gn -Encoding ASCII
   ```
-- Than execute in the PowerShell CLI: ``.\bin\gn gen out\Debug``
+- Execute in PowerShell CLI: ``.\bin\gn gen out\Debug``  
+This creates the debug build!
 
-  2\. **Manual generate build files**  Alternative skip these.
-  This give you the ption to change arguments in a file that will be opened automatically
+
+<details>    
+  <summary class="clickable-summary">
+  <span  class="summary-icon"></span>
+  Alternative Manual generate build files
+  </summary>
+  <!-- copilot-ignore-start -->
+  This give you the option to change arguments in a file that will be opened automatically, use this if you want to configure Skia manual
   - Make sure to be in the folder: `project root\dependencies\win\skia`
   - Execute:  `.\bin\gn args out\Debug`
   - Paste the following into the **editor** that opens:
@@ -171,6 +180,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
   > <small>📌 Tip: use this command to display the valid options: `gn args --list out/Debug` </small>
   >
 
+  >
   >``` text
   >is_debug = true
   >is_official_build = false
@@ -184,9 +194,12 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
   > #extra_cflags = [ "/MTd", "/D_ITERATOR_DEBUG_LEVEL=2" ]            # Static
   > #extra_ldflags = [ "/NODEFAULTLIB:LIBCMT", "/DEFAULTLIB:LIBCMTD" ] #
   >
-  > # DON't add these deprecated\removed options they may cause build errrors
-  > # skia_enable_gpu = true               # IS Build ERROR!
+  > /# DON't add these deprecated\removed options they may cause build errrors
+  > /# skia_enable_gpu = true               # IS Build ERROR!
   >```
+  <!-- copilot-ignore-end -->
+</details>
+
 
   
 
@@ -194,7 +207,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 - ~~Activate the MS VC environment, **Check the path** (***command seems not needed?***):~~
  ~~`& "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat` `~~ DON'T USE vcvars64.bat gn can handled it self!
 - Make sure to be in the folder: `project root\dependencies\win\skia`
-- ***Build** it: `ninja -C out\Debug`
+- **Build** it: `ninja -C out\Debug`
 
 >``` text
 >Result should include:
@@ -219,45 +232,37 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 This will create the Skia release library
 
 ### 2.3.3.1 Install `libjpeg-turbo` 
-  - Download [from here](https://github.com/libjpeg-turbo/libjpeg-turbo) and buildt in the `./dependencies/win` folder
+  - Download [from here](https://github.com/libjpeg-turbo/libjpeg-turbo) and build it in the `./dependencies/win` of the project root folder.
   - `mkdir build` and `cd build`
   - Configure: `cmake .. -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release`
   - Build: `cmake --build . --config Release`
   - Add the include and library folders manually to the Skia release build config below.
 
 ### 2.3.3.2 Generate build files for Skia Release
-- Navigate to: `./dependencies/win/skia`
+- Navigate to: `./dependencies/win/skia` of the project root folder.
+- create folder: `mkdir out\Release`
+- Execute command: in powershell CLI: 
+```
+@"
+is_debug = false
+is_official_build = true
+skia_use_gl = true
+target_cpu = "x64"
+skia_use_system_zlib = false
+skia_use_system_harfbuzz = false
+skia_use_system_libpng = false
+skia_use_system_libwebp = false
+skia_use_expat = false
+skia_use_icu = false  # no international text layout, no BiDi!
+extra_cflags = [
+"/ID:/CPP/Projects/OPEN_SOURCE/control/dependencies/win/libjpeg-turbo/src",  "/ID:/CPP/Projects/OPEN_SOURCE/control/dependencies/win/libjpeg-turbo/build"
+]
+"@ | Out-File out\Release\args.gn -Encoding ASCII
+```
+
 - Execute: `.\bin\gn args out\Release`
 
-> *Editor opens past in this, and save & close the editor and **`gn`** will **continue** :*
->
-
->``` text  
->is_debug = false
->is_official_build = true
->skia_use_gl = true
-># skia_use_vulkan = true       # Windows: Supported
-># skia_use_d3d = false         # Windows: Experimental support
-># skia_use_metal = false       # NOT for Windows. Mac Only
->target_cpu = "x64"
->skia_use_system_zlib = false
->skia_use_system_harfbuzz = false
->skia_use_system_libpng = false
->skia_use_system_libwebp = false
->skia_use_expat = false
->skia_use_icu = false  # no international text layout, no BiDi!
->extra_cflags = [
->"/ID:/CPP/Projects/OPEN_SOURCE/control/dependencies/win/libjpeg-turbo/src",  # Check this path!  relative MAY produce headache!
->"/ID:/CPP/Projects/OPEN_SOURCE/control/dependencies/win/libjpeg-turbo/build" # Check this path!  relative MAY produce headache!
->]
-> ```
-
-- Build it: `ninja -C out\Release`
-
->``` text
-> Result should be the `skia.lib` file among others
->```
-
+<br>
 
 ### 2.4 ⚠️ Common Pitfalls (Windows)
 Setup your build environment in Windows is by definition more error sensitive then setting it up in Linux. Here a a few tips to help you avoid (build) issues:
