@@ -19,7 +19,7 @@
 `sudo adduser --gecos "" --disabled-password nico`  
 `echo "nico:nico" | sudo chpasswd`  
 `usermod -aG sudo nico`
-1. in the WSL run this these commands
+1. in the WSL run this these commands  
 `sudo apt update`  
 `sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev   libx11-dev gdb libxkbcommon-dev libxinerama-dev libxcursor-dev libxi-dev`
 1. In the WSL run this command to find include folder for glfw
