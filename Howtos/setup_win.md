@@ -4,6 +4,7 @@ layout: default_c
 RefPages:
 - setup_linux
 - setup_win
+- VSC-AgentMode_win
 - building_project
 --- 
 
@@ -17,6 +18,8 @@ RefPages:
 &nbsp;&nbsp; 📚  Visual Studio code (optional)  
 &nbsp;&nbsp; 📚  Python 3  
 &nbsp;&nbsp; 📚  PowerShell  
+
+**Setup wit VSC Agent [See here](VSC-AgentMode_win)**
 
 <br>
 
