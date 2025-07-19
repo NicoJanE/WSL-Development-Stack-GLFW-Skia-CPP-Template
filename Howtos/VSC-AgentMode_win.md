@@ -25,6 +25,7 @@ I'm curious how this works for others. Please let me know in the discussion sect
 - Copilot may skip updating the Makefiles.  
   👉 **Fix:** At the end, ask Copilot:  
   *"Something tells me you forgot to update the Makefiles — did you?"*
+- it remove the `opengl32` library  from the `window.cmake` file(GLFW_LIBS_WIN_LOCAL) which resulted in errors while running `./build.ps1`
 - ✅ **Always ask at the end:** *"Did you skip a step?"* after Copilot finishes.
 
 <br>
