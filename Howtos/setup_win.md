@@ -237,6 +237,7 @@ This will create the Skia release library
   - Configure: `cmake .. -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release`
   - Build: `cmake --build . --config Release`
   - Add the include and library folders manually to the Skia release build config below.
+  - Make sure you return to the subfolder `l/dependencies/win/skia` of the `project root` folder!
 
 ### 2.3.3.2 Generate build files for Skia Release
 - Navigate to: `./dependencies/win/skia` of the project root folder.
