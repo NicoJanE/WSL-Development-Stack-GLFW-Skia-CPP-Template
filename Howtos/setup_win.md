@@ -257,7 +257,7 @@ skia_use_system_libwebp = false
 skia_use_expat = false
 skia_use_icu = false  # no international text layout, no BiDi!
 extra_cflags = [
-"/ID:/CPP/Projects/OPEN_SOURCE/control/dependencies/win/libjpeg-turbo/src",  "/ID:/CPP/Projects/OPEN_SOURCE/control/dependencies/win/libjpeg-turbo/build"
+"/I../../../libjpeg-turbo/src",  ""/I../../../libjpeg-turbo/build""
 ]
 "@ | Out-File out\Release\args.gn -Encoding ASCII
 ```
