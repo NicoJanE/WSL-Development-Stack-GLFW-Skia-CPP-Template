@@ -232,7 +232,8 @@ This creates the debug build!
 This will create the Skia release library
 
 ### 2.3.3.1 Install `libjpeg-turbo` 
-  - Download [from here](https://github.com/libjpeg-turbo/libjpeg-turbo) and build it in the `./dependencies/win` of the project root folder.
+  - Navigate to: `./dependencies/win` of the project root folder.
+  - Download [from here](https://github.com/libjpeg-turbo/libjpeg-turbo) and build it
   - `mkdir build` and `cd build`
   - Configure: `cmake .. -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release`
   - Build: `cmake --build . --config Release`
