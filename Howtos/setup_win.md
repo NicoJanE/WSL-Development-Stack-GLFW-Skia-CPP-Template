@@ -260,7 +260,11 @@ extra_cflags = [
 "@ | Out-File out\Release\args.gn -Encoding ASCII
 ```
 
-- Execute: `.\bin\gn args out\Release`
+- Execute: `.\bin\gn gen out\Release`
+This creates the Release build!
+
+- Make sure to be in the folder: `project root\dependencies\win\skia`
+- **Build** it: `ninja -C out\Release`
 
 <br>
 
