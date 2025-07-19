@@ -2,9 +2,13 @@
 
 <br>
 
+<!-- copilot-ignore-start -->
+<small>***Note*** *instructions for AI Agent VSC for manual instruction [Linux go here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)*
+</small>
+<!-- copilot-ignore-end -->
+
+
 # 1 Linux Setup Instruction
-
-
 
 1. Make sure your in the PROJECT_ROOT
 2. Check if the WSL_DEST_LOC exists if not create it
