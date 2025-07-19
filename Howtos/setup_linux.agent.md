@@ -16,12 +16,12 @@
 1. in the WSL run this command
 `sudo apt upgrade`
 1. in the WSL run this these commands
-`sudo adduser --gecos "" --disabled-password nico`
-` echo "nico:nico" | sudo chpasswd`
+`sudo adduser --gecos "" --disabled-password nico`  
+`echo "nico:nico" | sudo chpasswd`  
 `usermod -aG sudo nico`
 1. in the WSL run this these commands
-`sudo apt update`
-`sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev libx11-dev gdb libxkbcommon-dev libxinerama-dev libxcursor-dev libxi-dev`
+`sudo apt update`  
+`sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev   libx11-dev gdb libxkbcommon-dev libxinerama-dev libxcursor-dev libxi-dev`
 1. In the WSL run this command to find include folder for glfw
 `dpkg -L libglfw3-dev | grep '\.h$'`
 1. Use the above found location to update the variable 'GLFW_LINUX_INCLUDE_DIR' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder
