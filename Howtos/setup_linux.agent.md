@@ -32,8 +32,31 @@
 1. In the WSL run this command to find include folder for glfw
 `dpkg -L libglfw3-dev | grep '\.so'`
 1. Use the above found location to update the variable 'GLFW_LINUX_LIB_DIR' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder
-1. SKIA TOD
-
-
+1. in the WSL run this these commands  
+`sudo apt update`  
+`sudo apt install build-essential git python3 pkg-config libglu1-mesa-dev libgl1-mesa-dev ninja-build libfontconfig1-dev libexpat1-dev libfreetype6-dev libpng-dev libjpeg-dev libharfbuzz-dev libwebp-dev mesa-utils vulkan-tools`
+1. In the WSL make a directory in for the user home directory, in the WSL run this these commands  
+`/home/nico/tools/libs`
+`cd /home/nico/tools/libs`
+1. Next we Install the library depot_tools. In the WSL run this these commands  
+`git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git`
+` echo 'export PATH="$HOME/tools/libs/depot_tools:$PATH"' >> ~/.bashrc`
+`source ~/.bashrc`
+1. Configure Skia to create Shared Debug build. In the WSL run this these commands  (preferred)
+`./bin/gn gen out/debug/shared --args='is_debug=true is_official_build=false is_component_build=true skia_use_gl=true`
+`ninja -C out/debug/shared`
+1. Configure Skia to create Shared Release build. In the WSL run this these commands  
+`./bin/gn gen out/release/shared --args='is_debug=false is_official_build=true is_component_build=true skia_use_gl=true' `
+`ninja -C out/release/shared`
+1. Configure Skia to create static Release build. Ask the user if he wants this.IF yes the  In the WSL run this these commands  
+`./bin/gn gen out/release/static --args='is_official_build=true is_component_build=false is_debug=false skia_use_gl=true' `
+`ninja -C out/release/static`
+1. Configure Skia to create static Debug build. Ask the user if he wants this.IF yes the  In the WSL run this these commands  
+`./bin/gn gen out/debug/static --args='is_debug=true is_official_build=false is_component_build=false skia_use_gl=true' `
+`ninja -C out/debug/static`
+1. Indicate to the user that the `cmake.linux` file will be update for the 'Shared Debug build'
+1. update the variable 'SKIA_LINUX_CORE_INCLUDE_DIR' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder with the skia include folder
+1. update the variable 'SKIA_LINUX_LIBS_DIR' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder. with the skia library folder of the Shared Debug build.
+1. Check the variable 'SKIA_LIBS_LOCAL' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder. this should already be okay.
 
 **Use the the build documentation to build the [sample project](building_project)**
