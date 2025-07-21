@@ -1,6 +1,6 @@
 # What
 
-This is a template C++ project using the ***GLFW*** library to create a **Graphical User Interface control** for both Windows and Linux. It uses **CMake** as the build system. It includes a Skia-based sample project source project.
+This is a template C++ project using the ***GLFW*** library to create a **Graphical User Interface control** for both Windows and Linux. It uses **CMake** as the build system. It includes a Skia-based sample source project.
 
 > The **GLFW** library is based on OpenGL, OpenGL ES, and Vulkan. It provides an API for creating windows, handling input, and managing events.  
 > For more information, [see the official GLFW website](https://www.glfw.org/)
@@ -94,14 +94,14 @@ The **Skia** library is used for building core GUI components. Skia requires:
 
 ## 3. Future instructions
 
-**Build Environment Setup** instructions can be found here:
+**Build Environment Setup** manual instructions can be found here (see also the **Quick Configurations links** at the top):
 
 - [For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
 - [For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
 
-Note that both use the same project source folder to build (Linux is build from the WSL Windows mount )
+>Note that both use the same project source folder to build (Linux is build from the WSL Windows mount )
 
-**Project build instruction** instructions for building the app with the  VSC or Visual Studio or via the console can be found [here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
+**Project build instruction** instructions for building the Sample with the VSC or Visual Studio or via the console can be found [here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
 <br>
 
