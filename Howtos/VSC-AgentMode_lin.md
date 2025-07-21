@@ -1,3 +1,12 @@
+---
+layout: default_c
+
+RefPages:
+- setup_linux
+- setup_win
+- building_project
+--- 
+
 # What 
 This will try to automatically (or semi-automatically) set up the Windows environment for our project. It uses the Visual Studio Code **Copilot Agent**.
 
