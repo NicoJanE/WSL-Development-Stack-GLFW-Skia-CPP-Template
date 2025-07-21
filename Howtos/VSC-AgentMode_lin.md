@@ -40,7 +40,9 @@ Clone the GitHub repository https://github.com/NicoJanE/WSL-Development-Stack-GL
 <br>
 
 ## Step 2 Build Linux(WSL) environment
- 
+Enter the variables below and after that enter this text in Copilot 
+
+```
 Automate all steps from the referenced setup guide #fetch https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux.agent.md, strictly in the order written.
 Aks the user to combine all suitable WSL steps into one or two scrip, or to excute them seperatly, but in both cases you should run the script(s). Take the following variable into account variables are all uppercase and for a space a _ (underscore) is used :
 - A variable that holds the project root of the project:
@@ -57,6 +59,7 @@ Also take these rules into account!:
 - That after running the script, you expect a summary of what was executed and confirmation that each step (including file edits) was completed.
 - That you want explicit confirmation if any step was skipped or not possible to automate.
 - Always report any errors encountered during the build process.
+```
 
 **Note**
 This step may ask you if it should combine all WSL instructions into one or not, you can answer this one of the two ways:
