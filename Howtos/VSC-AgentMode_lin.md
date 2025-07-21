@@ -44,7 +44,7 @@ Enter the variables below and after that enter this text in Copilot
 
 ```
 Automate all steps from the referenced setup guide #fetch https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux.agent.md, strictly in the order written.
-Aks the user to combine all suitable WSL steps into one or two scrip, or to excute them seperatly, but in both cases you should run the script(s). Take the following variable into account variables are all uppercase and for a space a _ (underscore) is used :
+Aks the user to combine all suitable WSL steps into one or two scrip, or to execute them separately, but in both cases you should run the script(s). Take the following variable into account variables are all uppercase and for a space a _ (underscore) is used :
 - A variable that holds the project root of the project:
   - PROJECT_ROOT: `D:\Temp\MyApp3`
 - A variable that points to an exported WSL file which we will import via the setup guide:

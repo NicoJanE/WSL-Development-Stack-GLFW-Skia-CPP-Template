@@ -42,7 +42,7 @@ I'm curious how this works for others. Please let me know in the discussion sect
 ## Step 1 Create open new project.
 
 Enter the following text, and follow the instructions in Copilot:
-> <small>Note This is the same step as in the procedure as in the Windows based Copilot instructions [here](VSC-AgentMode_win) in that case **skip this step** </small>
+> <small>Note This is the same step as in the procedure as in the Linux based Copilot instructions [here](VSC-AgentMode_lin) in that case **skip this step** </small>
 
 ```
 Clone the GitHub repository https://github.com/NicoJanE/WSL-Development-Stack-GLFW-Skia-CPP-Template into a new subfolder named MyApp inside d:\Temp, and open that folder as a project in Visual Studio Code.
