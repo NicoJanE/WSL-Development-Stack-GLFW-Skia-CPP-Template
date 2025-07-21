@@ -52,7 +52,7 @@
 1. Sync dependencies for Skia, in the WSL run this this command:  
 `python3 tools/git-sync-deps`  
 1. check if `gn` is installed, in the WSL run this these commands:  
-`export PATH="$HOME/tools/libs/depot_tools:$PATH"`
+`export PATH="$HOME/tools/libs/depot_tools:$PATH"`  
 `which gn`
 1. Configure Skia to create Shared Debug build. In the WSL run this these commands  (preferred)
 `./bin/gn gen out/debug/shared --args='is_debug=true is_official_build=false is_component_build=true skia_use_gl=true' `  
