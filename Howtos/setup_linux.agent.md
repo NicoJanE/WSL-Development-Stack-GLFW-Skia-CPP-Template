@@ -53,21 +53,29 @@
 `python3 tools/git-sync-deps`  
 1. check if `gn` is installed, in the WSL run this this command:  
 `which gn  `
+
+
+
+
 1. Configure Skia to create Shared Debug build. In the WSL run this these commands  (preferred)
 `./bin/gn gen out/debug/shared --args='is_debug=true is_official_build=false is_component_build=true skia_use_gl=true' `  
 `ninja -C out/debug/shared`  
+1. After running the Skia build commands, check that `/home/nico/tools/libs/skia/out/debug/shared` exists and contains the expected build artifacts. If not, investigate and fix the build before proceeding. 
 1. Configure Skia to create Shared Release build. In the WSL run this these commands  
 `./bin/gn gen out/release/shared --args='is_debug=false is_official_build=true is_component_build=true skia_use_gl=true' `  
 `ninja -C out/release/shared`  
+1. After running the Skia build commands, check that `/home/nico/tools/libs/skia/out/Release/shared` exists and contains the expected build artifacts. If not, investigate and fix the build before proceeding. 
 1. Configure Skia to create static Release build. Ask the user if he wants this.IF yes the  In the WSL run this these commands  
 `./bin/gn gen out/release/static --args='is_official_build=true is_component_build=false is_debug=false skia_use_gl=true' `  
 `ninja -C out/release/static`  
+1. After running the Skia build commands, check that `/home/nico/tools/libs/skia/out/release/static` exists and contains the expected build artifacts. If not, investigate and fix the build before proceeding. 
 1. Configure Skia to create static Debug build. Ask the user if he wants this.IF yes the  In the WSL run this these commands  
 `./bin/gn gen out/debug/static --args='is_debug=true is_official_build=false is_component_build=false skia_use_gl=true' `  
 `ninja -C out/debug/static`
-1. Indicate to the user that the `cmake.linux` file will be update for the 'Shared Debug build'
-1. update the variable 'SKIA_LINUX_CORE_INCLUDE_DIR' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder with the skia include folder
-1. update the variable 'SKIA_LINUX_LIBS_DIR' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder. with the skia library folder of the Shared Debug build.
+1. After running the Skia build commands, check that `/home/nico/tools/libs/skia/out/debug/static` exists and contains the expected build artifacts. If not, investigate and fix the build before proceeding. 
+1. Indicate to the user that the `cmake.linux` file will be update according the `out/debug/shared` folder
+1. Update the variable 'SKIA_LINUX_CORE_INCLUDE_DIR' in the  file 'linux.cmake', which can be found in the PROJECT_ROOT/cmake/ folder with the skia include folder
+1. Update the variable 'SKIA_LINUX_LIBS_DIR' in the  file 'linux.cmake,' which can be found in the PROJECT_ROOT/cmake/ folder. with the skia library folder of the Shared Debug build.
 1. Check the variable 'SKIA_LIBS_LOCAL' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder. this should already be okay.
-1. check yourself that you did not skip a step, if you skipped a step, try to fix/ run that step now
+1. check yourself that you did not skip a step, if you skipped a step, try to fix/ run that step now.
 1. **Use the the build documentation to build the [sample project for linux](building_project)**
