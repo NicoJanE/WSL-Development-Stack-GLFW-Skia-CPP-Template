@@ -7,8 +7,8 @@ RefPages:
 - building_project
 --- 
 
-# What 
-This will try to automatically (or semi-automatically) set up the Windows environment for our project. It uses the Visual Studio Code **Copilot Agent**.
+# What VSC Agent
+This will try to automatically (or semi-automatically) set up the Linux WSL environment for our project. It uses the Visual Studio Code **Copilot Agent**.
 
 I'm not sure how reliable this is. It worked for me after a lot of tweaking and adjusting the documentation.
 
@@ -27,7 +27,7 @@ I'm curious how this works for others. Please let me know in the discussion sect
 
 <br>
 
-# Steps
+# Steps for Linux WSL
 
 ## Step 1 Create open new project.
 

@@ -7,7 +7,7 @@ RefPages:
 - building_project
 --- 
 
-# What 
+# What VSC Agent
 This will try to automatically (or semi-automatically) set up the Windows environment for our project. It uses the Visual Studio Code **Copilot Agent**.
 
 I'm not sure how reliable this is. It worked for me after a lot of tweaking and adjusting the documentation (and perhaps a few unfriendly words directed at Copilot 😉). I tried disabling the "Continue?" prompt, but it still keeps asking,  I haven't found a fix for that yet.
@@ -37,7 +37,7 @@ I'm curious how this works for others. Please let me know in the discussion sect
 
 <br>
 
-# Steps
+# Steps for Windows
 
 ## Step 1 Create open new project.
 
