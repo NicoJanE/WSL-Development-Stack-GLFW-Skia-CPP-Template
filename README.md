@@ -1,9 +1,9 @@
 # What
 
-This is a template C++ project using the ***GLFW*** library to create a **Graphical User Interface control** for both Windows and Linux. It uses **CMake** as the build system.
+This is a template C++ project using the ***GLFW*** library to create a **Graphical User Interface control** for both Windows and Linux. It uses **CMake** as the build system. It includes a Skia-based sample project source project.
 
 > The **GLFW** library is based on OpenGL, OpenGL ES, and Vulkan. It provides an API for creating windows, handling input, and managing events.  
-> For more information, [see the official GLFW website](https://www.glfw.org/).
+> For more information, [see the official GLFW website](https://www.glfw.org/)
 
 
 > The Library **Skia**
@@ -11,16 +11,13 @@ This is a template C++ project using the ***GLFW*** library to create a **Graphi
 > It is the core graphics engine behind Chrome, Flutter, and Firefox (Canvas). [website](https://skia.org/) 
 
 
-#### Quick links
+#### Quick Configurations links
 
 1. [Environment instructions For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
-    - [💫 New VSC Agent Setup](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin)    
-1. [Environment instructions For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)    
+    - [💫 New VSC Agent Setup (A quick way to configure the WSL)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin)    
+1. [Environment instructions For Windows (A Quick way to configure Windows)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)    
     - [💫 New VSC Agent Setup](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win)    
 1. [Build project](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
-
-<br>
-📧 NicoJanE@ziggo.nl
 
 <br>
 
@@ -102,8 +99,12 @@ The **Skia** library is used for building core GUI components. Skia requires:
 - [For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
 - [For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
 
-Note that both use the same project source folder to build (Linx is build from the WSL WWindos mount )
+Note that both use the same project source folder to build (Linux is build from the WSL Windows mount )
 
-**Project build instruction** instructions for building the app with the  VSC or Visual Studio or via the consol can be found [here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
+**Project build instruction** instructions for building the app with the  VSC or Visual Studio or via the console can be found [here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
 <br>
+
+
+*Contact & Remarks*  
+📧 NicoJanE@ziggo.nl
