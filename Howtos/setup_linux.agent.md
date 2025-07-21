@@ -43,14 +43,15 @@
 `git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git`  
 ` echo 'export PATH="$HOME/tools/libs/depot_tools:$PATH"' >> ~/.bashrc`  
 `source ~/.bashrc`
-1. In the WSL make a directory in for the user home directory, in the WSL run this these commands  
+1. In the WSL makes to clone Skia, in the WSL run this these commands  
 `cd /home/nico/tools/libs`  
 `git clone https://skia.googlesource.com/skia.git`  
+1. In the WSL makes to checkout m126 of Skia , in the WSL run this these commands  
 `cd /home/nico/tools/libs/skia`  
 `git checkout chrome/m126`
-1. Sync dependencies for Skia, in the WSL run this these command:  
+1. Sync dependencies for Skia, in the WSL run this this command:  
 `python3 tools/git-sync-deps`  
-1. check if `gn` is installed, in the WSL run this these command:  
+1. check if `gn` is installed, in the WSL run this this command:  
 `which gn  `
 1. Configure Skia to create Shared Debug build. In the WSL run this these commands  (preferred)
 `./bin/gn gen out/debug/shared --args='is_debug=true is_official_build=false is_component_build=true skia_use_gl=true' `  
