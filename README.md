@@ -14,6 +14,7 @@ This is a template C++ project using the ***GLFW*** library to create a **Graphi
 #### Quick links
 
 1. [Environment instructions For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
+    - [💫 New VSC Agent Setup](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin)    
 1. [Environment instructions For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)    
     - [💫 New VSC Agent Setup](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win)    
 1. [Build project](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)

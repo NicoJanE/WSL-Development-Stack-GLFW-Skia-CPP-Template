@@ -13,24 +13,21 @@ This will try to automatically (or semi-automatically) set up the Windows enviro
 I'm not sure how reliable this is. It worked for me after a lot of tweaking and adjusting the documentation (and perhaps a few unfriendly words directed at Copilot 😉). I tried disabling the "Continue?" prompt, but it still keeps asking,  I haven't found a fix for that yet.
 
 
-**Feedback**  
-I'm curious how this works for others. Please let me know in the discussion section. I will set up an issue titled **"VSC Agent Mode Experience"**. Based on my experience, here are a few things that might go wrong:
+>**Feedback**  
+I'm curious how this works for others. Please let me know in the discussion section. I will set up an issue titled **"VSC Agent Mode Experience"** you can add your experience there if you like. Based on my experience, here are a few things that might go wrong:
+>
+>**What can go wrong**
+>- GLFW 3.4 is downloaded to the wrong folder, causing the process to stop.  
+>  👉 **Fix:** Move the files to the expected location.
+>- Copilot may skip updating the Makefiles.  
+>  👉 **Fix:** At the end, ask Copilot:  
+>  *"Something tells me you forgot to update the Makefiles — did you?"*
+>- it remove the `opengl32` library  from the `window.cmake` file(GLFW_LIBS_WIN_LOCAL) which resulted in errors while running `./build.ps1`
+>- ✅ **Always ask at the end:** *"Did you skip a step?"* after Copilot finishes.
 
 <br>
 
-**What can go wrong**
-- Everything. 🙂
-- GLFW 3.4 is downloaded to the wrong folder, causing the process to stop.  
-  👉 **Fix:** Move the files to the expected location.
-- Copilot may skip updating the Makefiles.  
-  👉 **Fix:** At the end, ask Copilot:  
-  *"Something tells me you forgot to update the Makefiles — did you?"*
-- it remove the `opengl32` library  from the `window.cmake` file(GLFW_LIBS_WIN_LOCAL) which resulted in errors while running `./build.ps1`
-- ✅ **Always ask at the end:** *"Did you skip a step?"* after Copilot finishes.
-
-<br>
-
-## Requirements: Install with VSC Agent
+## Prepare for Installation With VSC Agent
 
 1. Open **Visual Studio Code**.
 2. Open **Copilot** and ensure **Agent** is selected from the dropdown.
@@ -40,20 +37,23 @@ I'm curious how this works for others. Please let me know in the discussion sect
 
 <br>
 
-## Steps to running with VSC Agent
+# Steps
 
-**Step 1 Create open new project.**
+## Step 1 Create open new project.
 
-Enter the following text, and follow the instructions in copliot:
+Enter the following text, and follow the instructions in Copilot:
+> <small>Note This is the same step as in the procedure as in the Windows based Copilot instructions [here](VSC-AgentMode_win) in that case **skip this step** </small>
 
 ```
 Clone the GitHub repository https://github.com/NicoJanE/WSL-Development-Stack-GLFW-Skia-CPP-Template into a new subfolder named MyApp inside d:\Temp, and open that folder as a project in Visual Studio Code.
 ```
 
-**Step 2 Build Windows environment**
+<br>
 
-Assumed the Step 1 created `MyApp` and opened it in VSC.
-The following step is semi automatic Setup enter this:
+## Step 2 Build Windows environment
+
+Assuming the *Step 1* was successful created and the project folder is  opened it in VSC.
+Enter the following instruction into you PowerShell :
 
 ```
 Automate all steps from the referenced setup guide #fetch https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win, strictly in the order written. For each step:
@@ -69,6 +69,8 @@ Automate all steps from the referenced setup guide #fetch https://nicojane.githu
 - Do not pause or request any user confirmation between steps; proceed automatically to the next step as soon as the previous one completes successfully
 ```
 
-**Step 3**
-**Always ask at the end: 'Did you skip a step' after Copilot is finished**
+<br>
+
+## Step 3
+**Always ask at the end: 'Did you skip a step ?' after Copilot is finished**
 

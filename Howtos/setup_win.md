@@ -19,7 +19,7 @@ RefPages:
 &nbsp;&nbsp; 📚  Python 3  
 &nbsp;&nbsp; 📚  PowerShell  
 
-**Setup wit VSC Agent [See here](VSC-AgentMode_win)**
+**💫 New Setup wit VSC Agent [See here](VSC-AgentMode_win)**
 
 <br>
 

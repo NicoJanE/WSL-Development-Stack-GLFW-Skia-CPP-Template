@@ -6,6 +6,7 @@ RefPages:
 - building_project
 --- 
 <br>
+
 # What
 
 This is a template C++ project using the ***GLFW*** library to create a **Graphical User Interface control** for both Windows and Linux. It uses **CMake** as the build system.

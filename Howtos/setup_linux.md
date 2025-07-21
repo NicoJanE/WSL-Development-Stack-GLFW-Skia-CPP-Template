@@ -16,6 +16,9 @@ RefPages:
 This template is intended for use with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 11** host.
 This section explains how to configure a Linux environment to build your GLFW/Skia project under WSL. **Check** the **three steps** below and use the side notes / instructions when appropriate 
 
+**💫 New Setup with VSC Agent [See here](VSC-AgentMode_lin)**
+
+<br>
 
 **1. Start** your WSL, or **create** one first with using, for example, the WSL **import** command: (For instructions on how to **manually install** a WSL distribution, see the **link** at the end of this section.)
 
