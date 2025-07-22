@@ -1,3 +1,16 @@
+<details>
+<summary>📑 Table of Contents</summary>
+
+- [1 Overview](#1-overview)
+  - [1.1 Key Libraries Used](#11-key-libraries-used)
+  - [1.2 Quick Setup Links](#12-quick-setup-links)
+- [2 GLFW vs Skia](#2-glfw-vs-skia-roles-and-usage)
+- [3 Template Project Architecture](#3-the-template-project-architecture)
+- [4 Future Instructions](#4-future-instructions)
+
+</details>
+
+
 
 # 1 Overview
 
@@ -8,29 +21,7 @@ The project is preconfigured with:
 - A `CMakePresets.json` file for easy integration with **Visual Studio 2022** on Windows.
 
 
-
-### 1.1 Key Libraries Used
-
-#### GLFW, Windowing & Input
-
-[GLFW](https://www.glfw.org/) is a lightweight, cross-platform library. It’s commonly used for building real-time applications like games, simulations, and custom GUI frameworks. It provides:
-
-- **OpenG**L - OpenGL ES, and Vulkan context creation
-- **Window** -  creation and management
-- **Input** - handling (keyboard, mouse, etc.)
-
-
-
-#### Skia, 2D Graphics Engine
-
-[Skia](https://skia.org/) is a high-performance 2D graphics library. It supports text rendering, vector shapes, images, gradients, and more, all with hardware acceleration. In this project, Skia handles all 2D drawing, while GLFW handles the window and input. Also used by: Google Chrome, Flutter, Mozilla Firefox (Canvas API)
-
-- **Backend flexibility** – Unified API for CPU/GPU via OpenGL, Vulkan, Metal, or software.
-- **Precision rendering** – Anti-aliased text, vector shapes, and subpixel accuracy.
-- **Versatile output** – Renders to OpenGL surfaces, images, PDFs, or SVG.
-
-
-### 1.2 Quick Setup Links
+### 1.1 Quick Setup Links
 
 1. [Manual instructions For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
     - 💫 [VSC Agent Mode (WSL)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin)    
@@ -40,14 +31,42 @@ The project is preconfigured with:
 
 <br>
 
-## 2. GLFW vs Skia,  Roles and Usage
+## 2. Libraries GLFW & Skia
+This project uses two complementary, cross-platform libraries: GLFW for creating windows, managing graphics contexts, and handling user input, and Skia for high-performance, hardware-accelerated 2D drawing. GLFW focuses on windowing and input management without providing graphics rendering itself, which is why Skia is used to handle all rendering of text, images, and shapes with GPU acceleration. Together, they provide a robust foundation for building responsive and visually rich applications across Windows, Linux, and macOS.
 
-- **GLFW** is used for **creating windows**, managing **OpenGL or Vulkan contexts**, and handling **input events** (keyboard, mouse, etc.).
-- **Skia** is used for **high-level 2D drawing**, including **text, images, shapes**, and **anti-aliased graphics**.
-- They serve complementary roles with **minimal overlap**: *GLFW* provides the **platform and context**; *Skia* does the **drawing**.
-- In this project, GLFW handles windowing and input, while Skia handles all drawing operations.
+#### GLFW, Windowing & Input
+
+[GLFW](https://www.glfw.org/) is a lightweight, cross-platform library. It’s commonly used for building real-time applications like games, simulations, and custom GUI frameworks. It provides:
+
+- **OpenG**L - OpenGL ES, and Vulkan context creation
+- **Window** - creation and management
+- **Input** - handling (keyboard, mouse, etc.)
 
 
+
+#### Skia, 2D Graphics Engine
+
+[Skia](https://skia.org/) is a high-performance 2D graphics library. It supports text rendering, vector shapes, images, gradients, and more, all with hardware acceleration. In this project, Skia handles all 2D drawing, while GLFW handles the window and input. Note that it is also used by: Google Chrome, Flutter, Mozilla Firefox (Canvas API)
+
+- **Backend flexibility** – Unified API for CPU/GPU via OpenGL, Vulkan, Metal, or software.
+- **Precision rendering** – Anti-aliased text, vector shapes, and subpixel accuracy.
+- **Versatile output** – Renders to OpenGL surfaces, images, PDFs, or SVG.
+
+<details>
+<summary> 🧰 Skia Requirement:  
+</summary>
+
+<br>
+
+> ### **Skia** library requires:  
+>
+>&nbsp;&nbsp; 📚  Python 3  
+>&nbsp;&nbsp; 📚  Git  
+>&nbsp;&nbsp; 📚  Depot Tools  
+>
+>These are all installed automatically during the Windows and Linux setup procedures linked above.
+
+</details>
 
 <details>
 <summary>⚠️ OpenGL vs Vulkan Compatibility Notes
@@ -73,7 +92,7 @@ The project is preconfigured with:
 
 </details>
 
-
+<br>
 
 ## 3. The Template Project Architecture
 
@@ -103,16 +122,7 @@ The folder structure (<small> some folders and files are not include because the
 ├──📦CMakeLists.txt             ➜ <i>Main CMake file</i>
 ├──📦CMakePresets.json          ➜ <i>Used to load the project in Visual Studio 2022</i>
 
-
-
-
 </code></pre>
-
-The **GLFW** library is used to create a canvas and to provide events and input.  
-The **Skia** library is used for building core GUI components. Skia requires:  
-&nbsp;&nbsp; 📚  Python 3  
-&nbsp;&nbsp; 📚  Git  
-&nbsp;&nbsp; 📚  Depot Tools  
 
 <br>
 
@@ -121,7 +131,7 @@ The **Skia** library is used for building core GUI components. Skia requires:
 **Build Environment Setup** manual instructions can be found here (see also the **Quick Configurations links** at the top):
 
 - [For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
-- [For Window](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
+- [For Windows](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
 
 >Note that both use the same project source folder to build (Linux is build from the WSL Windows mount )
 
