@@ -30,8 +30,11 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 - In your project folder create, if needed, a folder `dependencies\win\` 
 - change to: `dependencies\win\` 
 - Download [glfw-3.4.zip](https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip) in the folder `dependencies\win\` 
-- Extract the contents of glfw-3.4.zip into dependencies\win\glfw-3.4 so that the files are directly inside glfw-3.4 (not in a nested subfolder).
-- Use a reliable extraction tool that does not skip hidden or system files.
+- for the next step use a reliable extraction tool that does not skip hidden or system files.
+- Extract the contents of glfw-3.4.zip into `dependencies\win\glfw-3.4` so that the files are directly inside glfw-3.4 (not in a nested subfolder).
+- Check if the extraction did NOT happen in a sub folder like `dependencies\win\glfw-3.4\glfw-3.4`.
+- When the files are in `dependencies\win\glfw-3.4\glfw-3.4` move the files and sub folders from `dependencies\win\glfw-3.4\glfw-3.4`. to:  `dependencies\win\glfw-3.4\`.
+
 
 
 ### 2.2.1. dynamically(DLL) multithreaded libraries (preferred)
