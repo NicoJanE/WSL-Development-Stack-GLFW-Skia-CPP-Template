@@ -3,6 +3,11 @@
 
 # Ignore any file (at any level) starting with an underscore
 **/_*
+# Except readme files
+!**/_README.md
+# Ignore all DLLs
+**/*.dll
+
 
 .njerepo
 .history

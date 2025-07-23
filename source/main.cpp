@@ -1,6 +1,37 @@
-#include "GLFW/glfw3.h"
+﻿#include "GLFW/glfw3.h"
 #define SK_GANESH
 #define SK_GL
+
+
+/*
+ src/					// C++ Business code
+ src/gui/GLFW/		// GLFW C code
+ src/gui/Skia/		// SKia C++code
+ src/include/GLFW
+ src/include/skia
+ OR
+ src/					// C++ Business code
+ src/gui/GLFW/		// GLFW C code
+ src/gui/Skia/		// SKia C++code
+ include/GLFW
+ include/skia
+
+ Or somethings else THIS:
+src/
+  core/                // Core business logic
+  gui/
+    glfw/              // GLFW backend integration (can be C++)
+    skia/              // Skia integration (C++)
+
+include/
+  myproject/           // Public headers, namespaced
+    gui/
+      glfw/
+      skia/
+
+
+*/
+
 
 // Includes when Skia is built with `skia_enable_gpu = false`
 // These are from the legacy non-Ganesh GPU headers
@@ -14,7 +45,7 @@
 // Note: As of July 2025 (master branch), enabling `skia_enable_gpu = true` breaks the build.
 // This may be resolved in a future Chromium milestone (possibly M126+)
 
-// #include "include/gpu/ganesh/GrBackendSurface.h"
+// #include "include/gpu/ganesh/GrBackendSurface.h" 
 // #include "include/gpu/ganesh/GrDirectContext.h"
 // #include "include/gpu/ganesh/gl/GrGLInterface.h"
 // #include "include/gpu/ganesh/gl/GrGLAssembleInterface.h"

@@ -83,6 +83,24 @@ if (Test-Path $targetFile) {
     Write-Host "Warning: Target name file '$targetFile' not found.`n" -ForegroundColor Red 
 }
 
+#3.3 Copy the .dll file
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$SourceFile = Join-Path $ScriptDir "glfw3.dll"
+$DestinationFolder = ".\"
+if (Test-Path -Path $SourceFile -PathType Leaf) {
+    if (-not (Test-Path -Path $DestinationFolder -PathType Container)) {    
+        New-Item -Path $DestinationFolder -ItemType Directory | Out-Null
+    }
+
+    Copy-Item -Path $SourceFile -Destination $DestinationFolder -Force
+    Write-Host "Copied dependency '$SourceFile'." -ForegroundColor Green
+}else {
+    Write-Host "Warning: Dependency DLL file '$SourceFile' not found.`n" -ForegroundColor Red 
+}
+
+
+
+
 
 # 4. OPTIONAL Build Visual Studio files
 if ($Create_vs_project_files -eq $true) {
@@ -95,6 +113,10 @@ if ($Create_vs_project_files -eq $true) {
     Write-Host "`nDone, creating WindowsVisual Studio Project files!!"  -ForegroundColor Yellow
     Write-Host "- Use Visual Studio to build your project `n`n" 
 }
+
+
+
+
 
 Set-Location ..
 
