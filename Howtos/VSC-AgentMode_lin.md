@@ -55,6 +55,7 @@ Aks the user to combine all suitable WSL steps into one or two scrip, or to exec
   -WSL_DEST_NAME: test3 
 
 Also take these rules into account!: 
+- The commands are executed in the WSL from Windows
 - The script should run all steps from the referenced setup guide, including any manual edits (like updating CMake/make files) and verification steps.
 - That after running the script, you expect a summary of what was executed and confirmation that each step (including file edits) was completed.
 - That you want explicit confirmation if any step was skipped or not possible to automate.
