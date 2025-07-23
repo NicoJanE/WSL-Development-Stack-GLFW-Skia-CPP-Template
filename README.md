@@ -23,9 +23,10 @@ The project is preconfigured with:
 
 ### 1.1 Quick Setup Links
 
-1. [Manual instructions For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
+Before you can build the template project, you must configure the dependencies and project paths. You can do this manually or use the Copilot agent:
+1. [Manual Setup For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
     - 💫 [VSC Agent Mode (WSL)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin)    
-1. [Manual instructions For Windows](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)    
+1. [Manual Setup For Windows](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)    
     - 💫 [VSC Agent Mode (Windows)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win)    
 1. [Build the sample project](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
