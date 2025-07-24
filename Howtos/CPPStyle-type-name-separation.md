@@ -68,12 +68,14 @@ Even if the spacing is no longer aligned perfectly, the consistent tab (or wide 
 
 ## ❌ Responses to Common Objections
 
-| Objection | Response |
-|----------|----------|
-| **“Edits break alignment”** | This isn’t about *perfect* alignment — just visual separation. Even when types/names change, the spacing still improves clarity. |
+
+| Objection                     |Response                                                                                       |
+|:-----------------------------|:----------------------------------------------------------------------------------------------|
+| **“Edits break alignment”**  | This isn’t about *perfect* alignment — just visual separation. Even when types/names change, the spacing still improves clarity. |
 | **“Tabs render inconsistently”** | That’s a **configuration issue**, not a design flaw. Teams already enforce tab width in `.editorconfig`. |
 | **“Tooling doesn’t support this”** | Tooling can. Formatters like `clang-format` or `clang-tidy` could support this with minor tweaks. IDE extensions or AI-based formatting already make it easy. |
-| **“Creates noisy diffs”** | Diffs can **ignore whitespace**. This is a non-issue if proper tools and practices are used. |
+| **“Creates noisy diffs”**    | Diffs can **ignore whitespace**. This is a non-issue if proper tools and practices are used.   |
+
 
 ---
 
