@@ -1,3 +1,8 @@
+---
+layout: default_c
+
+--- 
+
 # Proposal: Visually Separate Type and Variable Name with a Tab
 
 ## 📌 Goal
