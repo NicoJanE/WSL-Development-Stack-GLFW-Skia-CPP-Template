@@ -58,6 +58,7 @@ Enter the following instruction into you PowerShell :
 ```
 Automate all steps from the referenced setup guide #fetch https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win, strictly in the order written. For each step:
 
+- First tel me which steps your going to do and number them
 - Stick to the order/sequence as defined!
 - Use the command as defined in this document, do't change them!
 - Do not perform any action before its place in the document; treat each bullet or numbered step as a mandatory checkpoint.
