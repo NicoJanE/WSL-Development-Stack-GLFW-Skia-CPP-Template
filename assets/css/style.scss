@@ -5,15 +5,15 @@
 
 :root{
   --nje-font-size: medium
-  --font-style: normal; 	/* normal, bold*/
+	--font-style: normal; 	/* normal, bold*/
 	--line-thickness: 3px;	/* original intent line thickness , that's why 3px is default */
   --nje-ident: 20px;      /* ident x pixels*/
   --nje-vmove: -18px;     /* Move vertical pixels, - is up + down*/
   --nje-number-of-spaces: 20px;
   --nje-color:black;
   --nje-size: 12px;
-  --nje-offset: 16px;
-  --nje-vmove2: -20px;
+  --nje-offset: 0px;
+  --nje-vmove2: -10px;
 }
 
 #content-wrapper {
@@ -191,8 +191,6 @@ a.button small {
   font-size: 11px;
 }
 
-
-
 .summary-icon {
   display: inline-block;
   width: 0;
@@ -204,6 +202,22 @@ a.button small {
   vertical-align: middle; 
 }
 
+.nje-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #3077c8;
+  background: #f5faff;
+  color: #2c8ac1ff;
+  cursor: pointer;
+}
+pre.nje-source-block {
+  position: relative;
+}
 
 .clickable-summary {
   cursor: pointer;
@@ -212,6 +226,23 @@ a.button small {
   font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial, serif;
   font-style: italic; 
   font-size:15px
+}
+
+.nje-cmd-one-line-sm {
+  background-color: #2e3440; 
+	color: #FFD700; 
+	padding-bottom: 10px; 
+	padding-top: 12px; 
+	border-radius: 5px; 
+  overflow-x: auto; 
+	line-height: 0.3;
+	position: relative; 	/* 1) Required for positioning the pseudo-elements (.nje-cmd-one-line button, .nje-cmd-multi-line button)  */
+	display: flex; 			  /* Use flexbox layout */
+  align-items: center;
+	justify-content: space-between; /* Space between the code and button */   
+  margin-left: 2px;
+  margin-top: -20px;
+  margin-bottom: 1px;
 }
 
 
@@ -250,6 +281,50 @@ a.button small {
 	display: flex; 			/* Use flexbox layout */
   align-items: center;
 	justify-content: space-between; /* Space between the code and button */   
+}
+
+/* Item below a 1e level bullet */
+.nje-cmd-one-line-sm-ident1 {
+  @extend .nje-cmd-one-line-sm-ident;
+  margin-left: 4px;
+  margin-top: 0px;
+  margin-bottom: 1px;
+}
+/* Item below a 2e level bullet */
+.nje-cmd-one-line-sm-ident2 {
+  @extend .nje-cmd-one-line-sm-ident;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+/* Item below a 3e level  bullet */
+.nje-cmd-one-line-sm-ident3 {
+  @extend .nje-cmd-one-line-sm-ident2;  
+}
+/* red versions */
+.nje-cmd-one-line-sm-ident1_blue {
+  @extend .nje-cmd-one-line-sm-ident1;
+  background-color: #193d8b; 
+}
+.nje-cmd-one-line-sm-ident2_blue {
+  @extend .nje-cmd-one-line-sm-ident2;
+  background-color: #193d8b; 
+}
+.nje-cmd-one-line-sm-ident3_blue {
+  @extend .nje-cmd-one-line-sm-ident3;
+  background-color: #193d8b; 
+}
+/* red versions */
+.nje-cmd-one-line-sm-ident1_blue {
+  @extend .nje-cmd-one-line-sm-ident1;
+  background-color:#f44134; 
+}
+.nje-cmd-one-line-sm-ident2_blue {
+  @extend .nje-cmd-one-line-sm-ident2;
+  background-color:#f44134;
+}
+.nje-cmd-one-line-sm-ident3_red {
+  @extend .nje-cmd-one-line-sm-ident3;
+  background-color: #f44134;
 }
 
 .nje-cmd-multi-line {
@@ -330,37 +405,468 @@ Or
 
 */
 
-/* Call: 
-          <span class="nje-ident"></span>Text after 20(default) pixels  ( empty line or this <br> starts at begin, Works for Github not in all previews)
-          OR
-          <span class="nje-ident" style="--nje-number-of-spaces: 80px;"></span>Text after 
-*/
+
 .nje-ident {
   display: inline-block;
   width:  var(--nje-number-of-spaces);  
 }
 
+// 2 chars(~) ident
+.nje-ident1 {
+  display: inline-block;
+                          /*width:  20px;*/  /*Single line ident*/
+  padding-left: 20px;     /* Indents all lines, including wrapped lines */
+}
+// 4 chars(~) ident
+.nje-ident2 {
+  display: inline-block;                        
+  padding-left: 40px;     /* Indents all lines, including wrapped lines */
+}
+// 6 chars(~) ident
+.nje-ident3 {
+  display: inline-block;                        
+  padding-left: 60px;     /* Indents all lines, including wrapped lines */
+}
+// 8 chars(~) ident
+.nje-ident4 {
+  display: inline-block;                        
+  padding-left: 80px;     /* Indents all lines, including wrapped lines */
+}
+// 10 chars(~) ident
+.nje-ident5 {
+  display: inline-block;                        
+  padding-left: 100px;     /* Indents all lines, including wrapped lines */
+}
+// 12 chars(~) ident
+.nje-ident6 {
+  display: inline-block;                        
+  padding-left: 120px;     /* Indents all lines, including wrapped lines */
+}
+// 14 chars(~) ident
+.nje-ident7 {
+  display: inline-block;                        
+  padding-left: 140px;     /* Indents all lines, including wrapped lines */
+}
+// 16 chars(~) ident
+.nje-ident8 {
+  display: inline-block;                        
+  padding-left: 160px;     /* Indents all lines, including wrapped lines */
+}
 
 
-/* Create a colored block section(text color and background)  that closes after the closing div (/div)
-
-    Call 1: <div class="nje-colored-block">
-    Call 2: <div class="nje-colored-block" style="--nje-bgcolor:red; --nje-textcolor:black;--nje-offset:55px">
-*/
 .nje-colored-block{
   background-color: var(--nje-bgcolor, lightgray);
   color: var(--nje-textcolor, #32312c);
   
-  font-size: 96%;
-  padding-top:1px; 
+  font-size: 92%;
+  padding-top:2px; 
   padding-left:10px;
   padding-right:14px;
-  padding-bottom: 1px;
+  padding-bottom: 3px;
   border-radius: 6px;
   margin: 10px 0;
-  line-height: 1.5;
+  line-height: 1.0;
   font-family: sans-serif;
   transform: translateX(var(--nje-offset)) translateY(var(--nje-vmove2));
 }
 
+
+.nje-source-block {
+  background-color: var(--nje-bgcolor, lightgray);
+  color: var(--nje-textcolor, #32312c);
+  font-size: 14px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 14px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+  line-height: 1.4;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+  white-space: pre;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow-x: auto;
+  transform: translateX(var(--nje-offset)) translateY(var(--nje-vmove2));
+}
+
+.nje-source-block-black {
+  @extend .nje-source-block ;
+  background-color: rgba(6, 6, 6, 0.763);
+  color: rgb(228, 228, 15);
+
+}
+
+
+/*
+  Okt 25 '25
+  Call: <span class=".nje-expect">  your text</span>    color: #007300;
+*/
+.nje-expect2 {
+  color: #080100a4;
+  font-size: 11px;
+  font-family: inherit;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.nje-expect2::before {
+  font-size: 12px;
+  font-weight: 500; /* medium */
+  content: "◆ Expected result: ";
+  color: #06a406;
+  margin-left: 12px;
+  font-style: italic;
+}
+
+.nje-expect {
+  display: block;
+  color: #080100a4;
+  font-size: 11px;
+  font-family: inherit;
+  white-space: nowrap;
+  margin-left: 2px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+.nje-expect::before {
+  font-size: 12px;
+  font-weight: 500; /* medium */
+  content: "Expected result: ";
+  color: #048204;
+  font-style: italic;
+}
+
+.nje-expect-indent1 {
+  display: block;
+  color: #080100a4;
+  font-size: 11px;
+  font-family: inherit;
+  white-space: nowrap;
+  margin-left: 22px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+.nje-expect-indent1::before {
+  font-size: 12px;
+  font-weight: 500; /* medium */
+  content: "Expected result: ";
+  color: #048204;
+  font-style: italic;
+}
+
+
+
+.nje-text-block {
+  color: var(--nje-color);      /* black */
+  font-size: var(--nje-size);   /* 12px; */
+  padding-left: 8px;
+  background-color: var(--nje-bg-color, transparent); /* Default is transparent #32312c */
+  padding-top:6px; 
+  padding-left:10px;
+  padding-right:14px;
+  padding-bottom: 1px;
+  border-radius: 6px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+}
+
+
+/* 
+    New: Collapseble WARNINGS Box
+    Sample usage:
+
+    <details class="warn-box">
+      <summary>Regenerate the container</summary>
+
+       When recreating the same container (service name), avoid subtle and annoying caching issues.  
+       To prevent irritation, make sure to:
+
+        - Delete the container  
+        - Delete the volume  
+        - Use the Docker prune command  
+          <pre class="nje-cmd-one-line-sm-ident1"> docker-compose -f compose_cra_project.yml up -d  </pre>
+
+    </details>
+
+*/
+/* 1. Main Box */
+@mixin nje-collapsible-box {
+  font-size: 12px;;
+  border-left: 12px solid #afc5db;   /* - Show a vet left borders: 409EFF 92a9be*/
+  border-right: none;
+  border-bottom: none !important;
+  border-top: none;
+  border-top-left-radius: 6px;         /* - Round the top corners only */
+  border-top-right-radius: 6px;
+  position: relative;
+  padding-top: 0px;
+  padding-right: 12px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  margin-top: 0px;
+  margin-left: 40px;
+  margin-bottom: -8px;
+  background: transparent;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-style: italic;
+}
+/* 2. Main box horizontal top line (gradient) */
+@mixin nje-collapsible-box-before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 105%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: linear-gradient(to right, #afc5db 1%, transparent 100%);  /* #92a9be */
+  z-index: 1;
+}
+/* 3. In side the Main box, the title\summary header */
+@mixin nje-box-summary-header {
+  cursor: pointer;
+  font-weight: 600;          
+  color: #71a3d5;       
+  font-size: 14px;            
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin-top: 0px;      /* Block more to top */
+  margin-bottom: -6px;  /* Reduce space below summary */
+  user-select: none;
+  padding-top: 6px;     /* Extraspace above the title */
   
+  
+}
+/* 4. In side main box caret to the left of the title, in open state */
+@mixin nje-box-summary-before {   
+  content: "▼ Note: ";    
+  color: rgba(0, 0, 0, 0.35);
+  color: #71a3d5;       
+  font-size: 14px;
+  margin-right: 6px;
+}
+/* 5. In side main box caret to the left of the title, in close state */
+@mixin nje-box-open-summary-before {
+  color: rgba(0, 0, 10, 0.25);
+  font-size: 14px;
+  content: "▲ Note:";  
+  
+}   
+/* 6. In side main box, title is closed, dimm the title text */
+@mixin nje-box-closed-summary {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+/* 7. In side main box, title is open, empahasis the title text */
+@mixin nje-box-open-summary {
+   opacity: 1; 
+}
+/* 8. Everything in the main box, below the title */
+@mixin nje-box-not-summary {
+  margin-left: 16px;
+  margin-top: -4px;
+  font-family: "Roboto Slab", "Segoe UI", Arial, sans-serif;
+  font-style: italic;
+}
+/* 9. Bullet point used in the main box */
+@mixin nje-box-li-marker {             /* --- Bullet points inside the box --- */
+  color: orange;
+}
+/*
+Next the collapsisble boxes that are base on the 'nje-box*' mixings
+=================================================================================================================
+*/
+/* WARNING BOX */
+/*  ------------------------------------------------------------------------------------------------------------- */
+/* 1. Collapsible WARNINGS Box */
+.nje-warn-box {
+  @include nje-collapsible-box;
+  /* Overrides */
+  border-left: 12px solid #ece1ca;   /* - Show a vet left borders: #bba26d*/
+}
+/* 2. Main box horizontal top line (gradient) */
+.nje-warn-box::before {
+  @include nje-collapsible-box-before;
+  /* Overrides */
+  background: linear-gradient(to right, #ece1ca 1%, transparent 100%);  /* #bba26d */
+}
+/* 3. In side the Main box, the title\summary header */
+.nje-warn-box > summary {                  /* --- Summary Header --- */
+  @include nje-box-summary-header;
+  color: #d3b982;
+}
+/* 4. In side main box caret to the left of the title, in open state */
+.nje-warn-box > summary::before {          /* --- Caret on the left side --- */
+  @include nje-box-summary-before;
+  content: "▼ Warning: ";  
+   color:#d3b982;
+}
+/* 5. In side main box caret to the left of the title, in close state */
+.nje-warn-box[open] > summary::before {    /* --- Rotate caret when open and make it dimmed --- */
+    @include nje-box-open-summary-before;
+    content: "▲ Warning:";  
+    color:#d3b982;
+}   
+/* 6. In side main box, title is closed, dimm the title text */
+.nje-warn-box > summary {                  /* --- Dimmed when closed --- */    
+  @include nje-box-closed-summary;
+}
+/* 7. In side main box, title is open, empahasis the title text */
+.nje-warn-box[open] > summary {            /* --- Normal when open --- */  
+  @include nje-box-open-summary;
+}
+/* 8. Bullet point used in the main box*/
+.nje-warn-box > *:not(summary) {           /* --- Content inside the box --- */
+  @include nje-box-not-summary;
+}
+/* 9. Bullet point used in the main box */
+.nje-warn-box li::marker {                 /* --- Bullet points inside the box --- */
+  @include nje-box-li-marker;
+}
+/* Note BOX */
+/*  ------------------------------------------------------------------------------------------------------------- */
+/* 1. Collapsible Note Box */
+.nje-note-box {
+  @include nje-collapsible-box;
+  /* Overrides */
+}
+/* 2. Main box horizontal top line (gradient) */
+.nje-note-box::before {
+  @include nje-collapsible-box-before;
+  /* Overrides */
+}
+/* 3. In side the Main box, the title\summary header */
+.nje-note-box > summary {                  /* --- Summary Header --- */
+  @include nje-box-summary-header;
+}
+/* 4. In side main box caret to the left of the title, in open state */
+.nje-note-box > summary::before {          /* --- Caret on the left side --- */
+  @include nje-box-summary-before;
+  content: "▼ Note: ";  
+  color: #71a3d5;
+}
+/* 5. In side main box caret to the left of the title, in close state */
+.nje-note-box[open] > summary::before {    /* --- Rotate caret when open and make it dimmed --- */
+    @include nje-box-open-summary-before;
+    content: "▲ Note:";    
+    color: #71a3d5;
+}   
+/* 6. In side main box, title is closed, dimm the title text */
+.nje-note-box > summary {                  /* --- Dimmed when closed --- */    
+  @include nje-box-closed-summary;
+}
+/* 7. In side main box, title is open, empahasis the title text */
+.nje-note-box[open] > summary {            /* --- Normal when open --- */  
+  @include nje-box-open-summary;
+}
+/* 8. Bullet point used in the main box*/
+.nje-note-box > *:not(summary) {           /* --- Content inside the box --- */
+  @include nje-box-not-summary;
+}
+/* 9. Bullet point used in the main box */
+.nje-note-box li::marker {                 /* --- Bullet points inside the box --- */
+  @include nje-box-li-marker;
+}
+/* ERROR BOX */
+/*  ------------------------------------------------------------------------------------------------------------- */
+/* 1. Collapsible WARNINGS Box */
+.nje-error-box {
+  @include nje-collapsible-box;
+  /* Overrides */
+  border-left: 12px solid #dd7777;   /* - Show a vet left borders: #bba26d*/
+}
+/* 2. Main box horizontal top line (gradient) */
+.nje-error-box::before {
+  @include nje-collapsible-box-before;
+  /* Overrides */
+  background: linear-gradient(to right, #dd7777 1%, transparent 100%); 
+}
+/* 3. In side the Main box, the title\summary header */
+.nje-error-box > summary {                  /* --- Summary Header --- */
+  @include nje-box-summary-header;
+  color: #dd7777;
+}
+/* 4. In side main box caret to the left of the title, in open state */
+.nje-error-box > summary::before {          /* --- Caret on the left side --- */
+  @include nje-box-summary-before;
+  content: "▼ Error: ";  
+   color:#dd7777;
+}
+/* 5. In side main box caret to the left of the title, in close state */
+.nje-error-box[open] > summary::before {    /* --- Rotate caret when open and make it dimmed --- */
+    @include nje-box-open-summary-before;
+    content: "▲ Error:";  
+    color:#dd7777;
+}   
+/* 6. In side main box, title is closed, dimm the title text */
+.nje-error-box > summary {                  /* --- Dimmed when closed --- */    
+  @include nje-box-closed-summary;
+}
+/* 7. In side main box, title is open, empahasis the title text */
+.nje-error-box[open] > summary {            /* --- Normal when open --- */  
+  @include nje-box-open-summary;
+}
+/* 8. Bullet point used in the main box*/
+.nje-error-box > *:not(summary) {           /* --- Content inside the box --- */
+  @include nje-box-not-summary;
+}
+/* 9. Bullet point used in the main box */
+.nje-error-box li::marker {                 /* --- Bullet points inside the box --- */
+  @include nje-box-li-marker;
+}
+/* REMARK BOX */
+/*  ------------------------------------------------------------------------------------------------------------- */
+/* 1. Collapsible WARNINGS Box */
+.nje-remark-box {
+  @include nje-collapsible-box;
+  /* Overrides */
+  border-left: 12px solid #b0adad;   /* - Show a vet left borders: #bba26d*/
+}
+/* 2. Main box horizontal top line (gradient) */
+.nje-remark-box::before {
+  @include nje-collapsible-box-before;
+  /* Overrides */
+  background: linear-gradient(to right, #b0adad 1%, transparent 100%); 
+}
+/* 3. In side the Main box, the title\summary header */
+.nje-remark-box > summary {                  /* --- Summary Header --- */
+  @include nje-box-summary-header;
+  color: #b0adad;
+}
+/* 4. In side main box caret to the left of the title, in open state */
+.nje-remark-box > summary::before {          /* --- Caret on the left side --- */
+  @include nje-box-summary-before;
+  content: "▼ Remark: ";  
+   color:#b0adad;
+}
+/* 5. In side main box caret to the left of the title, in close state */
+.nje-remark-box[open] > summary::before {    /* --- Rotate caret when open and make it dimmed --- */
+    @include nje-box-open-summary-before;
+    content: "▲ Remark:";  
+    color:#b0adad;
+}   
+/* 6. In side main box, title is closed, dimm the title text */
+.nje-remark-box > summary {                  /* --- Dimmed when closed --- */    
+  @include nje-box-closed-summary;
+}
+/* 7. In side main box, title is open, empahasis the title text */
+.nje-remark-box[open] > summary {            /* --- Normal when open --- */  
+  @include nje-box-open-summary;
+}
+/* 8. Bullet point used in the main box*/
+.nje-remark-box > *:not(summary) {           /* --- Content inside the box --- */
+  @include nje-box-not-summary;
+}
+/* 9. Bullet point used in the main box */
+.nje-remark-box li::marker {                 /* --- Bullet points inside the box --- */
+  @include nje-box-li-marker;
+}
+
+/* When a br element is to heigh and nothing is to less, use athe 'half' break */
+.nje-br {
+    display: block;
+    height: 0.5em; /* half normal line height */
+  }
