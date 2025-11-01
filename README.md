@@ -5,7 +5,7 @@
 - [Quick Setup](#qsetup)
 - [Libraries GLFW & Skia](#lib)
 - [The Template Project Architecture](#temp)
-- [4 Future Instructions](#4-future-instructions)
+- [More Instructions](#more)
 
 </details>
 
