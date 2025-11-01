@@ -1,49 +1,54 @@
 <details>
 <summary>📑 Table of Contents</summary>
 
-- [1 Overview](#1-overview)
-  - [1.1 Key Libraries Used](#11-key-libraries-used)
-  - [1.2 Quick Setup Links](#12-quick-setup-links)
-- [2 GLFW vs Skia](#2-glfw-vs-skia-roles-and-usage)
-- [3 Template Project Architecture](#3-the-template-project-architecture)
+- [Introduction](#introduction)
+- [Quick Setup](#qsetup)
+- [Libraries GLFW & Skia](#lib)
+- [The Template Project Architecture](#temp)
 - [4 Future Instructions](#4-future-instructions)
 
 </details>
 
+# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
 
+<a id="introduction"></a>
 
-# 1 Overview
+## ℹ️ Introduction
 
 This is a template C++ project using the **GLFW** and **Skia** libraries to create a cross-platform graphical user interface (GUI) for **Windows** and **Linux**.  It uses **CMake** as the build system and includes a Skia-based sample application to demonstrate integration.
 
 The project is preconfigured with:
+
 - **Visual Studio Code** launch and task files for streamlined development.
 - A `CMakePresets.json` file for easy integration with **Visual Studio 2022** on Windows.
 
+<a id="qsetup"></a>
 
-### 1.1 Quick Setup Links
+## 🏃‍♂️ Quick Setup Links
 
 Before you can build the template project, you must configure the dependencies and project paths. You can do this manually or use the Copilot agent:
+
 1. [Manual Setup For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
     - 💫 [VSC Agent Mode (WSL)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin)    
 1. [Manual Setup For Windows](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)    
     - 💫 [VSC Agent Mode (Windows)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win)    
 1. [Build the sample project](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
-<br>
+---
 
-## 2. Libraries GLFW & Skia
+<a id="lib"></a>
+
+## 📚 Libraries GLFW & Skia
+
 This project uses two complementary, cross-platform libraries: GLFW for creating windows, managing graphics contexts, and handling user input, and Skia for high-performance, hardware-accelerated 2D drawing. GLFW focuses on windowing and input management without providing graphics rendering itself, which is why Skia is used to handle all rendering of text, images, and shapes with GPU acceleration. Together, they provide a robust foundation for building responsive and visually rich applications across Windows, Linux, and macOS.
 
-#### GLFW, Windowing & Input
+### GLFW, Windowing & Input
 
 [GLFW](https://www.glfw.org/) is a lightweight, cross-platform library. It’s commonly used for building real-time applications like games, simulations, and custom GUI frameworks. It provides:
 
 - **OpenG**L - OpenGL ES, and Vulkan context creation
 - **Window** - creation and management
 - **Input** - handling (keyboard, mouse, etc.)
-
-
 
 #### Skia, 2D Graphics Engine
 
@@ -93,9 +98,11 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 
 </details>
 
-<br>
+---
 
-## 3. The Template Project Architecture
+<a id="temp"></a>
+
+## ⚡The Template Project Architecture
 
 This template consists of a template project for building a **GUI control** sample application based on the **GLFW** library and the **Skia** library. Supporting both **Windows**  and **Linux** (debian 12) operating systems. For Windows the **NMake** toolchain of the  Visual Studio 2022 Community edition applications is used and for Debian the **GNU Compiler Collection** is used.
 
@@ -125,9 +132,11 @@ The folder structure (<small> some folders and files are not include because the
 
 </code></pre>
 
-<br>
+---
 
-## 4. Future instructions
+<a id="more"></a>
+
+## 🛠️ More Instructions
 
 **Build Environment Setup** manual instructions can be found here (see also the **Quick Configurations links** at the top):
 
@@ -139,7 +148,14 @@ The folder structure (<small> some folders and files are not include because the
 **Project build instruction** instructions for building the Sample with the VSC or Visual Studio or via the console can be found [here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
 <br>
+<p align="center">
+  <a href="https://nicojane.github.io/WSL-Template-Stacks-Home/">
+    <img src="assets/images/WSLfooter.svg" alt="WSL Template Stacks" width="400" />
+  </a>
+</p>
 
+<sub> This file is part of:  **GLFW-Skia C++ Template Stack**
+Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the  'LICENSE.md' file in the root directory of this source tree.
+</sub>
 
-*Contact & Remarks*  
-📧 NicoJanE@ziggo.nl
+<p align="center">─── ✦ ───</p>

@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "name": "General_intellisense_inludes",
+      // Include paths for intellisense 
+      "includePath": [
+        // Libraries
+        "${workspaceFolder}/depw/glfw-3.4/include",
+        "${workspaceFolder}/depw/skia",
+        
+        // Application includes
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/source",
+      ],
+      "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "NOMINMAX",
+                "WIN32_LEAN_AND_MEAN"
+            ],
+      "intelliSenseMode": "windows-msvc-x64",
+      "configurationProvider": "ms-vscode.cmake-tools"
+    }
+  ],
+  "version": 4
+}

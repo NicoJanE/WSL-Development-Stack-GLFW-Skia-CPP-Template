@@ -9,7 +9,9 @@ RefPages:
 
 <br>
 
-# 1 Linux Setup Instruction
+# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
+
+## 1 Linux Setup Instruction
 
 ## 1.1 Requirements
 

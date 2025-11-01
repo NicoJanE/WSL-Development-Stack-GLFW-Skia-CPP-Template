@@ -10,9 +10,11 @@ RefPages:
 
 <br>
 
+## GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
+
 # 1 Windows Setup Instruction
 
-## 2.1 Requirements for Windows
+## 1.1 Requirements for Windows
 
 &nbsp;&nbsp; 📚  Visual Studio 2022 Community Edition (optional)  
 &nbsp;&nbsp; 📚  Visual Studio code (optional)  
@@ -23,7 +25,7 @@ RefPages:
 
 <br>
 
-## 2.2  Built GLFW library (Windows):
+## 1.2  Built GLFW library (Windows):
 
 GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which can be built using **Visual Studio 2022 Community Edition** (VS2022) and the msbuild tool.
 
@@ -36,8 +38,7 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 - When the files are in `dependencies\win\glfw-3.4\glfw-3.4` move the files and sub folders from `dependencies\win\glfw-3.4\glfw-3.4`. to:  `dependencies\win\glfw-3.4\`.
 
 
-
-### 2.2.1. dynamically(DLL) multithreaded libraries (preferred)
+### 1.2.1. dynamically(DLL) multithreaded libraries (preferred)
 To Create the DLL **release\debug** use:
 
 
@@ -55,7 +56,7 @@ To Create the DLL **release\debug** use:
 > or the **Release multithreaded DLL** version in the ***./outdll/src/Release*** folder, depending on the selected
 > **Solution Configuration** in Visual Studio. You can then copy the ***glfw3.dll*** file to your application executable folder to use it.
 
-### 2.2.2 statical library use:  
+### 1.2.2 statical library use:  
 
 - `mkdir  'project root\dependencies\win\glfw-3.4\outstatic` if not yet available:
 - Change directory `'project root\dependencies\win\glfw-3.4\outstatic`
@@ -85,7 +86,7 @@ After building the GLFW library (as DLL or static) Update the `cmake/windows.cma
 
 <br>
 
-## 2.3 Built Skia library
+## 1.3 Built Skia library
 
 1. First Build the ***depot_tools***. depot_tools is a collection of scripts/tools used to manage large Google Git projects 
   - In your project folder Navigate  to the folder: `.\dependencies\win` or create it, if it does not exists, 
@@ -93,7 +94,7 @@ After building the GLFW library (as DLL or static) Update the `cmake/windows.cma
 >\- This creates a folder: **.\dependencies\win\depot_tools** add this to the **system path** and reopen the **CLI**  
 >\- Test. Execute: `gclient help` → should display help information.
 
-### 2.3.1 Built dependency Ninja if needed
+### 1.3.1 Built dependency Ninja if needed
 - Execute `ninja --version` When this returns a version Ninja is already build and you skip this and continue with  section 2.3.2 below.
 - If ninja is not installed **Download** it form [here](https://github.com/ninja-build/ninja/releases/latest) 
 - **Extract** it in the project root under the subfolder: `.\dependencies\win`
@@ -101,7 +102,6 @@ After building the GLFW library (as DLL or static) Update the `cmake/windows.cma
 
 > ⚠️ **Ensure this path is defined before depot_tools in your PATH!  
 > depot_tools includes a `ninja.bat` file that will break builds if used accidentally. <br> This maya also result into vague build issues**{: style="color: black;font-size:12px; "} 
-
 
 - **Test**. Open a **CLI** and type: `ninja --version`
 
@@ -118,8 +118,7 @@ Because of course... Windows tries to run a fake python.exe from the Microsoft S
 
 <br>
 
-
-### 2.3.2 Build Skia Debug
+### 1.3.2 Build Skia Debug
 
 - **Check this**: When you have build Skia before (especially if done in an , old,project folder: `./dependencies/win`), check and remove the old **System environment variables and paths**, old system variables can impact the a new installation, so remove these:  
 
@@ -234,20 +233,22 @@ This creates the debug build!
 
 <br>
 
-### 2.3.3 Build Skia Release
+### 1.3.3 Build Skia Release
 
 This will create the Skia release library
 
-### 2.3.3.1 Install `libjpeg-turbo` 
-  - Navigate to: `./dependencies/win` of the project root folder.
-  - Download [from here](https://github.com/libjpeg-turbo/libjpeg-turbo) and build it
-  - `mkdir build` and `cd build`
-  - Configure: `cmake .. -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release`
-  - Build: `cmake --build . --config Release`
-  - Add the include and library folders manually to the Skia release build config below.
-  - Make sure you return to the subfolder `l/dependencies/win/skia` of the `project root` folder!
+### 1.3.3.1 Install `libjpeg-turbo` 
 
-### 2.3.3.2 Generate build files for Skia Release
+- Navigate to: `./dependencies/win` of the project root folder.
+- Download [from here](https://github.com/libjpeg-turbo/libjpeg-turbo) and build it
+- `mkdir build` and `cd build`
+- Configure: `cmake .. -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release`
+- Build: `cmake --build . --config Release`
+- Add the include and library folders manually to the Skia release build config below.
+- Make sure you return to the subfolder `l/dependencies/win/skia` of the `project root` folder!
+
+### 1.3.3.2 Generate build files for Skia Release
+
 - Navigate to: `./dependencies/win/skia` of the project root folder.
 - create folder: `mkdir out\Release`
 - Execute command: in powershell CLI: 
@@ -277,7 +278,7 @@ This creates the Release build!
 
 <br>
 
-### 2.4 ⚠️ Common Pitfalls (Windows)
+### 1.4 ⚠️ Common Pitfalls (Windows)
 Setup your build environment in Windows is by definition more error sensitive then setting it up in Linux. Here a a few tips to help you avoid (build) issues:
 - 🚫 Avoid **spaces or special characters** in project paths  
 - 🚫Make sure the official `ninja.exe` is **first in PATH environment variable**, not `depot_tools\ninja.bat`. failing to do so will generate builds errors during build of Skia
@@ -285,6 +286,5 @@ Setup your build environment in Windows is by definition more error sensitive th
 - 🚫 Avoid **spaces or special characters** in project paths:  
 - ✅ Use full paths in `gn.exe` **avoid** relative path
 - 🔄 Always **reopen the terminal** after changing the environment
-
 
 **Use the the build documentation to build the [sample project](building_project)**

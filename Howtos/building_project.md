@@ -8,7 +8,9 @@ RefPages:
 
 <br>
 
-# 1. Building the project
+# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
+
+## 1. Building the project
 
 This project uses CMake (the CMakeLists.txt file) to configuring the build process for both Windows and Linux while using the same project source location, the WSL will use the mount to compile and build the Linux version on the Windows disk
 

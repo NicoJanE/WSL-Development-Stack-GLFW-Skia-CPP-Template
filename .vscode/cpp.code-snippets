@@ -1,0 +1,88 @@
+{
+    "New C++ Class Full Fixed Name": {
+        "prefix": "SN_classfull",
+        "body": [
+            "#pragma once",
+            "",
+            "class MyClass",
+            "{",
+            "public:",
+            "    MyClass() = default;                  // Default constructor",
+            "    ~MyClass() = default;                 // Destructor",
+            "    MyClass(const MyClass&) = default;      // Copy constructor",
+            "    MyClass& operator=(const MyClass&) = default;  // Copy assignment",
+            "    MyClass(MyClass&&) = default;           // Move constructor",
+            "    MyClass& operator=(MyClass&&) = default;      // Move assignment",
+            "",
+            "private:",
+            "    $0",
+            "};"
+        ],
+        "description": "Full C++ class skeleton with default CTOR, DTOR, copy/move assignment, fixed class name"
+    },
+
+    "Standard Class": {
+        "prefix": "SN_classs",
+        "body": [
+            "class MyClass",
+            "{",
+            "public:",
+            "    MyClass() = default;",
+            "    ~MyClass() = default;",
+            "",
+            "private:",
+            "    $0",
+            "};"
+        ],
+        "description": "Standard C++ class skeleton"
+    },
+
+    "Header File Skeleton": {
+        "prefix": "SN_guard",
+        "body": [
+            "#pragma once",
+            "",
+            "#ifndef ${1:HEADER_NAME}_H",
+            "#define ${1:HEADER_NAME}_H",
+            "",
+            "$0",
+            "",
+            "#endif // ${1:HEADER_NAME}_H"
+        ],
+        "description": "Header file skeleton with include guard"
+    },
+
+    "Range-based For Loop": {
+        "prefix": "SN_range",
+        "body": [
+            "for (auto& ${1:elem} : ${2:container})",
+            "{",
+            "    $0",
+            "}"
+        ],
+        "description": "Range-based for loop"
+    },
+
+    "Try-Catch": {
+        "prefix": "SN_try",
+        "body": [
+            "try",
+            "{",
+            "    $0",
+            "}",
+            "catch (const std::exception& e)",
+            "{",
+            "    std::cerr << \"Exception: \" << e.what() << std::endl;",
+            "}"
+        ],
+        "description": "Try-catch block for exceptions"
+    },
+
+    "Shared Pointer": {
+        "prefix": "SN_sharedptr",
+        "body": [
+            "std::shared_ptr<${1:Type}> ${2:ptr} = std::make_shared<${1:Type}>(${3:args});"
+        ],
+        "description": "Create a shared_ptr"
+    }
+}

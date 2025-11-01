@@ -7,21 +7,22 @@ RefPages:
 --- 
 <br>
 
-# What
+# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  WSL Setup & Usage Guide</span>
+
+## ℹ️ Introduction
 
 This is a template C++ project using the ***GLFW*** library to create a **Graphical User Interface control** for both Windows and Linux. It uses **CMake** as the build system.
 
 > The **GLFW** library is based on OpenGL, OpenGL ES, and Vulkan. It provides an API for creating windows, handling input, and managing events.  
 > For more information, [see the official GLFW website](https://www.glfw.org/).
 
-
 > The Library **Skia**
 > Skia is a 2D graphics library used for rendering. It provides APIs for drawing text, shapes, images, and more.
 > It is the core graphics engine behind Chrome, Flutter, and Firefox (Canvas). [website](https://skia.org/)
 
-<br>
+---
 
-## 1. GLFW vs Skia,  Roles and Usage
+## ▶️ GLFW vs Skia,  Roles and Usage
 
 - **GLFW** is used for **creating windows**, managing **OpenGL or Vulkan contexts**, and handling **input events** (keyboard, mouse, etc.).
 - **Skia** is used for **high-level 2D drawing**, including **text, images, shapes**, and **anti-aliased graphics**.
@@ -52,9 +53,9 @@ This is a template C++ project using the ***GLFW*** library to create a **Graphi
 >Supporting macOS is more challenging because **Apple** chose to not support Vulkan and instead reinvent the wheel with their own **Metal API**, making things harder for drawing cross-platform developers.
 > </small> <br>  
 
-<br>
+---
 
-## 2. The Template Project Architecture
+## 📚  The Template Project Architecture
 
 This template provides a project structure for building a GUI control sample application using the **GLFW** and **Skia** libraries. It supports both Windows and Linux (Debian 12) operating systems. On Windows, the project uses the **NMake** toolchain from Visual Studio 2022 Community Edition. On Debian, it uses the **GNU Make**, tool provided by GNU Compiler Collection (GCC) via WSL.
 
@@ -83,9 +84,6 @@ The folder structure (<small>some folders and files are not include because they
 ├──📦CMakeLists.txt             ➜ <i>Main CMake file</i>
 ├──📦CMakePresets.json          ➜ <i>Used to load the project in Visual Studio 2022</i>
 
-
-
-
 </code></pre>
 
 The **GLFW** library is used to create a canvas and to provide events and input.  
@@ -94,9 +92,9 @@ The **Skia** library is used for building core GUI components. Skia requires:
 &nbsp;&nbsp; 📚  Git  
 &nbsp;&nbsp; 📚  Depot Tools  
 
-<br>
+---
 
-## 3. Future instructions
+## ⚙️More Instructions
 
 **Build Environment Setup** instructions can be found here:
 
@@ -108,4 +106,8 @@ The **Skia** library is used for building core GUI components. Skia requires:
 
 **Project build instruction** instructions for building the app with the  VSC or Visual Studio or via the consol can be found [here](./Howtos/building_project)
 
-<br>
+<sub> This file is part of:  **GLFW-Skia C++ Template Stack**
+Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the  'LICENSE.md' file in the root directory of this source tree.
+</sub>
+
+<p align="center">─── ✦ ───</p>

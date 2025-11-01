@@ -203,5 +203,16 @@ function(WinConfigureTarget target)
         set(REAL_OUTPUT_NAME ${target})
     endif()
     file(WRITE "${CMAKE_BINARY_DIR}/target_name.txt" "${REAL_OUTPUT_NAME}")
+
+    
+    # Supper annoying issue with Windows OpenGL headers and Skia compatibility
+    # Problem: Windows <GL/gl.h> and <windows.h> define min/max as macros which conflict 
+    #          with Skia's use of std::min/std::max, causing compilation errors like:
+    #          "error C2589: '(': illegal token on right side of '::'"
+    #          "not enough arguments for function-like macro invocation 'max'"
+    # Solution: Define NOMINMAX to prevent these macros from being defined
+    #           Define WIN32_LEAN_AND_MEAN to reduce Windows header bloat
+    target_compile_definitions(${target} PRIVATE NOMINMAX)
+    target_compile_definitions(${target} PRIVATE WIN32_LEAN_AND_MEAN)
     
 endfunction()

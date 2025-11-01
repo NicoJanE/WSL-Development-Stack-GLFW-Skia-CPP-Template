@@ -1,5 +1,13 @@
 # Use CMake\NMake to configure and build the program
 
+# By default, it use the SDK from Visual studio [version] if installed.
+# This will set an explicit version, but only if it is greater then the minimal required for Visual Studio  
+# Tested with: 10.0.19041.0
+#$env:WindowsSdkDir     = "C:\Program Files (x86)\Windows Kits\10\"
+#$env:WindowsSdkVersion = "10.0.19041.0\"
+
+
+
 # Build output and configuration
 $build_type = "Debug" # Release
 $out_nmake = "build-win"
@@ -61,12 +69,16 @@ Get-Content $file_VCEnv_vars | ForEach-Object {
 # 2. Run CMake to configure and make the makefile file for NMake (Windows, this requires the MSVC vars from 1.2) 
 Write-Host "`n`n- BUILD: configure the Windows makefile (CMake for Windows)"  -ForegroundColor Green
 ##cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Debug
-cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=$build_type
+cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=$build_type -DCMAKE_SYSTEM_VERSION=$env:WindowsSdkVersion
 
 
 # 3.1 Run nmake to build the the application using the makefile
 Write-Host "`n- RUN: Build the project based on the generated makefile (NMake for Windows) "  -ForegroundColor Green
+Write-Host "`- USING WIN SDK: $env:WindowsSdkDir"  -ForegroundColor Green
+Write-Host "`- USING WIN Version: $env:WindowsSdkVersion"  -ForegroundColor Green
+
 nmake
+# nmake VERBOSE=1
 Write-Host "`nDone, Building the project (using NMake)"  -ForegroundColor Green
 
 
