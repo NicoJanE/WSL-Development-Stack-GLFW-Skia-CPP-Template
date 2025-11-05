@@ -7,18 +7,25 @@ RefPages:
 --- 
 <br>
 
-# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  WSL Setup & Usage Guide</span>
+# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
 
 ## ℹ️ Introduction
 
 This is a template C++ project using the ***GLFW*** library to create a **Graphical User Interface control** for both Windows and Linux. It uses **CMake** as the build system.
 
-> The **GLFW** library is based on OpenGL, OpenGL ES, and Vulkan. It provides an API for creating windows, handling input, and managing events.  
-> For more information, [see the official GLFW website](https://www.glfw.org/).
+<details class="nje-note-box">
+  <summary>More information GLFW & Skia
+  </summary>
 
-> The Library **Skia**
-> Skia is a 2D graphics library used for rendering. It provides APIs for drawing text, shapes, images, and more.
-> It is the core graphics engine behind Chrome, Flutter, and Firefox (Canvas). [website](https://skia.org/)
+  **GLFW**  
+  The **GLFW** library is based on OpenGL, OpenGL ES, and Vulkan. It provides an API for creating windows, handling input, and managing events.  
+  For more information, [see the official GLFW website](https://www.glfw.org/).
+
+  **Skia**  
+  **Skia** is a 2D graphics library used for rendering. It provides APIs for drawing text, shapes, images, and more.
+  It is the core graphics engine behind Chrome, Flutter, and Firefox (Canvas). [website](https://skia.org/)
+
+</details> <br>
 
 ---
 
@@ -29,29 +36,25 @@ This is a template C++ project using the ***GLFW*** library to create a **Graphi
 - They serve complementary roles with **minimal overlap**: *GLFW* provides the **platform and context**; *Skia* does the **drawing**.
 - In this project, GLFW handles windowing and input, while Skia handles all drawing operations.
 
-> **Be-aware**⚠️  
->Both GLFW and Skia support OpenGL or Vulkan, but they must be configured to use the same graphics API.
->
->>For OpenGL, Skia uses classes like `GrGLInterface`, `GrBackendRenderTarget`, and `GrDirectContext`.  
->> For Vulkan, Skia uses `GrVkBackendContext` and Vulkan-specific setup.  
->
->Skia’s **API is mostly consistent** across backends, so **much of your drawing code stays the same**, only the backend setup differs.
-> <br>
- 
-> **Decision** <br>
-><small>
->The sample is this project assume you use  OpenGL because it's simpler, mature, cross-platform, and  well-supported by Skia and GLFW.
-> </small>
+<details class="nje-warn-box">
+  <summary>Libraries: OpenGL, OpenGL ES, and Vulkan
+  </summary>
+  Both GLFW and Skia support OpenGL or Vulkan, but they must be configured to use the same graphics API.
+  - For OpenGL, Skia uses classes like `GrGLInterface`, `GrBackendRenderTarget`, and `GrDirectContext`.   
+  - For Vulkan, Skia uses `GrVkBackendContext` and Vulkan-specific setup.  
+  Skia’s **API is mostly consistent** across backends, so **much of your drawing code stays the same**, only the backend setup differs.
 
-> **Converting** <br>
-><small>
->Converting from OpenGL to Vulkan in this project is doable with some effort; it mainly involves changing the graphics backend initialization and context management (GLFW). Skia’s drawing code remains unchanged.  
-> </small>
+  **Decision in this project**  
+  The sample is this project assume you use  OpenGL because it's simpler, mature, cross-platform, and  well-supported by Skia and GLFW.
 
-> **MacOS** <br>
-><small>
->Supporting macOS is more challenging because **Apple** chose to not support Vulkan and instead reinvent the wheel with their own **Metal API**, making things harder for drawing cross-platform developers.
-> </small> <br>  
+  **Converting**  
+  Converting from OpenGL to Vulkan in this project is doable with some effort; it mainly involves changing the graphics backend initialization and context management (GLFW). Skia’s drawing code remains unchanged.  
+
+  **MacOS specifics**  
+  Supporting macOS is more challenging because **Apple** chose to not support Vulkan and instead reinvent the wheel with their own **Metal API**, making things harder for drawing cross-platform developers.
+
+</details>
+<br>
 
 ---
 
@@ -94,20 +97,35 @@ The **Skia** library is used for building core GUI components. Skia requires:
 
 ---
 
-## ⚙️More Instructions
+## ⚙️ Setup Instructions
 
-**Build Environment Setup** instructions can be found here:
+### Requirements & Setup documents
 
-- [For Linux](./Howtos/setup_linux)
-- [For Window](./Howtos/setup_win)
+**Complete both setups for full cross-platform development:**
 
-> *Note:*{: style="color: black;font-size:14px; "} <br>
-> <small>Both( Linux and Windows) use the same project source folder to build (Linux is build from the WSL Windos mount)  <br></small>
+| ***Platform*** | ***Purpose*** | ***Setup Guide*** |
+|:----------|:---------|:-------------|
+| 🪟 **Windows** | Native development, VS Code, debugging | **[Windows Setup](./Howtos/setup_win)** |
+| 🐧 **WSL Linux** | Cross-platform builds, Linux testing | **[Linux Setup](./Howtos/setup_linux)** |
 
-**Project build instruction** instructions for building the app with the  VSC or Visual Studio or via the consol can be found [here](./Howtos/building_project)
+<sub>Both setups work together - you'll develop on Windows but can build/test on Linux seamlessly.</sub>
 
-<sub> This file is part of:  **GLFW-Skia C++ Template Stack**
-Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the  'LICENSE.md' file in the root directory of this source tree.
+<details class="nje-note-box">
+  <summary>Shared Source folder
+  </summary>
+  Both( Linux and Windows) use the same project source folder to build (Linux is build from the WSL Windows mount)
+</details>
+<br>
+
+
+### Project build instruction
+
+instructions for **building** the template project app with the VS-Code or Visual Studio (or via the console) can be found [**here**](./Howtos/building_project)
+
+
+<br>
+<sub><i> This file is part of:  **GLFW-Skia C++ Template Stack**
+Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the  'LICENSE.md' file in the root directory of this source tree.</i>
 </sub>
 
 <p align="center">─── ✦ ───</p>

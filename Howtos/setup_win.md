@@ -10,9 +10,7 @@ RefPages:
 
 <br>
 
-## GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
-
-# 1 Windows Setup Instruction
+# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Windows Setup Instruction</span>
 
 ## 1.1 Requirements for Windows
 
@@ -23,7 +21,7 @@ RefPages:
 
 **💫 New Setup wit VSC Agent [See here](VSC-AgentMode_win)**
 
-<br>
+---
 
 ## 1.2  Built GLFW library (Windows):
 
@@ -31,10 +29,10 @@ GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which c
 
 - In your project folder create, if needed, a folder `dependencies\win\` 
 - change to: `dependencies\win\` 
-- Download [glfw-3.4.zip](https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip) in the folder `dependencies\win\` 
-- for the next step use a reliable extraction tool that does not skip hidden or system files.
+- Download [**glfw-3.4.zip**](https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip) in the folder `dependencies\win\` 
+- For the next step use a reliable extraction tool that does not skip hidden or system files.
 - Extract the contents of glfw-3.4.zip into `dependencies\win\glfw-3.4` so that the files are directly inside glfw-3.4 (not in a nested subfolder).
-- Check if the extraction did NOT happen in a sub folder like `dependencies\win\glfw-3.4\glfw-3.4`.
+- Check if the extraction did **NOT** happen in a sub folder like `dependencies\win\glfw-3.4\glfw-3.4`.
 - When the files are in `dependencies\win\glfw-3.4\glfw-3.4` move the files and sub folders from `dependencies\win\glfw-3.4\glfw-3.4`. to:  `dependencies\win\glfw-3.4\`.
 
 
@@ -288,3 +286,8 @@ Setup your build environment in Windows is by definition more error sensitive th
 - 🔄 Always **reopen the terminal** after changing the environment
 
 **Use the the build documentation to build the [sample project](building_project)**
+
+<sub><i> This file is part of: GLFW-Skia C++ Template Stack Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the 'LICENSE.md' file in the root directory of this source tree.</i>
+</sub>
+
+<p align="center">─── ✦ ───</p>

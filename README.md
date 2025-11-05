@@ -60,9 +60,7 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 
 <details>
 <summary> 🧰 Skia Requirement:  
-</summary>
-
-<br>
+</summary><br>
 
 > ### **Skia** library requires:  
 >
@@ -76,9 +74,7 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 
 <details>
 <summary>⚠️ OpenGL vs Vulkan Compatibility Notes
-</summary>
-
-<br>
+</summary><br>
 
 > ###  OpenGL or Vulkan
 >
@@ -154,8 +150,8 @@ The folder structure (<small> some folders and files are not include because the
   </a>
 </p>
 
-<sub> This file is part of:  **GLFW-Skia C++ Template Stack**
-Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the  'LICENSE.md' file in the root directory of this source tree.
+<sub> <i>This file is part of:  **GLFW-Skia C++ Template Stack**
+Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the  'LICENSE.md' file in the root directory of this source tree.</i>
 </sub>
 
 <p align="center">─── ✦ ───</p>
