@@ -20,7 +20,7 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
 
 **This GLFW-Skia C++ Template uses WSLg by default** - Microsoft's built-in graphics subsystem for WSL2 that provides native OpenGL support up to version 4.6.
 
-### Two Graphics Options Available:
+### Two Graphics Options Available
 
 1. **WSLg (Recommended & Default)** 
    - Built into modern WSL2 installations
@@ -29,18 +29,25 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
    - **This is what this template is configured for**
 
 2. **X11 Forwarding (Alternative)**
-   - Requires separate X11 server (XLaunch/VcXsrv) 
+   - Requires separate X11 server (XLaunch/VcXsrv)
    - Limited to OpenGL 1.4
    - Full desktop environment available
    - [See separate repository](https://github.com/NicoJanE/WSL-OS-With-GUI-Desktop) for setup
 
 Unless you specifically need a full Linux desktop environment, stick with the default WSLg setup.
 
-**💫 New Setup with VSC Agent [See here](VSC-AgentMode_lin)**
-
 ---
 
 ## Setup Instructions
+
+### Cross-Platform Development Setup
+
+**This is the Linux component** of a dual-platform development environment:
+
+- **Windows Setup**: Native development tools, Visual Studio, debugging  → [Windows Setup Guide](setup_win)
+- **WSL Linux Setup(This Page)**: Cross-platform builds and Linux testing
+
+**Why both?** You'll develop primarily on Windows but can build and test Linux versions seamlessly through WSL.
 
 ### Preparations
 
@@ -198,6 +205,9 @@ Avoid running WSL as the `root` user. Instead, create a normal user account, man
 <p align="center" style="padding:20px;">─── ✦ ───</p>
 </details>
 <br>
+
+**💫 New Setup with VSC Agent [See here](VSC-AgentMode_lin)**  
+This will try to use the VS Co-pilot agent to install the installation, mentioned below (Experimental)
 
 ---
 

@@ -265,10 +265,11 @@ pre.nje-source-block {
 	justify-content: space-between; /* Space between the code and button */   
 }
 .nje-cmd-one-line-sm-indent {
-  font-size: x-small;
+  /*font-size: x-small;*/
+  font-size: 10px;
 	background-color: #2e3440; 
 	color: #FFD700; 
-	padding-bottom: 7px; 
+	padding-bottom: 6px; 
 	padding-top: 8px; 
 	border-radius: 5px;
   overflow-x: auto; 
@@ -289,6 +290,26 @@ pre.nje-source-block {
   margin-left: 4px;
   margin-top: 0px;
   margin-bottom: 1px;
+}
+
+/* Inline command styling - can be embedded within text */
+.nje-cmd-inline-sm {
+  display: inline;
+  background-color: #2e3440;
+  color: #FFD700;
+  font-size: 11px;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 3px;
+  padding-right: 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  vertical-align: 2px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 4px;
 }
 /* Item below a 2e level bullet */
 .nje-cmd-one-line-sm-indent2 {
