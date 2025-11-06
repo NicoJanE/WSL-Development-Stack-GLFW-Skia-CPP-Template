@@ -7,42 +7,45 @@ RefPages:
 - building_project
 --- 
 
-# What VSC Agent
+# GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  What VSC Agent(Linux)</span>
+
 This will try to automatically (or semi-automatically) set up the Linux WSL environment for our project. It uses the Visual Studio Code **Copilot Agent**.
 
 I'm not sure how reliable this is. It worked for me after a lot of tweaking and adjusting the documentation.
 
 >**Feedback**  
+<small>
 I'm curious how this works for others. Please let me know in the discussion section. I will set up an issue titled **"VSC Agent Mode Experience"** you can add your experience there if you like.
+</small>
 
-<br>
+<div class="nje-br1"> </div>
 
 ## Prepare for Installation With VSC Agent
+
 1. Open Visual studio
 1. open 'Copilot' and make sure you have chosen 'Agent' in the drop down
 1. Best use: GPT-4.1
 1. Make sure your VSC Terminal is in the project root
 1. Enter the question of step one and two.
 
+<div class="nje-br1"> </div>
 
-<br>
+## Steps for Linux WSL
 
-# Steps for Linux WSL
-
-## Step 1 Create open new project.
+### Step 1 Create open new project
 
 Enter the following text, and follow the instructions in Copilot:
 > <small>Note This is the same step as in the procedure as in the Windows based Copilot instructions [here](VSC-AgentMode_win) in that case **skip this step** </small>
 
-```
-Clone the GitHub repository https://github.com/NicoJanE/WSL-Development-Stack-GLFW-Skia-CPP-Template into a new subfolder named MyApp inside d:\Temp, and open that folder as a project in Visual Studio Code.
-```
-<br>
+<pre class="nje-cmd-multi-line-sm">Clone the GitHub repository https://github.com/NicoJanE/WSL-Development-Stack-GLFW-Skia-CPP-Template into a new subfolder named MyApp inside d:\Temp, and open that folder as a project in Visual Studio Code.
+  </pre>
+
+<div class="nje-br1"> </div>
 
 ## Step 2 Build Linux(WSL) environment
 Enter the variables below and after that enter this text in Copilot 
 
-```
+<pre class="nje-cmd-multi-line-sm">
 Automate all steps from the referenced setup guide #fetch https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux.agent.md, strictly in the order written.
 Aks the user to combine all suitable WSL steps into one or two scrip, or to execute them separately, but in both cases you should run the script(s). Take the following variable into account variables are all uppercase and for a space a _ (underscore) is used :
 - A variable that holds the project root of the project:
@@ -60,26 +63,21 @@ Also take these rules into account!:
 - That after running the script, you expect a summary of what was executed and confirmation that each step (including file edits) was completed.
 - That you want explicit confirmation if any step was skipped or not possible to automate.
 - Always report any errors encountered during the build process.
-```
+</pre>
 
 **Note**
 This step may ask you if it should combine all WSL instructions into one or not, you can answer this one of the two ways:
  - *'Yes combine and continue`*  -> Less user interaction, but also less clear what is executed 
  - *'No Separated steps please, continue'* -> This will guide you step by step through the procedure, more interaction
 
+<div class="nje-br1"> </div>
 
-<br>
+## Step 3 Check!
 
-## Step 3
 **Always ask at the end: 'Did you skip a step ?' after Copilot is finished**
 
+<div class="nje-br3"> </div>
+<sub><i> This file is part of: GLFW-Skia C++ Template Stack Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the 'LICENSE.md' file in the root directory of this source tree.</i>
+</sub>
 
-
-
-
-
-
-
-
-
-
+<p align="center">─── ✦ ───</p>
