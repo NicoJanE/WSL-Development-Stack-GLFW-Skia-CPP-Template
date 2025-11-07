@@ -11,6 +11,10 @@
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
 
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-brightgreen)
+![C++](https://img.shields.io/badge/C++-17-blue.svg)
+
 <a id="introduction"></a>
 
 ## ℹ️ Introduction
