@@ -28,7 +28,7 @@ The project is preconfigured with:
 
 ## ⚙️🏃‍♂️ Setup Instructions
 
-To move quickly to the installation instruction use one of the links below
+To move quickly to the installation instruction use one of the links below, for more details read the rest of this document.
 
 <table>
 <tr>
