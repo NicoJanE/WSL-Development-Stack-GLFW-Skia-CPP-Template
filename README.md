@@ -22,23 +22,60 @@ The project is preconfigured with:
 - **Visual Studio Code** launch and task files for streamlined development.
 - A `CMakePresets.json` file for easy integration with **Visual Studio 2022** on Windows.
 
+---
+
 <a id="qsetup"></a>
 
-## 🏃‍♂️ Quick Setup Links
+## ⚙️🏃‍♂️ Setup Instructions
 
-Before you can build the template project, you must configure the dependencies and project paths. You can do this manually or use the Copilot agent:
+To move quickly to the installation instruction use one of the links below
 
-1. [Manual Setup For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
-    - 💫 [VSC Agent Mode (WSL)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin)    
-1. [Manual Setup For Windows](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)    
-    - 💫 [VSC Agent Mode (Windows)](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win)    
-1. [Build the sample project](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
+<table>
+<tr>
+<th align="left"><strong><em>Platform</em></strong></th>
+<th align="left"><strong><em>Purpose</em></strong></th>
+<th align="left"><strong><em>Setup Guide</em></strong></th>
+<th align="left">Agent Mode</th>
+</tr>
+<tr>
+<td>🪟 <strong>Windows</strong></td>
+<td>Native development, VS Code, debugging</td>
+<td><strong><a href="./Howtos/setup_win">Windows Setup</a></strong></td>
+<td>💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win">VSC Agent Mode Windows</a></strong></td>
+</tr>
+<tr>
+<td>🐧 <strong>WSL Linux</strong></td>
+<td>Cross-platform builds, Linux testing</td>
+<td><strong><a href="./Howtos/setup_linux">Linux Setup</a></strong></td>
+<td>💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin">VSC Agent Mode Linux</a></strong></td>
+</tr>
+<tr>
+<td colspan="4" style="font-size: 0.85em; text-align: left;"><em><sup>*</sup>Both setups work together — you'll develop on Windows but can build/test on Linux seamlessly.</em></td>
+</tr>
+</table>
+
+<br>  
+
+<table>
+<tr>
+<th colspan="2" align="left">📚 <strong>Other Instructions</strong> (next step)</th>
+</tr>
+<tr>
+<th align="left"><strong><em>Document type</em></strong></th>
+<th align="left"><strong><em>Location</em></strong></th>
+</tr>
+<tr>
+<td><strong>Project Build Instruction</strong></td>
+<td><strong><a href="./Howtos/building_project">Here</a></strong></td>
+</tr>
+</table>
+
 
 ---
 
 <a id="lib"></a>
 
-## 📚 Libraries GLFW & Skia
+## 📦 Libraries GLFW & Skia
 
 This project uses two complementary, cross-platform libraries: GLFW for creating windows, managing graphics contexts, and handling user input, and Skia for high-performance, hardware-accelerated 2D drawing. GLFW focuses on windowing and input management without providing graphics rendering itself, which is why Skia is used to handle all rendering of text, images, and shapes with GPU acceleration. Together, they provide a robust foundation for building responsive and visually rich applications across Windows, Linux, and macOS.
 
@@ -62,7 +99,7 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 <summary> 🧰 Skia Requirement:  
 </summary><br>
 
-> ### **Skia** library requires:  
+> ### **Skia** library requires  
 >
 >&nbsp;&nbsp; 📚  Python 3  
 >&nbsp;&nbsp; 📚  Git  
@@ -132,16 +169,6 @@ The folder structure (<small> some folders and files are not include because the
 
 <a id="more"></a>
 
-## 🛠️ More Instructions
-
-**Build Environment Setup** manual instructions can be found here (see also the **Quick Configurations links** at the top):
-
-- [For Linux](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux)
-- [For Windows](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win)
-
->Note that both use the same project source folder to build (Linux is build from the WSL Windows mount )
-
-**Project build instruction** instructions for building the Sample with the VSC or Visual Studio or via the console can be found [here](https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project)
 
 <br>
 <p align="center">
