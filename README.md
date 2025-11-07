@@ -53,6 +53,13 @@ To move quickly to the installation instruction use one of the links below, for 
 <td><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux">Linux Setup</a></strong></td>
 <td>💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin">VSC Agent Mode Linux</a></strong></td>
 </tr>
+
+<tr>
+<td>✨ <strong>General</strong></td>
+<td> General Information</td>
+<td colspan="2"> <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/index">General Page Index</a></strong></td>
+</tr>
+
 <tr>
 <td colspan="4" style="font-size: 0.85em; text-align: left;"><em><sup>*</sup>Both setups work together — you'll develop on Windows but can build/test on Linux seamlessly.</em></td>
 </tr>
