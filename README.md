@@ -44,13 +44,13 @@ To move quickly to the installation instruction use one of the links below, for 
 <tr>
 <td>🪟 <strong>Windows</strong></td>
 <td>Native development, VS Code, debugging</td>
-<td><strong><a href="./Howtos/setup_win">Windows Setup</a></strong></td>
+<td><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win">Windows Setup</a></strong></td>
 <td>💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win">VSC Agent Mode Windows</a></strong></td>
 </tr>
 <tr>
 <td>🐧 <strong>WSL Linux</strong></td>
 <td>Cross-platform builds, Linux testing</td>
-<td><strong><a href="./Howtos/setup_linux">Linux Setup</a></strong></td>
+<td><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux">Linux Setup</a></strong></td>
 <td>💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin">VSC Agent Mode Linux</a></strong></td>
 </tr>
 <tr>
@@ -70,7 +70,7 @@ To move quickly to the installation instruction use one of the links below, for 
 </tr>
 <tr>
 <td><strong>Project Build Instruction</strong></td>
-<td><strong><a href="./Howtos/building_project">Here</a></strong></td>
+<td><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project">Here</a></strong></td>
 </tr>
 </table>
 
