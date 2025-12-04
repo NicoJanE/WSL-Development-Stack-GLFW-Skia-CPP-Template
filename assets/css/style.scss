@@ -311,6 +311,17 @@ pre.nje-source-block {
   margin-top: 0px;
   margin-bottom: 4px;
 }
+/*Deprecated, for legacy code  */
+.nje-cmd-one-line-sm-ident1{
+ @extend .nje-cmd-one-line-sm-indent;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+.nje-cmd-one-line-sm-indent1{
+ @extend .nje-cmd-one-line-sm-indent;
+  margin-left: 0px;
+  margin-top: 0px;
+}
 /* Item below a 2e level bullet */
 .nje-cmd-one-line-sm-indent2 {
   @extend .nje-cmd-one-line-sm-indent;
