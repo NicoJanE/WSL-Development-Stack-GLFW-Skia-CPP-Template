@@ -32,7 +32,7 @@ The project is preconfigured with:
 
 <a id="qsetup"></a>
 
-## ⚙️🏃‍♂️ Setup Instructions
+## ⚙️🏃‍♂️ Library Setup Instructions
 
 ⏱️ **Note:** Building GLFW and Skia from source is a comprehensive process that can take significant time (especially Skia). Follow the detailed setup guides below. To access the installation instructions, use one of the links below. For more details, read the rest of this document.
 
@@ -66,8 +66,11 @@ The project is preconfigured with:
 <td colspan="4" style="font-size: 0.85em; text-align: left;"><em><sup>*</sup>Both setups work together — you'll develop on Windows but can build/test on Linux seamlessly.</em></td>
 </tr>
 </table>
-
 <br>  
+
+## ⚙️🏃‍♂️ Building the sample project
+
+A sample project is included and can be used after the above libraries are set up. For build instructions, see:
 
 <table>
 <tr>
@@ -83,12 +86,11 @@ The project is preconfigured with:
 </tr>
 </table>
 
-
 ---
 
 <a id="lib"></a>
 
-## 📦 Libraries GLFW & Skia
+## 📦 More about GLFW & Skia
 
 This project uses two complementary, cross-platform libraries: GLFW for creating windows, managing graphics contexts, and handling user input, and Skia for high-performance, hardware-accelerated 2D drawing. GLFW focuses on windowing and input management without providing graphics rendering itself, which is why Skia is used to handle all rendering of text, images, and shapes with GPU acceleration. Together, they provide a robust foundation for building responsive and visually rich applications across Windows, Linux, and macOS.
 
@@ -127,7 +129,7 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 <summary>⚠️ OpenGL vs Vulkan Compatibility Notes
 </summary><br>
 
-> ###  OpenGL or Vulkan
+> ### OpenGL or Vulkan
 >
 >Both GLFW and Skia support OpenGL or Vulkan, but they must be configured to use the same graphics API.
 >
