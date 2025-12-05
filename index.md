@@ -33,6 +33,7 @@ The project is preconfigured with:
 
 - **Visual Studio Code** launch and task files for streamlined development.
 - A `CMakePresets.json` file for easy integration with **Visual Studio 2022/2026** on Windows.
+- A sample (template) project with source using GLFW and Skia
 
 ---
 
@@ -69,13 +70,13 @@ The project is preconfigured with:
 
 <br>  
 
-<table  style="width: 30%">
+<table  style="width: 40%">
 <tr>
 <th colspan="2" style="text-align: left;">📚 <strong>Other Instructions</strong> (next step)</th>
 </tr>
 <tr>
-<td style="text-align: left;">Project Build Instruction</td>
-<td style="text-align: left;"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project">Here</a></strong></td>
+<td style="text-align: left;">Build & use the Sample Template Project</td>
+<td style="text-align: left;"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project">Instructions Here</a></strong></td>
 </tr>
 </table>
 
@@ -192,15 +193,7 @@ The folder structure (<small> some folders and files are not include because the
 
 </code></pre>
 
----
-
 <a id="more"></a>
-
-- **GLFW** is used for **creating windows**, managing **OpenGL or Vulkan contexts**, and handling **input events** (keyboard, mouse, etc.).
-- **Skia** is used for **high-level 2D drawing**, including **text, images, shapes**, and **anti-aliased graphics**.
-- They serve complementary roles with **minimal overlap**: *GLFW* provides the **platform and context**; *Skia* does the **drawing**.
-- In this project, GLFW handles windowing and input, while Skia handles all drawing operations.
-
 <details class="nje-warn-box">
   <summary>Libraries: OpenGL, OpenGL ES, and Vulkan
   </summary>

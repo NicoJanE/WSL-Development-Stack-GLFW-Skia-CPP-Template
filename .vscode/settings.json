@@ -22,11 +22,12 @@
       "**/depw/skia/third_party": false
     },
     "cSpell.words": [
-        "Eelhart",
-        "Ganesh",
-        "glfw",
-        "Nico",
-        "Skia"
+      "Eelhart",
+      "Ganesh",
+      "glfw",
+      "Nico",
+      "preconfigured",
+      "Skia"
     ],
     "files.associations": {
       "*.toml": "toml",
