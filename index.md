@@ -51,22 +51,22 @@ The project is preconfigured with:
 <th align="left">Agent Mode</th>
 </tr>
 <tr>
-<td>🪟 <strong>Windows</strong></td>
-<td>Native development, VS Code, debugging</td>
-<td><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win">Windows Setup</a></strong></td>
-<td>💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win">VSC Agent Mode Windows</a></strong></td>
+<td align="left">🪟 <strong>Windows</strong></td>
+<td align="left">Native development, VS Code, debugging</td>
+<td align="left"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win">Windows Setup</a></strong></td>
+<td align="left">💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win">VSC Agent Mode Windows</a></strong></td>
 </tr>
 <tr>
-<td>🐧 <strong>WSL Linux</strong></td>
-<td>Cross-platform builds, Linux testing</td>
-<td><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux">Linux Setup</a></strong></td>
-<td>💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin">VSC Agent Mode Linux</a></strong></td>
+<td align="left">🐧 <strong>WSL Linux</strong></td>
+<td align="left">Cross-platform builds, Linux testing</td>
+<td align="left"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux">Linux Setup</a></strong></td>
+<td align="left">💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin">VSC Agent Mode Linux</a></strong></td>
 </tr>
 
 <tr>
-<td>✨ <strong>General</strong></td>
-<td> General Information</td>
-<td colspan="2"> <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/index">General Page Index</a></strong></td>
+<td align="left">✨ <strong>General</strong></td>
+<td align="left"> General Information</td>
+<td align="left" colspan="2"> <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/index">General Page Index</a></strong></td>
 </tr>
 
 <tr>
@@ -85,8 +85,8 @@ The project is preconfigured with:
 <th align="left"><strong><em>Location</em></strong></th>
 </tr>
 <tr>
-<td><strong>Project Build Instruction</strong></td>
-<td><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project">Here</a></strong></td>
+<td align="left"><strong>Project Build Instruction</strong></td>
+<td align="left"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project">Here</a></strong></td>
 </tr>
 </table>
 
