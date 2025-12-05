@@ -14,10 +14,18 @@ RefPages:
 
 ## Introduction
 
-This template is intended for use in conjunction with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 11** host.
-This section explains how to configure a Windows environment to build your GLFW/Skia project for Windows
+This template is designed for use in conjunction with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 11** host.
+This section provides step-by-step instructions for setting up the native Windows build environment, including building the GLFW and Skia libraries from source.
 
-###  Requirements for Windows
+The setup process involves:
+
+- Building GLFW 3.4 using Visual Studio and CMake
+- Building Skia graphics library with debug and release configurations
+- Configuring dependencies locally within your project folder for full customization
+
+<span class="nje-colored-block" style="margin-left:20px;"> <small>Note: This guide focuses on the Windows-native build setup. For the companion WSL/Linux setup, see the [Linux Setup Guide](setup_linux).</small></span>
+
+### Requirements for Windows
 
 &nbsp;&nbsp; 📚  Visual Studio 2022 Community Edition (optional)  
 &nbsp;&nbsp; 📚  Visual Studio code (optional)  
@@ -28,79 +36,96 @@ This section explains how to configure a Windows environment to build your GLFW/
 
 ## Setup Instructions
 
-### Cross-Platform Development Setup
-
-**This is the Windows component** of a dual-platform development environment:
+**This is the Windows part** of a dual-platform development environment:
 
 - **Windows Setup (This Page)**: Native development tools, Visual Studio, debugging
 - **WSL Linux Setup**: Cross-platform builds and Linux testing → [Linux Setup Guide](setup_linux)
 
 **Why both?** You'll develop primarily on Windows but can build and test Linux versions seamlessly through WSL.
 
-**💫 New Setup wit VSC Agent [See here](VSC-AgentMode_win)**
-This will try to use the VS Co-pilot agent to install the installation, mentioned below (Experimental)
+<details class="nje-remark-box">
+  <summary>**💫 New experimental Setup wit VSC Agent**
+  </summary>
+  For our New experimental Setup wit VSC Agent [See here](VSC-AgentMode_win)
+  This will try to use the VS Co-pilot agent to install the Windows part installation. This is experimental and may be changed.
+</details>
+<span class="nje-br"> </span>
 
 ---
 
-### Built GLFW library for Windows
+### Build GLFW library for Windows
 
-GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which can be built using **Visual Studio 2022 Community Edition** (VS2022) and the MSbuild tools.
+GLFW Version 3.4 has a CMake file that generates Visual Studio projects, which can be built using **Visual Studio 2022/2026 Community Edition** in combination with the MSBuild tools.
+The dependency libraries (GLFW and Skia) are, in this project, installed within the project folder so that the entire project is self-contained in a single directory. This has the obvious disadvantage
+that the libraries cannot be reused across different projects (and thus must be re-installed and customized for each project). However, the advantage is that the libraries can be fully customized for the specific needs of the current project.
+You may choose to create a shared library installation, but this procedure assumes that the libraries are installed within the project in the folder: <span class="nje-cmd-inline-sm">.\dependencies\win </span>  
+We still believe this is the best approach, even for large libraries like Skia.
 
-- Activate a Power-shell in the project folder
-- In your project folder create, if needed, a folder and change to it: <span class="nje-cmd-inline-sm">.\dependencies\win </span>  
-- Download [**glfw-3.4.zip**](https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip) it in the above folder (result is: **.\dependencies\win\glfw-3.4.zip**)
-- For the next step use a reliable extraction tool that does not skip hidden or system files and extracts the zip file in the right location, after extracting the files  should be in the folder: **.\dependencies\win\glfw-3.4\\**. I use the 7z zip utility from [here](https://www.7-zip.org/download.htm) when using the following command in a Powershell CLI (in the mentioned folder), the zip should be extract in the right location, execute the command:  <span class="nje-cmd-inline-sm"> 7z x glfw-3.4.zip "-o."</span>
+<span class="nje-colored-block" style="--nje-bgcolor:green; --nje-textcolor:white;margin-bottom:0px; "> **General procedure:** </span>
 
-#### Create a dynamically(DLL) multithreaded glfw library (preferred)
+- Launch a PowerShell terminal in the cloned GitHub project folder.
+- In your project folder, create the following folder if needed, then navigate to it: <span class="nje-cmd-inline-sm">.\dependencies\win </span>  
+- Download [**glfw-3.4.zip**](https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip) into the above folder (result should be: **.\dependencies\win\glfw-3.4.zip**, rename to this if you have a newer sub-version)
+- For the next step, use a reliable extraction tool that does not skip hidden or system files and extracts the zip file in the correct location. After extraction, the files should be in the folder: **.\dependencies\win\glfw-3.4\\**. I use the 7-Zip utility from [here](https://www.7-zip.org/download.htm). When using the following command in a PowerShell CLI (in the mentioned folder), the zip will be extracted in the correct location:  <span class="nje-cmd-inline-sm"> 7z x glfw-3.4.zip "-o."</span>
 
-To Create the DLL **release\debug** use:
+#### Build procedure (Dynamic DLL preferred / Static alternative)
 
-- If not yet available make the **outdll** directory
-  <pre class="nje-cmd-one-line-sm-indent1">mkdir project root\dependencies\win\glfw-3.4\outdll </pre>
+The following procedure applies to **both Dynamic (DLL)** and **Static** library builds. Key differences are highlighted in the table below.
+
+**Differences between Dynamic and Static builds:**
+
+| Aspect | Dynamic (DLL) - Preferred | Static |
+|:--------|:---------------------------|:--------|
+| **Output folder** | <span class="nje-cmd-inline-sm">outdll</span> |  <span class="nje-cmd-inline-sm">outstatic</span> |
+| **CMake flag** | <span class="nje-cmd-inline-sm"> -DBUILD_SHARED_LIBS=ON | <span class="nje-cmd-inline-sm"> -DBUILD_SHARED_LIBS=OFF </span> |
+| **Output files** | <span class="nje-cmd-inline-sm">glfw3.dll + glfw3dll.lib`</span (import lib) |  <span class="nje-cmd-inline-sm">glfw3.lib</span> |
+| **Output location** | <span class="nje-cmd-inline-sm">./outdll/src/Debug or ./outdll/src/Release</span> |  <span class="nje-cmd-inline-sm">./outstatic/src/Debug or ./outstatic/src/Release </span> |
+
+<div class="nje-br4"> </div>
+<span class="nje-colored-block" style="--nje-bgcolor:green; --nje-textcolor:white;margin-bottom:0px; "> **Build steps GLFW:** </span>
+
+- If not yet available make the output directory (choose based on your build type):
+  <pre class="nje-cmd-one-line-sm-indent1">mkdir project root\dependencies\win\glfw-3.4\outdll     # For Dynamic DLL</pre>
+  <pre class="nje-cmd-one-line-sm-indent1">mkdir project root\dependencies\win\glfw-3.4\outstatic  # For Static</pre>
 - Change to that directory
-  <pre class="nje-cmd-one-line-sm-indent1">project root\dependencies\win\glfw-3.4\outdll</pre>
-- Than Run:  
-   <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON </pre>
-- Next,  use PowerShell to search for **msbuild.exe** on the system, this is because we need the full path to msbuild.exe. Us this Power-shell command:
-  <pre class="nje-cmd-one-line-sm-indent1">Get-ChildItem -Path "C:\" -Filter "msbuild.exe" -Recurse -ErrorAction SilentlyContinue </pre>
-
+  <pre class="nje-cmd-one-line-sm-indent1">project root\dependencies\win\glfw-3.4\outdll     # For Dynamic DLL</pre>
+  <pre class="nje-cmd-one-line-sm-indent1">project root\dependencies\win\glfw-3.4\outstatic  # For Static</pre>
+- Than run with Power-Shell (choose based on your build type):  
+   <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON   # For Dynamic DLL</pre>
+   <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF  # For Static</pre>
+  - For Visual Studio 2026 use:
+    <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 18 2026" -A x64 -DBUILD_SHARED_LIBS=ON   # For Dynamic DLL</pre>
+    <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 18 2026" -A x64 -DBUILD_SHARED_LIBS=OFF  # For Static</pre> <div class="nje-br2"> </div>
+    <span class="nje-colored-block"> <small>Note 1: Initial experimental support in cmake 4.2 (dec 2025). you can use the 2022 version to generate the VS project and compile later with 2026</small></span>
+    <span class="nje-colored-block"  style="margin-top:4px; "> <small>Note 2: By default the latest installed SDK is use if you require and other add: **-DCMAKE_SYSTEM_VERSION=10.0.19041.0**</small> </span>
+- Next,  use PowerShell to search for **msbuild.exe** versions (2022 and 2026) on the system, this is because we need the full path to msbuild.exe. Us this Power-shell command:
+  <pre class="nje-cmd-multi-line-sm">& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" `
+  -products * `
+  -requires Microsoft.Component.MSBuild `
+  -find MSBuild\**\Bin\MSBuild.exe
+  </pre>
 - Now use the Full path to msbuild.exe to create the library, In the Power-Shell CLI run:
-  <pre class="nje-cmd-one-line-sm-indent1">& /path/to/msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64 </pre>
-- then copy the generated **glfw3.dll** file to the project root.
+  <pre class="nje-cmd-multi-line-sm">
+  & /path/to/msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64 </pre>
+  <div class="nje-br2"> </div>
 
-<div class="nje-expect-multi-lines-indent1">
-This ensures **VS2022** builds the **Debug multithreaded DLL** version in the ***./outdll/src/Debug*** folder, 
-or the **Release multithreaded DLL** version in the ***./outdll/src/Release*** folder, depending on the selected
-**Solution Configuration** in Visual Studio. You can then copy the ***glfw3.dll*** file to your application executable folder to use it.
-</div>
-<div class="nje-br1"> </div>
+  <span class="nje-colored-block"> <small>Note: Update */p:Configuration=Debug* to:  ***/p:Configuration=Release*** for release  builds</small> </span>
+- Then copy the generated library files to the project root:
+  - **Dynamic DLL**: Copy **glfw3.dll** (and optionally **glfw3dll.lib**) from <span class="nje-cmd-inline-sm">./outdll/src/Debug</span> or <span class="nje-cmd-inline-sm">./outdll/src/Release</span>
+  - **Static**: Copy **glfw3.lib** from <span class="nje-cmd-inline-sm">./outstatic/src/Debug</span> or <span class="nje-cmd-inline-sm">./outstatic/src/Release></span>
 
-### Statical library use
-
-- If not yet available make the **outdll** directory
-  <pre class="nje-cmd-one-line-sm-indent1">mkdir  'project root\dependencies\win\glfw-3.4\outstatic </pre>
-- Change to that directory 
-  <pre class="nje-cmd-one-line-sm-indent1">project root\dependencies\win\glfw-3.4\outstatic</pre>
-- Than Run:  
-   <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF </pre>
-- Next,  use PowerShell to search for **msbuild.exe** on the system, this is because we need the full path to msbuild.exe. Us this Power-shell command:
-  <pre class="nje-cmd-one-line-sm-indent1">Get-ChildItem -Path "C:\" -Filter "msbuild.exe" -Recurse -ErrorAction SilentlyContinue </pre>
-- Now use the Full path to msbuild.exe to create the library, In the Power-Shell CLI run:
-  <pre class="nje-cmd-one-line-sm-indent1">& /path/to/msbuild GLFW.sln /p:Configuration=Debug /p:Platform=x64 </pre>
-- then copy the generated **glfw3.dll** file to the project root.
-
-<div class="nje-expect-multi-lines-indent1">
-This ensures **VS2022** builds the **Debug static multithreaded** version in the ***./outstatic/src/Debug*** folder,
-or the **Release static multithreaded** version in the ***./outstatic/src/Release*** folder, again depending on the
-**Solution Configuration**. The filename is:  ***glfw3.lib*** and will be linked into your application when you link against it
-</div>
+  <div class="nje-expect-multi-lines-indent1">
+  This ensures **VS2022**/**VS2026** builds the selected library type in the appropriate ***src*** folder(i.e: src/debug), depending on the selected
+  **Solution Configuration** in Visual Studio. For Dynamic DLL builds, make sure to copy the ***glfw3.dll*** file to your application executable folder at runtime.
+  </div>
 <div class="nje-br1"> </div>
 
 ### Update CMake files
 
-After building the GLFW library (as DLL or static) Update the  <span class="nje-cmd-inline-sm">cmake/windows.cmake file</span>, <small>function: ***n_SetExtraWindowsFolders()***</small>
+After building the GLFW library (as DLL or static) Update the  <span class="nje-cmd-inline-sm">${PROJECT_SOURCE_DIR}/cmake/windows.cmake</span> file, <small>function: ***_SetExtraWindowsFolders()***</small>
+Make Sure to check and adjust the variables displayed below:
 
-- Check/Set the include folder variable **GLFW_WIN_INCLUDE_DIR** to: 
+- Check/Set the include folder variable **GLFW_WIN_INCLUDE_DIR** to:
   <pre class="nje-cmd-one-line-sm-indent1">${PROJECT_SOURCE_DIR}/dependencies/win/glfw-3.4/include</pre>
 - In case of:
   - ***Static linking***
@@ -118,22 +143,25 @@ After building the GLFW library (as DLL or static) Update the  <span class="nje-
 ## Built Skia library
 
 1. First Build the ***depot_tools***. depot_tools is a collection of scripts/tools used to manage large Google Git projects
-   - In your project folder Navigate to the folder: **.\dependencies\win** or create it, if it does not exists
+   - In your project folder Navigate, with your Power-Shell CLI, to the folder: **.\dependencies\win** or create it, if it does not exists
    - Clone the git repository:  
      <pre class="nje-cmd-one-line-sm-indent1">git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git </pre>
 
 <div class="nje-expect-multi-lines-indent3">
 - This creates a folder: **.\dependencies\win\depot_tools** add this to the **system path** and reopen the **CLI**  
-- Test. Execute: <span class="nje-cmd-inline-sm">gclient help</span> → should display help information.
+- Test. Execute: <span class="nje-cmd-inline-sm">gclient help</span> → should display help information and in case of the first time opening, download it!
 </div>
 <div class="nje-br1"> </div>
 
 ### Built dependency Ninja if needed
 
-- Execute <span class="nje-cmd-inline-sm">ninja --version</span> When this returns a version Ninja is already build and you skip this and continue with the next section ***Build Skia Debug*** below.
+- Execute <span class="nje-cmd-inline-sm">ninja \-\-version</span> When this returns a version Ninja is already build and you skip this and continue with the next section ***Build Skia Debug*** below.
+  Make sure to use the correct dash!
 - If ninja is not installed **Download** it form [**here**](https://github.com/ninja-build/ninja/releases/latest)
 - **Extract** it in the project root under the subfolder: **.\dependencies\win**
-- Make sure to add the installed folder with <span class="nje-cmd-inline-sm">ninja.exe</span> to your system **PATH** so that **ninja.exe** is available in your terminal
+  <div class="nje-br2"> </div>
+  <span class="nje-colored-block" style="margin-left:20px;"> <small>You can use and existing, more central installed ninja version, in this case</small></span>
+- Make sure to add the installed folder with <span class="nje-cmd-inline-sm">ninja.exe</span> to your system **PATH** so that **ninja.exe** is available in your terminal(see warning below)
 
 <details class="nje-warn-box">
   <summary>Path **ninja** must be before depot_tools
@@ -180,12 +208,12 @@ After building the GLFW library (as DLL or static) Update the  <span class="nje-
 - Change **cd** to
   <pre class="nje-cmd-one-line-sm-indent1">project root\dependencies\win\skia</pre>
 - Execute command:
-  <pre class="nje-cmd-one-line-sm-indent1">git checkout chrome/m126`  # To checkout a stable build instead a the master branch (Use same as on Linux!) </pre>
+  <pre class="nje-cmd-one-line-sm-indent1">git checkout chrome/m126  # To checkout a stable build instead a the master branch (Use same as on Linux!) </pre>
 - The following command will call a the Skia build script which uses depot_tools to **get** the **dependencies**:  
 - Execute command: 
   <pre class="nje-cmd-one-line-sm-indent1">python tools\git-sync-deps </pre>
   - ***Test***: It should have created tools like <span class="nje-cmd-inline-sm">gn</span> and other dependencies, test type in the CLI:  
-  Execute command: <span class="nje-cmd-inline-sm">.\bin\gn --version </span>
+  Execute command: <span class="nje-cmd-inline-sm">.\bin\gn \-version </span>
   
 <details class="nje-warn-box">
   <summary>Check for errors
@@ -271,13 +299,15 @@ Build result should include files like:
 </div>
 <span class="nje-br"> </span>
 
-- Update the file **./cmake/windows.cmake** file, make sure it contains:
+- Update the file **${PROJECT_SOURCE_DIR}/cmake/windows.cmake** (<small>function: ***_SetExtraWindowsFolders()***</small>)  
+  make sure it contains:
   <pre class="nje-cmd-one-line-sm-indent1">set(SKIA_WIN_CORE_INCLUDE "${PROJECT_SOURCE_DIR}/dependencies/win/skia")</pre>
  ⚠️ **<small>Don't add the `include` folder! This folder is part of the include directive of the Skia files </small> <br>**{: style="color: black;font-size:14px; "}  
 
-- Update the file  **./cmake/windows.cmake** file, make sure it contains:
+- Update the file  **${PROJECT_SOURCE_DIR}/cmake/windows.cmake** (<small>function: ***_SetExtraWindowsFolders()***</small>)  
+   make sure it contains:
   <pre class="nje-cmd-one-line-sm-indent1">set(SKIA_WIN_LIBS "${PROJECT_SOURCE_DIR}/dependencies/win/skia/out/Debug"),</pre>
-- Ensure `skia`is added to the  variable: **SKIA_LIBS_LOCAL** in the file **cmake/windows.cmake**
+- Ensure `skia`is added to the  variable: **SKIA_LIBS_WIN_LOCAL** in the file **cmake/windows.cmake**
 <span class="nje-br"> </span>
 
 ### Build Skia Release
@@ -287,7 +317,8 @@ This will create the Skia release library
 ### Install ***libjpeg-turbo***
 
 - Navigate to: **./dependencies/win** of the project root folder.
-- Download libjpeg-turbo [**from here**](https://github.com/libjpeg-turbo/libjpeg-turbo)
+- Clone the git librar libjpeg-turbo [**from here**](https://github.com/libjpeg-turbo/libjpeg-turbo)
+- <pre class="nje-cmd-one-line-sm-indent1">git clone https://github.com/libjpeg-turbo/libjpeg-turbo.git </pre>
 - Create build directory
   <span class="nje-cmd-inline-sm">mkdir build</span>
 - Change to the build output folder and(**cd build**)
@@ -301,8 +332,9 @@ This will create the Skia release library
 ### Generate build files for Skia Release
 
 - Navigate to: **./dependencies/win/skia** of the project root folder.
-- create folder: <span class="nje-cmd-inline-sm">mkdir build</span>
-- Execute this command: in powershell CLI: 
+- create folder: <span class="nje-cmd-inline-sm">mkdir build</span> if not exists
+- create folder: <span class="nje-cmd-inline-sm">mkdir out\Release</span> if not exists
+- Execute this command, from **skia** folder in powershell CLI: 
 <pre class="nje-cmd-multi-line-sm-indent4">
 @"
 is_debug = false
@@ -316,18 +348,18 @@ skia_use_system_libwebp = false
 skia_use_expat = false
 skia_use_icu = false  # no international text layout, no BiDi!
 extra_cflags = [
-"/I../../../libjpeg-turbo/src",  ""/I../../../libjpeg-turbo/build""
+"/I../../../libjpeg-turbo/src",  "/I../../../libjpeg-turbo/build"
 ]
 "@ | Out-File out\Release\args.gn -Encoding ASCII
 </pre>
 
-- Configures the build:
+- Configures the build(from **skia** folder):
   <pre class="nje-cmd-one-line-sm-indent1">.\bin\gn gen out\Release</pre>
   <span class="nje-expect" style="margin-top:0px;"> This configures the Release build!</span>
 
 - Make sure to be in the folder: **project root\dependencies\win\skia**
 - create the **Build** with:
-  <pre class="nje-cmd-one-line-sm-indent1">`ninja -C out\Release</pre>
+  <pre class="nje-cmd-one-line-sm-indent1">ninja -C out\Release</pre>
   <span class="nje-expect" style="margin-top:0px;"> This Creates the Release build!</span>
 
 This finalizes the build process for Windows

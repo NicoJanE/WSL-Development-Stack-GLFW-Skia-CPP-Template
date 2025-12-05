@@ -19,12 +19,12 @@
 
 ## ℹ️ Introduction
 
-This is a template C++ project using the **GLFW** and **Skia** libraries to create a cross-platform graphical user interface (GUI) for **Windows** and **Linux**.  It uses **CMake** as the build system and includes a Skia-based sample application to demonstrate integration.
+This is a template C++ project using the **GLFW** and **Skia** libraries (built from source) to create a cross-platform graphical user interface (GUI) for **Windows** and **Linux**.  It uses **CMake** as the build system and includes a Skia-based sample application to demonstrate integration.
 
 The project is preconfigured with:
 
 - **Visual Studio Code** launch and task files for streamlined development.
-- A `CMakePresets.json` file for easy integration with **Visual Studio 2022** on Windows.
+- A `CMakePresets.json` file for easy integration with **Visual Studio 2022/2026** on Windows.
 
 ---
 
@@ -32,7 +32,7 @@ The project is preconfigured with:
 
 ## ⚙️🏃‍♂️ Setup Instructions
 
-To move quickly to the installation instruction use one of the links below, for more details read the rest of this document.
+⏱️ **Note:** Building GLFW and Skia from source is a comprehensive process that can take significant time (especially Skia). Follow the detailed setup guides below. To access the installation instructions, use one of the links below. For more details, read the rest of this document.
 
 <table>
 <tr>
@@ -107,16 +107,17 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 - **Versatile output** – Renders to OpenGL surfaces, images, PDFs, or SVG.
 
 <details>
-<summary> 🧰 Skia Requirement:  
+<summary> 🧰 Skia Build Requirements:  
 </summary><br>
 
-> ### **Skia** library requires  
+> ### **Skia** library build requires  
 >
 >&nbsp;&nbsp; 📚  Python 3  
 >&nbsp;&nbsp; 📚  Git  
 >&nbsp;&nbsp; 📚  Depot Tools  
+>&nbsp;&nbsp; 📚  Ninja build system  
 >
->These are all installed automatically during the Windows and Linux setup procedures linked above.
+>These dependencies must be installed and configured following the detailed setup procedures linked above. The Skia build process is comprehensive and involves cloning the repository, syncing dependencies, and building with specific configurations.
 
 </details>
 
@@ -136,9 +137,25 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 >The sample in this project assumes you use OpenGL because it's simpler, mature, cross-platform, and well-supported by Skia and GLFW.
 >
 >**Converting**
->Converting from OpenGL to Vulkan in this project is doable with some effort; it mainly involves changing the graphics backend initialization and context management (GLFW). Skia’s drawing code remains unchanged.
+>Converting from OpenGL to Vulkan in this project is doable with some effort; it mainly involves changing the graphics backend initialization and context management (GLFW). Skia's drawing code remains unchanged.
 >
 >Supporting macOS is more challenging because Apple chose to not support Vulkan and instead reinvent the wheel with their own Metal API, making things harder for cross-platform developers.
+
+</details>
+
+<details>
+<summary>⚠️ Common Setup Pitfalls
+</summary><br>
+
+> ### **Windows-specific issues to avoid:**
+>
+> 🚫 **Path length limits** – Skia builds can fail with "file name too long" errors. Use short paths like `C:\libs\skia`  
+> 🚫 **ninja.exe vs ninja.bat** – Ensure the official `ninja.exe` is first in your PATH, not `depot_tools\ninja.bat`  
+> 🚫 **Old environment variables** – Previous Skia builds can leave conflicting EMSDK variables  
+> ⏱️ **Build time** – Skia builds can take significant time; plan accordingly  
+> 🚫 **Spaces in paths** – Avoid spaces or special characters in project paths  
+>
+> See the detailed setup guides for complete troubleshooting information.
 
 </details>
 
@@ -148,7 +165,7 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 
 ## ⚡The Template Project Architecture
 
-This template consists of a template project for building a **GUI control** sample application based on the **GLFW** library and the **Skia** library. Supporting both **Windows**  and **Linux** (debian 12) operating systems. For Windows the **NMake** toolchain of the  Visual Studio 2022 Community edition applications is used and for Debian the **GNU Compiler Collection** is used.
+This template consists of a template project for building a **GUI control** sample application based on the **GLFW** library and the **Skia** library. Supporting both **Windows**  and **Linux** (Debian 12) operating systems. For Windows, the **MSBuild** toolchain of Visual Studio 2022/2026 Community Edition is used, and for Debian the **GNU Compiler Collection** is used.
 
 The folder structure (<small> some folders and files are not include because they are Github specific files(layout ect.) :
 
