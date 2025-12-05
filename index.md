@@ -7,8 +7,7 @@ RefPages:
 --- 
 <br>
 
-<details>
-<summary>📑 Table of Contents</summary>
+***📑 Table of Contents***
 
 - [Introduction](#introduction)
 - [Quick Setup](#qsetup)
@@ -16,7 +15,7 @@ RefPages:
 - [The Template Project Architecture](#temp)
 - [More Instructions](#more)
 
-</details>
+<br>
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
 
@@ -41,32 +40,26 @@ The project is preconfigured with:
 
 ## ⚙️🏃‍♂️ Setup Instructions
 
-⏱️ **Note:** Building GLFW and Skia from source is a comprehensive process that can take significant time (especially Skia). Follow the detailed setup guides below. To access the installation instructions, use one of the links below. For more details, read the rest of this document.
+⏱️ **Note:** Building GLFW and Skia from source is a comprehensive process that can take some time (especially Windows Skia). Follow the detailed setup guides below. To access the installation instructions, use one of the links below. For more details, read the rest of this document.
 
 <table>
 <tr>
-<th align="left"><strong><em>Platform</em></strong></th>
-<th align="left"><strong><em>Purpose</em></strong></th>
-<th align="left"><strong><em>Setup Guide</em></strong></th>
-<th align="left">Agent Mode</th>
+<th style="text-align: left;"><strong><em>Platform</em></strong></th>
+<th style="text-align: left;"><strong><em>Purpose</em></strong></th>
+<th style="text-align: left;"><strong><em>Setup Guide</em></strong></th>
+<th style="text-align: left;">Agent Mode (experimental)</th>
 </tr>
 <tr>
-<td align="left">🪟 <strong>Windows</strong></td>
-<td align="left">Native development, VS Code, debugging</td>
-<td align="left"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win">Windows Setup</a></strong></td>
-<td align="left">💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win">VSC Agent Mode Windows</a></strong></td>
+<td style="text-align: left;">🪟 <strong>Windows</strong></td>
+<td style="text-align: left;">Native development, VS Code, debugging</td>
+<td style="text-align: left;"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_win">Windows Setup</a></strong></td>
+<td style="text-align: left;">💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_win">VSC Agent Mode Windows</a></strong></td>
 </tr>
 <tr>
-<td align="left">🐧 <strong>WSL Linux</strong></td>
-<td align="left">Cross-platform builds, Linux testing</td>
-<td align="left"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux">Linux Setup</a></strong></td>
-<td align="left">💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin">VSC Agent Mode Linux</a></strong></td>
-</tr>
-
-<tr>
-<td align="left">✨ <strong>General</strong></td>
-<td align="left"> General Information</td>
-<td align="left" colspan="2"> <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/index">General Page Index</a></strong></td>
+<td style="text-align: left;">🐧 <strong>WSL Linux</strong></td>
+<td style="text-align: left;">Cross-platform builds, Linux testing</td>
+<td style="text-align: left;"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/setup_linux">Linux Setup</a></strong></td>
+<td style="text-align: left;">💫 <strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/VSC-AgentMode_lin">VSC Agent Mode Linux</a></strong></td>
 </tr>
 
 <tr>
@@ -76,22 +69,17 @@ The project is preconfigured with:
 
 <br>  
 
-<table>
+<table  style="width: 30%">
 <tr>
-<th colspan="2" align="left">📚 <strong>Other Instructions</strong> (next step)</th>
+<th colspan="2" style="text-align: left;">📚 <strong>Other Instructions</strong> (next step)</th>
 </tr>
 <tr>
-<th align="left"><strong><em>Document type</em></strong></th>
-<th align="left"><strong><em>Location</em></strong></th>
-</tr>
-<tr>
-<td align="left"><strong>Project Build Instruction</strong></td>
-<td align="left"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project">Here</a></strong></td>
+<td style="text-align: left;">Project Build Instruction</td>
+<td style="text-align: left;"><strong><a href="https://nicojane.github.io/WSL-Development-Stack-GLFW-Skia-CPP-Template/Howtos/building_project">Here</a></strong></td>
 </tr>
 </table>
 
-
----
+<span class="nje-br2"> </span>
 
 <a id="lib"></a>
 
@@ -115,58 +103,60 @@ This project uses two complementary, cross-platform libraries: GLFW for creating
 - **Precision rendering** – Anti-aliased text, vector shapes, and subpixel accuracy.
 - **Versatile output** – Renders to OpenGL surfaces, images, PDFs, or SVG.
 
-<details>
-<summary> 🧰 Skia Build Requirements:  
-</summary><br>
-
-> ### **Skia** library build requires  
->
->&nbsp;&nbsp; 📚  Python 3  
->&nbsp;&nbsp; 📚  Git  
->&nbsp;&nbsp; 📚  Depot Tools  
->&nbsp;&nbsp; 📚  Ninja build system  
->
->These dependencies must be installed and configured following the detailed setup procedures linked above. The Skia build process is comprehensive and involves cloning the repository, syncing dependencies, and building with specific configurations.
-
+<details class="nje-note-box">
+  <summary>🧰 Skia Build Requirements:
+  </summary>
+  
+### Skia library build requires  
+  
+  &nbsp;&nbsp; 📚  Python 3  
+  &nbsp;&nbsp; 📚  Git  
+  &nbsp;&nbsp; 📚  Depot Tools  
+  &nbsp;&nbsp; 📚  Ninja build system  
+  
+  These dependencies must be installed and configured following the detailed setup procedures linked above. The Skia build process is comprehensive and involves cloning the repository, syncing dependencies, and building with specific configurations.
 </details>
+<span class="nje-br2"> </span>
 
-<details>
+<details class="nje-note-box">
 <summary>⚠️ OpenGL vs Vulkan Compatibility Notes
-</summary><br>
+</summary>
 
-> ###  OpenGL or Vulkan
->
->Both GLFW and Skia support OpenGL or Vulkan, but they must be configured to use the same graphics API.
->
->For OpenGL, Skia uses classes like GrGLInterface, GrBackendRenderTarget, and GrDirectContext.  
->For Vulkan, Skia uses GrVkBackendContext and Vulkan-specific setup.  
->Skia's API is mostly consistent across backends, so much of your drawing code stays the same, only the backend setup differs.
->
-> **Choice**
->The sample in this project assumes you use OpenGL because it's simpler, mature, cross-platform, and well-supported by Skia and GLFW.
->
->**Converting**
->Converting from OpenGL to Vulkan in this project is doable with some effort; it mainly involves changing the graphics backend initialization and context management (GLFW). Skia's drawing code remains unchanged.
->
->Supporting macOS is more challenging because Apple chose to not support Vulkan and instead reinvent the wheel with their own Metal API, making things harder for cross-platform developers.
+## OpenGL or Vulkan
+
+Both GLFW and Skia support OpenGL or Vulkan, but they must be configured to use the same graphics API.
+
+For OpenGL, Skia uses classes like GrGLInterface, GrBackendRenderTarget, and GrDirectContext.  
+For Vulkan, Skia uses GrVkBackendContext and Vulkan-specific setup.  
+Skia's API is mostly consistent across backends, so much of your drawing code stays the same, only the backend setup differs.
+
+ **Choice**
+The sample in this project assumes you use OpenGL because it's simpler, mature, cross-platform, and well-supported by Skia and GLFW.
+
+**Converting**
+Converting from OpenGL to Vulkan in this project is doable with some effort; it mainly involves changing the graphics backend initialization and context management (GLFW). Skia's drawing code remains unchanged.
+
+Supporting macOS is more challenging because Apple chose to not support Vulkan and instead reinvent the wheel with their own Metal API, making things harder for cross-platform developers.
 
 </details>
+<span class="nje-br2"> </span>
 
-<details>
+<details class="nje-note-box">
 <summary>⚠️ Common Setup Pitfalls
-</summary><br>
+</summary>
 
-> ### **Windows-specific issues to avoid:**
->
-> 🚫 **Path length limits** – Skia builds can fail with "file name too long" errors. Use short paths like `C:\libs\skia`  
-> 🚫 **ninja.exe vs ninja.bat** – Ensure the official `ninja.exe` is first in your PATH, not `depot_tools\ninja.bat`  
-> 🚫 **Old environment variables** – Previous Skia builds can leave conflicting EMSDK variables  
-> ⏱️ **Build time** – Skia builds can take significant time; plan accordingly  
-> 🚫 **Spaces in paths** – Avoid spaces or special characters in project paths  
->
-> See the detailed setup guides for complete troubleshooting information.
+**Windows-specific issues to avoid:**
+
+- **Path length limits** – Skia builds can fail with "file name too long" errors. Use short paths like `C:\libs\skia`  
+- 🚫 **ninja.exe vs ninja.bat** – Ensure the official `ninja.exe` is first in your PATH, not `depot_tools\ninja.bat`  
+- 🚫 **Old environment variables** – Previous Skia builds can leave conflicting EMSDK variables  
+- ⏱️ **Build time** – Skia builds can take significant time; plan accordingly  
+- 🚫 **Spaces in paths** – Avoid spaces or special characters in project paths  
+
+ See the detailed setup guides for complete troubleshooting information.
 
 </details>
+<span class="nje-br2"> </span>
 
 ---
 
@@ -229,6 +219,7 @@ The folder structure (<small> some folders and files are not include because the
   Supporting macOS is more challenging because **Apple** chose to not support Vulkan and instead reinvent the wheel with their own **Metal API**, making things harder for drawing cross-platform developers.
 
 </details>
+<span class="nje-br2"> </span>
 
 ---
 
