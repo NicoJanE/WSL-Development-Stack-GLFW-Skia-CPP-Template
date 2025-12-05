@@ -33,7 +33,9 @@ The project is preconfigured with:
 
 - **Visual Studio Code** launch and task files for streamlined development.
 - A `CMakePresets.json` file for easy integration with **Visual Studio 2022/2026** on Windows.
-- A sample (template) project with source using GLFW and Skia
+- Build instruction for building the GLFW and Skia libraries from source.
+- A sample (template) project with source using GLFW and Skia.
+
 
 ---
 
