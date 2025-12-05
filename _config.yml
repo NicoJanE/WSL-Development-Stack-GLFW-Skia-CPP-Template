@@ -29,9 +29,11 @@ repository_name:                # Update this(repository name) if discussions ar
 home_site_name: 
     - DTS
     - WSL
+    - Sponsor
 home_site_url: 
     - https://nicojane.github.io/Docker-Template-Stacks-Home
     - https://nicojane.github.io/WSL-Template-Stacks-Home
+    - https://nicojane.github.io/Docker-Template-Stacks-Home/sponsor
 
 # EXAMPLE                                
 #<details>  
