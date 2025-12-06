@@ -4,18 +4,16 @@ RefPages:
 - setup_linux
 - setup_win
 - building_project
+
+
+TableCont:
+- Introduction
+- Library Setup
+- More GLFW & Skia
+- Project Architecture
 --- 
 <br>
 
-***📑 Table of Contents***
-
-- [Introduction](#introduction)
-- [Quick Setup](#qsetup)
-- [Libraries GLFW & Skia](#lib)
-- [The Template Project Architecture](#temp)
-- [More Instructions](#more)
-
-<br>
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
 
@@ -23,7 +21,7 @@ RefPages:
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-brightgreen)
 ![C++](https://img.shields.io/badge/C++-17-blue.svg)
 
-<a id="introduction"></a>
+<a id="Introduction"></a>
 
 ## ℹ️ Introduction
 
@@ -39,7 +37,7 @@ The project is preconfigured with:
 
 ---
 
-<a id="qsetup"></a>
+<a id="Library Setup"></a>
 
 ## ⚙️🏃‍♂️ Library Setup Instructions
 
@@ -87,7 +85,7 @@ A sample project is included and can be used after the above libraries are set u
 
 <span class="nje-br2"> </span>
 
-<a id="lib"></a>
+<a id="More GLFW & Skia"></a>
 
 ## 📦 More about GLFW & Skia
 
@@ -166,7 +164,7 @@ Supporting macOS is more challenging because Apple chose to not support Vulkan a
 
 ---
 
-<a id="temp"></a>
+<a id="Project Architecture"></a>
 
 ## ⚡The Template Project Architecture
 
