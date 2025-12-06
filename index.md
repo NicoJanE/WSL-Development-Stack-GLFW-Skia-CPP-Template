@@ -89,7 +89,7 @@ A sample project is included and can be used after the above libraries are set u
 
 <a id="lib"></a>
 
-## 📦 Libraries GLFW & Skia
+## 📦 More about GLFW & Skia
 
 This project uses two complementary, cross-platform libraries: GLFW for creating windows, managing graphics contexts, and handling user input, and Skia for high-performance, hardware-accelerated 2D drawing. GLFW focuses on windowing and input management without providing graphics rendering itself, which is why Skia is used to handle all rendering of text, images, and shapes with GPU acceleration. Together, they provide a robust foundation for building responsive and visually rich applications across Windows, Linux, and macOS.
 
