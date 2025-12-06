@@ -55,9 +55,9 @@ The setup process involves:
 **Why both?** You'll develop primarily on Windows but can build and test Linux versions seamlessly through WSL.
 
 <details class="nje-remark-box">
-  <summary>**💫 New experimental Setup wit VSC Agent**
+  <summary>**💫 New experimental Setup with VSC Agent**
   </summary>
-  For our New experimental Setup wit VSC Agent [See here](VSC-AgentMode_win)
+  For our New experimental Setup with VSC Agent [See here](VSC-AgentMode_win)
   This will try to use the VS Co-pilot agent to install the Windows part installation. This is experimental and may be changed.
 </details>
 <span class="nje-br"> </span>
