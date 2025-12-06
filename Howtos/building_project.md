@@ -24,7 +24,7 @@ This project uses CMake (the CMakeLists.txt file) to configuring the build proce
 
 ## Build Sample project for Windows
 
-This section describes the method to build the sample template project under Windows.
+This section describes the methods to build the sample template project under Windows.  There are 3 method to choice from, building With Visual Studio 2022/2026, Building by using a script and building by using Visual Studio code. They will all be described here.
 
 ### Get the Visual Studio Runtime variables
 

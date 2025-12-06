@@ -91,7 +91,7 @@ The following procedure applies to **both Dynamic (DLL)** and **Static** library
 |:--------|:---------------------------|:--------|
 | **Output folder** | <span class="nje-cmd-inline-sm">outdll</span> |  <span class="nje-cmd-inline-sm">outstatic</span> |
 | **CMake flag** | <span class="nje-cmd-inline-sm"> -DBUILD_SHARED_LIBS=ON | <span class="nje-cmd-inline-sm"> -DBUILD_SHARED_LIBS=OFF </span> |
-| **Output files** | <span class="nje-cmd-inline-sm">glfw3.dll + glfw3dll.lib`</span (import lib) |  <span class="nje-cmd-inline-sm">glfw3.lib</span> |
+| **Output files** | <span class="nje-cmd-inline-sm">glfw3.dll + glfw3dll.lib(import lib)</span> |  <span class="nje-cmd-inline-sm">glfw3.lib</span> |
 | **Output location** | <span class="nje-cmd-inline-sm">./outdll/src/Debug or ./outdll/src/Release</span> |  <span class="nje-cmd-inline-sm">./outstatic/src/Debug or ./outstatic/src/Release </span> |
 
 <div class="nje-br4"> </div>
@@ -103,7 +103,7 @@ The following procedure applies to **both Dynamic (DLL)** and **Static** library
 - Change to that directory
   <pre class="nje-cmd-one-line-sm-indent1">project root\dependencies\win\glfw-3.4\outdll     # For Dynamic DLL</pre>
   <pre class="nje-cmd-one-line-sm-indent1">project root\dependencies\win\glfw-3.4\outstatic  # For Static</pre>
-- Than run with Power-Shell (choose based on your build type):  
+- Then run with Power-Shell (choose based on your build type):  
    <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=ON   # For Dynamic DLL</pre>
    <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF  # For Static</pre>
   - For Visual Studio 2026 use:
@@ -383,7 +383,7 @@ This finalizes the build process for Windows
 
 ### How to proceed, build Template project
 
-Nect you should be able to build the included template project for instructions see:
+Next you should be able to build the included template project for instructions see:
 **The build project [documentation](building_project)**
 
 <span class="nje-br"> </span>

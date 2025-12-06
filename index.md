@@ -14,7 +14,6 @@ TableCont:
 --- 
 <br>
 
-
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
@@ -33,7 +32,6 @@ The project is preconfigured with:
 - A `CMakePresets.json` file for easy integration with **Visual Studio 2022/2026** on Windows.
 - Build instruction for building the GLFW and Skia libraries from source.
 - A sample (template) project with source using GLFW and Skia.
-
 
 ---
 
