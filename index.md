@@ -75,7 +75,7 @@ The project is preconfigured with:
 
 A sample project is included and can be used after the above libraries are set up. For build instructions, see:
 
-<table  style="width: 40%">
+<table  style="width: 43%">
 <tr>
 <th colspan="2" style="text-align: left;">📚 <strong>Other Instructions</strong> (next step)</th>
 </tr>
