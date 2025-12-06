@@ -29,10 +29,10 @@ function(main)
 
     #add_executable(${PROJECT_NAME} src/main_simple.cpp)
 
-    file(GLOB_RECURSE SOURCES "source/*.cpp")                                          # Collect all sources files including sub folders    
+    file(GLOB_RECURSE SOURCES "source/*.cpp")                                       # Collect all sources files including sub folders    
     add_executable(${PROJECT_NAME} ${SOURCES} )                                     # First define the target and associated  source files ( ${PROJECT_NAME} )
     target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include)  # Then define the search path for headers
-    target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/source)
     
     if (WIN32)
         
