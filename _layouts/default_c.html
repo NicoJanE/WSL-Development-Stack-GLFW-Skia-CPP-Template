@@ -87,14 +87,16 @@
 		<!-- Table of contents ()END) -->
 
          <!-- Create the relevant HTML 'Site Links' for the left panel -->
-         <h3 class="sq" style="--font-style: bold;" >Site Links</h3>
+         <h3 class="sq" style="--font-style: bold;" >Site Links2</h3>
           <ul class="sq">
           	{% if page.name == "index.md" %}
 				{% if site.index_hide_home == true %}
 					<li class="sm1"><a href="./index.html"><span class="sel"> Home (SubSite)</span></a> </li>		
 				{% endif %}	
 				{% for RefPage in page.RefPages %}			  
-					<li class="sm1"><a href="./{{site.BaseDir}}/{{RefPage}}.html">{{ RefPage }}</a> </li>			
+					<!-- <li class="sm1"><a href="./{{site.BaseDir}}/{{RefPage}}.html">{{ RefPage }}</a> </li> -->
+					<li class="sm1"><a href="{{ page.url | relative_url }}#{{ RefPage }}">{{ RefPage }}</a> </li>
+
 				{% endfor %}			
 			{% else %}
 				<li class="sm1"><a href="../index.html"> Home (SubSite)</a> </li>	
