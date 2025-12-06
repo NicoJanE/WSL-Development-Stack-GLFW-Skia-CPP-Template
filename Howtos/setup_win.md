@@ -6,11 +6,20 @@ RefPages:
 - setup_win
 - VSC-AgentMode_win
 - building_project
+
+TableCont:
+- Introduction
+- Setup Instructions
+- Build GLFW (win)
+- Build Skia (win)
+- And now? Build Project
 --- 
 
 <br>
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Windows Setup Instruction</span>
+
+<a id="Introduction"></a>
 
 ## Introduction
 
@@ -34,6 +43,8 @@ The setup process involves:
 
 ---
 
+<a id="Setup Instructions"></a>
+
 ## Setup Instructions
 
 **This is the Windows part** of a dual-platform development environment:
@@ -52,6 +63,8 @@ The setup process involves:
 <span class="nje-br"> </span>
 
 ---
+
+<a id="Build GLFW (win)"></a>
 
 ### Build GLFW library for Windows
 
@@ -120,7 +133,7 @@ The following procedure applies to **both Dynamic (DLL)** and **Static** library
   </div>
 <div class="nje-br1"> </div>
 
-### Update CMake files
+#### Update CMake files
 
 After building the GLFW library (as DLL or static) Update the  <span class="nje-cmd-inline-sm">${PROJECT_SOURCE_DIR}/cmake/windows.cmake</span> file, <small>function: ***_SetExtraWindowsFolders()***</small>
 Make Sure to check and adjust the variables displayed below:
@@ -140,7 +153,9 @@ Make Sure to check and adjust the variables displayed below:
 
 <div class="nje-br1"> </div>
 
-## Built Skia library
+<a id="Build Skia (win)"></a>
+
+### Built Skia library
 
 1. First Build the ***depot_tools***. depot_tools is a collection of scripts/tools used to manage large Google Git projects
    - In your project folder Navigate, with your Power-Shell CLI, to the folder: **.\dependencies\win** or create it, if it does not exists
@@ -153,7 +168,7 @@ Make Sure to check and adjust the variables displayed below:
 </div>
 <div class="nje-br1"> </div>
 
-### Built dependency Ninja if needed
+#### Built dependency Ninja if needed
 
 - Execute <span class="nje-cmd-inline-sm">ninja \-\-version</span> When this returns a version Ninja is already build and you skip this and continue with the next section ***Build Skia Debug*** below.
   Make sure to use the correct dash!
@@ -189,7 +204,7 @@ Make Sure to check and adjust the variables displayed below:
 </details>
  <div class="nje-br1"> </div>
 
-### Build Skia Debug
+#### Build Skia Debug
 
 - **Check this**: When you have build Skia before, especially if done in an previous project folder (i.e: **./other project/dependencies/win**), check and remove the old **System environment variables and paths**, old system variables can impact the a new installation, so remove these:  
 
@@ -310,11 +325,11 @@ Build result should include files like:
 - Ensure `skia`is added to the  variable: **SKIA_LIBS_WIN_LOCAL** in the file **cmake/windows.cmake**
 <span class="nje-br"> </span>
 
-### Build Skia Release
+#### Build Skia Release
 
 This will create the Skia release library
 
-### Install ***libjpeg-turbo***
+##### Install ***libjpeg-turbo***
 
 - Navigate to: **./dependencies/win** of the project root folder.
 - Clone the git librar libjpeg-turbo [**from here**](https://github.com/libjpeg-turbo/libjpeg-turbo)
@@ -329,7 +344,7 @@ This will create the Skia release library
 - Add the include and library folders manually to the Skia release build config below.
 - Make sure you return to the subfolder **./dependencies/win/skia** of the **project root** folder!
 
-### Generate build files for Skia Release
+#### Generate build files for Skia Release
 
 - Navigate to: **./dependencies/win/skia** of the project root folder.
 - create folder: <span class="nje-cmd-inline-sm">mkdir build</span> if not exists
@@ -364,7 +379,9 @@ extra_cflags = [
 
 This finalizes the build process for Windows
 
-## How to proceed
+<a id="And now? Build Project"></a>
+
+### How to proceed, build Template project
 
 Nect you should be able to build the included template project for instructions see:
 **The build project [documentation](building_project)**
