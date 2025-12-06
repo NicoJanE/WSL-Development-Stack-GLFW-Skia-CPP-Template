@@ -111,7 +111,7 @@ The following procedure applies to **both Dynamic (DLL)** and **Static** library
     <pre class="nje-cmd-one-line-sm-indent1">cmake .. -G "Visual Studio 18 2026" -A x64 -DBUILD_SHARED_LIBS=OFF  # For Static</pre> <div class="nje-br2"> </div>
     <span class="nje-colored-block"> <small>Note 1: Initial experimental support in cmake 4.2 (dec 2025). you can use the 2022 version to generate the VS project and compile later with 2026</small></span>
     <span class="nje-colored-block"  style="margin-top:4px; "> <small>Note 2: By default the latest installed SDK is use if you require and other add: **-DCMAKE_SYSTEM_VERSION=10.0.19041.0**</small> </span>
-- Next,  use PowerShell to search for **msbuild.exe** versions (2022 and 2026) on the system, this is because we need the full path to msbuild.exe. Us this Power-shell command:
+- Next,  use PowerShell to search for **msbuild.exe** versions (2022 and 2026) on the system, this is because we need the full path to msbuild.exe. Use this Power-shell command:
   <pre class="nje-cmd-multi-line-sm">& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" `
   -products * `
   -requires Microsoft.Component.MSBuild `
@@ -158,7 +158,7 @@ Make Sure to check and adjust the variables displayed below:
 ### Built Skia library
 
 1. First Build the ***depot_tools***. depot_tools is a collection of scripts/tools used to manage large Google Git projects
-   - In your project folder Navigate, with your Power-Shell CLI, to the folder: **.\dependencies\win** or create it, if it does not exists
+   - In your project folder Navigate, with your Power-Shell CLI, to the folder: **.\dependencies\win** or create it, if it does not exist
    - Clone the git repository:  
      <pre class="nje-cmd-one-line-sm-indent1">git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git </pre>
 
@@ -206,12 +206,12 @@ Make Sure to check and adjust the variables displayed below:
 
 #### Build Skia Debug
 
-- **Check this**: When you have build Skia before, especially if done in an previous project folder (i.e: **./other project/dependencies/win**), check and remove the old **System environment variables and paths**, old system variables can impact the a new installation, so remove these:  
+- **Check this**: When you have built Skia before, especially if done in a previous project folder (i.e: **./other project/dependencies/win**), check and remove the old **System environment variables and paths**, old system variables can impact the a new installation, so remove these:  
 
   - Environment variable: **EMSDK**
   - Environment variable: **EMSDK_NODE**
   - Environment variable: **EMSDK_PYTHON**
-  - Environment variable: **JAVA_HOME** *only when points to a Skai subfolder*
+  - Environment variable: **JAVA_HOME** *only when points to a Skia subfolder*
   - Environment Path: **Remove** the old paths to the Skia subfolders (usual at the top)  
   <span class="nje-br"> </span>
    <small>📌**Tip** Use the following Powershell command to check the value of the variables: <span class="nje-cmd-inline-sm">Get-ChildItem Env:EMSDK*</span> </small>  
@@ -332,7 +332,7 @@ This will create the Skia release library
 ##### Install ***libjpeg-turbo***
 
 - Navigate to: **./dependencies/win** of the project root folder.
-- Clone the git librar libjpeg-turbo [**from here**](https://github.com/libjpeg-turbo/libjpeg-turbo)
+- Clone the git library libjpeg-turbo [**from here**](https://github.com/libjpeg-turbo/libjpeg-turbo)
 - <pre class="nje-cmd-one-line-sm-indent1">git clone https://github.com/libjpeg-turbo/libjpeg-turbo.git </pre>
 - Create build directory
   <span class="nje-cmd-inline-sm">mkdir build</span>
