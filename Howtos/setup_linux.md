@@ -5,16 +5,40 @@ RefPages:
 - setup_linux
 - setup_win
 - building_project
+
+TableCont:
+- Introduction
+- Setup Instructions
+- Prepare the WSL
+- Install the GLFW library
+- Install the Skia library
+- WSL Notes
+
 --- 
 
 <br>
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Linux Setup Instruction</span>
 
+<a id="Introduction"></a>
+
 ## Introduction
 
-This template is intended for use with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 11** host.
-This section explains how to configure a Linux environment to build your GLFW/Skia project under WSL. **Check** the **three steps** below and use the side notes / instructions when appropriate 
+This template is designed for use in conjunction with a **WSL** (Windows Subsystem for Linux) distribution running on a **Windows 11** host.
+This section provides step-by-step instructions for setting up the Linux build environment in WSL. It includes building the GLFW and Skia libraries from source.
+Because this environment creates a graphical build environment that generates GUI applications, we need a way to display the GUI on the screen.
+In WSL, this can be done in two ways: using the built-in WSLg subsystem (the default) or using the X11 protocol in combination with forwarding to the Windows host.
+We will use the WSLg option. For more background information, see the background section **'Which Graphics Engine'** details below.
+
+The setup process involves:
+
+- Building GLFW 3.4 with CMake
+- Building Skia graphics library with debug and release configurations
+- Configuring dependencies for your development environment
+
+<details class="nje-back-box">
+  <summary>Which Graphics Engine
+  </summary>
 
 ## Graphics Engine Used
 
@@ -36,22 +60,27 @@ This section explains how to configure a Linux environment to build your GLFW/Sk
 
 Unless you specifically need a full Linux desktop environment, stick with the default WSLg setup.
 
+<p align="center" style="padding:20px;">─── ✦ ───</p>
+</details> <span class="nje-br2"> </span>
+
 ---
+
+<a id="Setup Instructions"></a>
 
 ## Setup Instructions
 
-### Cross-Platform Development Setup
+This is the **Linux component** of a dual-platform development environment:
 
-**This is the Linux component** of a dual-platform development environment:
+- **Windows Setup**: Native development tools, Visual Studio, debugging → [Windows Setup Guide](setup_win)
+- **WSL Linux Setup (This Page)**: Cross-platform builds and Linux testing
 
-- **Windows Setup**: Native development tools, Visual Studio, debugging  → [Windows Setup Guide](setup_win)
-- **WSL Linux Setup(This Page)**: Cross-platform builds and Linux testing
+**Why both?** Development is done primarily on Windows, but you can build and test Linux versions seamlessly through WSL.
 
-**Why both?** You'll develop primarily on Windows but can build and test Linux versions seamlessly through WSL.
+<a id="Prepare the WSL"></a>
 
-### Preparations
+### Prepare the WSL
 
-Start your WSL, or create one first alternatively you can import a default one if you have an exported version, in that case use a command like:
+Start your WSL, or create one first. Alternatively, you can import a default one if you have an exported version. In that case, use a command like:
 
 <pre class="nje-cmd-multi-line-sm-indent0">
 # From project root, import new WSL based on existing exported WSL.
@@ -61,7 +90,7 @@ wsl --import NewDist  .\_wsl_data\NewDist\ D:\WSL\WSL-Exports\Debian-clean.tar
 # Note that '_wsl_data' must exist
 </pre>
 
-When you need to create a new WSL from scratch you use this recommend  **manually installation** instructions, see [**here**](#manual-wsl) in the sub paragraph [***WSL Notes & Background Information***](#notes-warnings-background) which contains more additional information.
+When you need to create a new WSL from scratch, use these recommended **manual installation** instructions. See [**here**](#manual-wsl) in the sub-paragraph [***WSL Notes & Background Information***](#notes-warnings-background), which contains the instructions
 
 <details class="nje-warn-box">
   <summary> Alternative X11 Forwarding Setup Available
@@ -82,8 +111,8 @@ Stick with the default **WSLg setup** unless you specifically need a full Linux 
 </details>
 <div class="nje-br4"> </div>
 
-When starting the WSL make sure you use a WSL user that you hve created, **don't** use root account! Again see side note; [***Notes, Warnings & Background Information***](#notes-warnings-background) for instructions when needed
-Throughout the rest of this document, we will use `apt install` to install the required packages, supported Linux distributions  ar mentioned in the above given link.
+When starting WSL, make sure you use a WSL user that you have created. **Don't** use the root account! For instructions when needed, see [***Notes, Warnings & Background Information***](#notes-warnings-background).
+Throughout the rest of this document, we will use `apt install` to install the required packages. Supported Linux distributions are mentioned in the link above.
 <br>
 
 ### Decisions made
@@ -99,9 +128,12 @@ The following decisions that have been made, regarding project location and libr
   For libraries that must be built **manually** (currently only depot_tools), they are installed in the **user's home folder** as part of the Linux development build.
 <br>
 
-#### WSL Notes & Background Information {#notes-warnings-background}
 
-This paragraph contains some background information in case your are less familiar with this project.
+<a id="WSL Notes"></a>
+
+#### WSL Notes
+
+This paragraph contains some background information about the WSL,  in case your are less familiar The WSL creation and usage.
 
 <details class="nje-note-box">
   <summary>Debian-based Linux distributions🐧
@@ -169,7 +201,7 @@ Some supporting WSL commands
 
 <pre class="nje-cmd-multi-line">
 wsl -l -v               # List all distributions with status
-wsl [name] -d           # starts it
+wsl -d [name]           # starts it
 wsl --unregister [name] # Remove a distribution
 wsl --export DistributionName BackupFile.tar
 wsl --import NewDistributionName InstallLocation BackupFile.tar
@@ -211,61 +243,87 @@ This will try to use the VS Co-pilot agent to install the installation, mentione
 
 ---
 
-### Install GLFW library
+<a id="Install the GLFW library"></a>
 
+### Install the GLFW library
+
+Make sure you have a WSL environment installed and started, the following command are in the Bash shell of the WSL, installation is done with **root** user, alternatively you can create a user and install all under that user (see section [WSL-Notes](#WSL Notes))
+
+- <pre class="nje-cmd-one-line-sm-indent1">wsl -d [wsl-name]          # starts it </pre>
 - Install these libraries with:
   <pre class="nje-cmd-one-line-sm-indent1">sudo apt update </pre>
   <pre class="nje-cmd-one-line-sm-indent1">sudo apt install cmake g++ libglfw3-dev libgl1-mesa-dev libx11-dev gdb libxkbcommon-dev libxinerama-dev libxcursor-dev libxi-dev </pre>
-- Find the  the include folder:
+- Find the  the include folder, note down the include folder, cause it is need below:
   <pre class="nje-cmd-one-line-sm-indent1">dpkg -L libglfw3-dev | grep '\.h$' </pre>
-- Find the  the lib folder:
-  <pre class="nje-cmd-one-line-sm-indent1">dpkg -L libglfw3-dev | grep '\.so' </pre> <div class="nje-br3"> </div>
+  <span class="nje-expect-block"> this may result something like:  
+  /usr/include/GLFW/glfw3.h  
+  /usr/include/GLFW/glfw3native.h  
+  In that case make sure to to note down: **/usr/include/GLFW**
+  </span>
+- Find the  the lib folder, note it down library folder, cause it is need below:
+  <pre class="nje-cmd-one-line-sm-indent1">dpkg -L libglfw3-dev | grep '\.so' </pre> 
+  <span class="nje-expect-block"> this may result something like:  
+  /usr/lib/x86_64-linux-gnu/libglfw.so
+  In that case make sure to to note down: **/usr/lib/x86_64-linux-gnu/**
+  </span>  
+- Now Check and if need update the file <span class="nje-cmd-inline-sm">${PROJECT_SOURCE_DIR}cmake/linux.cmake</span> to update it with the include and library folders found earlier. The Items below can be found in the cmake function: **SetLinuxDirectories**.
+  - <span class="nje-cmd-inline-sm">GLFW_LINUX_INCLUDE_DIR</span> Update this with the found **include** folder found (in our example:***/usr/include/GLFW*** )
+  - <span class="nje-cmd-inline-sm">GLFW_LINUX_LIB_DIR  </span> Update this with the found **library** folder found (in our example:***/usr/lib/x86_64-linux-gnu/***)
 
-  <details class="nje-remark-box">
+<span class="nje-colored-block" style="margin-left:20px;"> <small>Be-aware: skim through the file: ${PROJECT_SOURCE_DIR}cmake/linux.cmake, it also contains linkage settings which may need to change, by default it is prepared for debug</small></span>
+
+<div class="nje-br"> </div>
+
+<details class="nje-remark-box">
   <summary> More general method to look for a specific library
-  </summary>
-   A more general method to look for a specific library is:  
-   `sudo find /usr/lib /usr/local/lib -name "libGL.so`  
-   (remember to drop the 'lib' and '.so' part when using the library in CMake\Make, just saying)
-  </details><br>
-
-- **Check\Update** the `cmake/linux.cmake` file with the include folder an library folder of GLFW, see function: **SetLinuxDirectories**.
-- **Check\Update** the `GLFW_LIBS_LOCAL` which specifies the use library name(s) use for GLFW (and for some general libraries used)
+  </summary>  
+  A more general method to look for a specific library is:  
+  <span class="nje-cmd-inline-sm">sudo find /usr/lib /usr/local/lib -name "libGL.so</span>
+  (remember to drop the 'lib' and '.so' part when using the library in CMake\Make, just saying)
+</details>
+<div class="nje-br4"> </div>
 
 ---
 
+<a id="Install the Skia library"></a>
+
 ### Install Skia library
 
+The following Bash command assume the your inside the WSL, if not start it  with: 
+<pre class="nje-cmd-one-line-sm-indent1" style="margin-top:-20px;" >wsl -d [wsl-name]   # starts it </pre>  
+
 - Install the libraries with:
-  <pre class="nje-cmd-one-line-sm-indent1">sudo apt update` </pre>
-  <pre class="nje-cmd-multi-line-sm-indent1">  sudo apt install build-essential git python3 pkg-config libglu1-mesa-dev libgl1-mesa-dev ninja-build
+  <pre class="nje-cmd-one-line-sm-indent1">sudo apt update </pre>
+  <pre class="nje-cmd-multi-line-sm-indent1"> sudo apt install build-essential git python3 pkg-config libglu1-mesa-dev libgl1-mesa-dev ninja-build \
     libfontconfig1-dev libexpat1-dev libfreetype6-dev libpng-dev libjpeg-dev libharfbuzz-dev libwebp-dev mesa-utils vulkan-tools
   </pre>
 
-### Install the library **depot_tools**
+#### Install the library **depot_tools**
 
-- Make a directory in for the user home directory(make sure user owns it) to install **depot_tools** into, for example: `/home/name/tools/libs` and **cd** to it
-- clone:
+- Make a directory **tools/libs** in for the user home directory( <span class="nje-cmd-inline-sm">cd ~/</span>) and make sure user owns it. This is used to install the  **depot_tools** into, for example: <span class="nje-cmd-inline-sm">/home/name/tools/libs</span> and **cd** to it. Note that for our **root** user the directory is ***/root*** so create: <span class="nje-cmd-inline-sm">/root/tools/libs </span>
+- In the <span class="nje-cmd-inline-sm">Libs</span> directory clone:
   <pre class="nje-cmd-one-line-sm-indent1">git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git</pre>
 - Add the path to begin of the path environment (so it will have priority):  
   <pre class="nje-cmd-multi-line-sm-indent1">  echo 'export PATH="$HOME/tools/libs/depot_tools:$PATH"' >> ~/.bashrc  
     source ~/.bashrc </pre>
 
-### Setup amd configure Skia
+#### Setup amd configure Skia
 
-- Use the new created  home directory to install **Skia** into, thus make sure your in: `/home/name/tools/libs/`
+- Use the new **created tools/libs** directory to install **Skia** into, thus make sure your in: <span class="nje-cmd-inline-sm"> cd $HOME/tools/libs</span>
 - clone:
   <pre class="nje-cmd-one-line-sm-indent1">git clone https://skia.googlesource.com/skia.git </pre>
-- Navigate to: `cd skia` run:
-  <pre class="nje-cmd-one-line-sm-indent1">git checkout chrome/m126`  # To checkout a stable build instead a the master(Use Same as on Windows!) </pre>
+- Navigate to sub directory: <span class="nje-cmd-inline-sm">cd skia</span> run:
+  <pre class="nje-cmd-one-line-sm-indent1">git checkout chrome/m126  # To checkout a stable build instead a the master(Use Same as on Windows!) </pre>
 - Sync dependencies with, run:
-   <pre class="nje-cmd-one-line-sm-indent1">python3 tools/git-sync-deps` # this will install tools like ***gn*** and others </pre>
+   <pre class="nje-cmd-one-line-sm-indent1">python3 tools/git-sync-deps # this will install tools like ***gn*** and others </pre>
   - Check with the command:
     <pre class="nje-cmd-one-line-sm-indent1">which gn      # should display location of gn </pre>
 
 ### Creating build versions
 
-All combinations can be found here but obvious choice is the **Shared Debug**
+All combinations can be found here but obvious choice is the **Shared Debug**  
+The command assume your in the WSL in the directory: <span class="nje-cmd-inline-sm"> cd $HOME/tools/libs/skia</span>
+
 
 - **Generate Static Release** build files with:  
   <pre class="nje-cmd-one-line-sm-indent1">./bin/gn gen out/release/static --args='is_official_build=true is_component_build=false is_debug=false skia_use_gl=true' </pre>
@@ -289,13 +347,12 @@ All combinations can be found here but obvious choice is the **Shared Debug**
 
 ### Check\Update ./cmake/linux.cmake file for Skia
 
-For the Skia  include folder an library folder set the variables, see function: SetLinuxDirectories  
+- Now Check and if need update the file <span class="nje-cmd-inline-sm">${PROJECT_SOURCE_DIR}cmake/linux.cmake</span> to update it with the include and library folders found earlier. The Items below can be found in the cmake function: **SetLinuxDirectories**.
+  - <span class="nje-cmd-inline-sm">SKIA_LINUX_CORE_INCLUDE_DIR</span> Update this with: **${ENV:HOME}/tools/libs/skia**
+  - <span class="nje-cmd-inline-sm">SKIA_LINUX_LIBS_DIR  </span> Update this with: **${ENV:HOME}/tools/libs/skia/out/debug/shared**
+  - Check also the <span class="nje-cmd-inline-sm">SKIA_LIBS_LOCAL</span> which specifies the use library name(s)
 
-- For example set:
-  <pre class="nje-cmd-one-line-sm-indent1"> set(SKIA_LINUX_CORE_INCLUDE_DIR "/home/name/tools/skia" CACHE PATH "SKIA include dir") </pre>
-  <pre class="nje-cmd-one-line-sm-indent1">`set(SKIA_LINUX_LIBS_DIR "/home/name/tools/skia/out/debug/shared" CACHE PATH "SKIA Lib dir")</pre>
-
-- Check also the `SKIA_LIBS_LOCAL` which specifies the use library name(s)
+<span class="nje-colored-block" style="margin-left:20px;"> <small>Be-aware: skim through the file: ${PROJECT_SOURCE_DIR}cmake/linux.cmake, it also contains linkage settings which may need to change, by default it is prepared for debug</small></span>
 
 **Use the the build documentation to build the [sample project](building_project)**
 
