@@ -8,10 +8,12 @@ RefPages:
 --- 
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  What VSC Agent(Linux)</span>
+![MIT License](https://img.shields.io/badge/License-MIT-green) ![Commercial Services Available](https://img.shields.io/badge/Services-Optional-blue)
+
+## Introduction
 
 This will try to automatically (or semi-automatically) set up the Linux WSL environment for our project. It uses the Visual Studio Code **Copilot Agent**.
-
-I'm not sure how reliable this is. It worked for me after a lot of tweaking and adjusting the documentation.
+This may not be 100% reliable and  need more checking probably.
 
 >**Feedback**  
 <small>
@@ -72,12 +74,14 @@ This step may ask you if it should combine all WSL instructions into one or not,
 
 <div class="nje-br1"> </div>
 
-## Step 3 Check!
+## Step 3 Check
 
-**Always ask at the end: 'Did you skip a step ?' after Copilot is finished**
+**Always** ask at the end: 'Did you skip a step ?' after Copilot is finished
 
-<div class="nje-br3"> </div>
-<sub><i> This file is part of: GLFW-Skia C++ Template Stack Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the 'LICENSE.md' file in the root directory of this source tree.</i>
-</sub>
+<span style="color: #6d757dff; font-size: 13px; font-style: italic;"> <br>
+<i><b>License</b><br>This file is part of: **GLFW-Skia C++ Template Stack**  Copyright (c) 2025-2026 Nico Jan Eelhart.This repository is [MIT licensed](MIT-license.md) and free to use. For optional commercial support, customization, training, or long-term maintenance, see [COMMERCIAL.md](COMMERCIAL.md).</i>
+</span>
 
+<br>
+<br>
 <p align="center">─── ✦ ───</p>

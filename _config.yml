@@ -11,6 +11,7 @@ theme: jekyll-theme-architect
 plugins:
 - jekyll-remote-theme 
 - jekyll-toc # Add this plugin for TOC generation
+- jekyll-sitemap
 
 # Added 26 July 2024
 # This is here to enable the parse_block_html feature for MD parsing in a details tag
@@ -24,6 +25,11 @@ kramdown:
 # Used for discussion link
 repository_owner: NicoJanE      # kind of fixed
 repository_name:                # Update this(repository name) if discussions are enabled in GitHub. When Empty it will state 'no Discussions'
+
+
+# Required by Jekyll + sitemap
+url: "https://nicojane.github.io"
+baseurl: "/WSL-Development-Stack-GLFW-Skia-CPP-Template/"
 
 # includes home links for this page, leave blank in case of no Home links. 
 home_site_name: 

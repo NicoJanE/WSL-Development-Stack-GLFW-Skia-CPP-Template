@@ -11,7 +11,7 @@
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  Docker Container</span>
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![MIT License](https://img.shields.io/badge/License-MIT-green) ![Commercial Services Available](https://img.shields.io/badge/Services-Optional-blue)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-brightgreen)
 ![C++](https://img.shields.io/badge/C++-17-blue.svg)
 
@@ -201,7 +201,6 @@ The folder structure (<small> some folders and files are not include because the
 
 <a id="more"></a>
 
-
 <br>
 <p align="center">
   <a href="https://nicojane.github.io/WSL-Template-Stacks-Home/">
@@ -209,8 +208,8 @@ The folder structure (<small> some folders and files are not include because the
   </a>
 </p>
 
-<sub> <i>This file is part of:  **GLFW-Skia C++ Template Stack**
-Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the  'LICENSE.md' file in the root directory of this source tree.</i>
-</sub>
+<br>
+<small> <i><b>License</b><br>This file is part of: <b>GLFW-Skia C++ Template Stack</b>  Copyright (c) 2025-2026 Nico Jan Eelhart. This repository is <a href="MIT-license.md">MIT licensed</a>and free to use. For optional commercial support, customization, training, or long-term maintenance, see <a href="COMMERCIAL.md">COMMERCIAL.md</a></i>
+</small>
 
 <p align="center">─── ✦ ───</p>
