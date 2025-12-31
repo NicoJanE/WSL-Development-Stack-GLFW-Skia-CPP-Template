@@ -82,8 +82,8 @@ Automate all steps from the referenced setup guide #fetch https://nicojane.githu
 
 **Always ask at the end: 'Did you skip a step ?' after Copilot is finished**
 
-<div class="nje-br3"> </div>
-<sub><i> This file is part of: GLFW-Skia C++ Template Stack Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the 'LICENSE.md' file in the root directory of this source tree.</i>
-</sub>
+<span style="color: #6d757dff; font-size: 13px; font-style: italic;"> <br>
+<i><b>License</b><br>This file is part of: **GLFW-Skia C++ Template Stack**  Copyright (c) 2025-2026 Nico Jan Eelhart.This repository is [MIT licensed](MIT-license.md) and free to use. For optional commercial support, customization, training, or long-term maintenance, see [COMMERCIAL.md](COMMERCIAL.md).</i>
+</span>
 
 <p align="center">─── ✦ ───</p>

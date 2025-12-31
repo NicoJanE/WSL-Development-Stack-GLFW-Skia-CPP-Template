@@ -10,6 +10,7 @@ RefPages:
 <br>
 
 # Project Structure and Header Usage Guide
+![MIT License](https://img.shields.io/badge/License-MIT-green) ![Commercial Services Available](https://img.shields.io/badge/Services-Optional-blue)
 
 ------------------------------------------------------------------------------
 
@@ -90,3 +91,10 @@ In CMakeLists.txt (main)
     target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/source)  # Define the search path for internal headers
 
 ```
+
+<span style="color: #6d757dff; font-size: 13px; font-style: italic;"> <br>
+<i><b>License</b><br>This file is part of: **GLFW-Skia C++ Template Stack** Copyright (c) 2025-2026 Nico Jan Eelhart.This repository is [MIT licensed](MIT-license.md) and free to use. For optional commercial support, customization, training, or long-term maintenance, see [COMMERCIAL.md](COMMERCIAL.md).</i>
+</span>
+
+<br>
+<p align="center">─── ✦ ───</p>

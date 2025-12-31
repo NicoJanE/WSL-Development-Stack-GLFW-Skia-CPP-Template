@@ -14,6 +14,7 @@ TableCont:
 <br>
 
 # GLFW-Skia C++ Template <span style="color: #409EFF; font-size: 0.6em; font-style: italic;"> -  build the sample project</span>
+![MIT License](https://img.shields.io/badge/License-MIT-green) ![Commercial Services Available](https://img.shields.io/badge/Services-Optional-blue)
 
 <a id="Introduction"></a>
 ## Introduction
@@ -108,9 +109,11 @@ This section describes building the program using the GNU Make tool. It assumes 
 
 **That's all!** You can also use Visual Studio Code and build it as described above in the ***Visual Studio Code*** section.
 
-<div class="nje-br2"> </div>
+<div class="nje-br1> </div>
 
-<sub><i> This file is part of: GLFW-Skia C++ Template Stack Copyright (c) 2025 Nico Jan Eelhart. This source code is licensed under the MIT License found in the 'LICENSE.md' file in the root directory of this source tree.</i>
-</sub>
+<span style="color: #6d757dff; font-size: 13px; font-style: italic;"> <br>
+<i><b>License</b><br>This file is part of: **GLFW-Skia C++ Template Stack** Copyright (c) 2025-2026 Nico Jan Eelhart.This repository is [MIT licensed](MIT-license.md) and free to use. For optional commercial support, customization, training, or long-term maintenance, see [COMMERCIAL.md](COMMERCIAL.md).</i>
+</span>
 
+<br>
 <p align="center">─── ✦ ───</p>

@@ -76,3 +76,10 @@
 1. Check the variable 'SKIA_LIBS_LOCAL' in the  file 'linux.cmake' which can be found in the PROJECT_ROOT/cmake/ folder. this should already be okay.
 1. check yourself that you did not skip a step, if you skipped a step, try to fix/ run that step now.
 1. **Use the the build documentation to build the [sample project for linux](building_project)**
+
+<span style="color: #6d757dff; font-size: 13px; font-style: italic;"> <br>
+<i><b>License</b><br>This file is part of: **GLFW-Skia C++ Template Stack** Copyright (c) 2025-2026 Nico Jan Eelhart.This repository is [MIT licensed](MIT-license.md) and free to use. For optional commercial support, customization, training, or long-term maintenance, see [COMMERCIAL.md](COMMERCIAL.md).</i>
+</span>
+
+<br>
+<p align="center">─── ✦ ───</p>
