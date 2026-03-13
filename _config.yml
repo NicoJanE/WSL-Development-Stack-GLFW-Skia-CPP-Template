@@ -32,11 +32,14 @@ url: "https://nicojane.github.io"
 baseurl: "/WSL-Development-Stack-GLFW-Skia-CPP-Template/"
 
 # includes home links for this page, leave blank in case of no Home links. 
+# An toot site, so currently no other references to other main sites (cause there not available) 
 home_site_name: 
+    - ATS
     - DTS
     - WSL
     - Sponsor
 home_site_url: 
+    - https://nicojane.github.io/AI-Home/
     - https://nicojane.github.io/Docker-Template-Stacks-Home
     - https://nicojane.github.io/WSL-Template-Stacks-Home
     - https://nicojane.github.io/Docker-Template-Stacks-Home/sponsor
